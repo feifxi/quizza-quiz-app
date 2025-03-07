@@ -6,33 +6,39 @@
 A platform quiz game that the world gonna cry😭😭
 
 
-## List Features
+## List Features (⭐ is hard level)
 - Feature
-    - Login Authentication → Role base
-    - Create Quiz Question → everyone can crete new game (but managed by admin)
-        - User can maintainance the content 
-        - status → publish, draft, archive,
-        - comment
-        - Like / dislike
-        - mini game
-            - โยงเส้น
-            - เติมคำ
-            - ทาย (Guess the character / vocabulary)
-    - User Dashboard by the most liked game
-    - Shop
-    - Chatbot (noob model im broke) 
+    - Authentication → Role base  ⭐⭐
+        - Sign up (Register), Sign in (Login), log out
+        - Manage Role → user , admin
+    - Quiz Sandbox → everyone can make it (but manage by admin) ⭐⭐⭐
+        - User/admin Dashboard
+        - User/admin Create Quiz
+        - User/admin Update Template
+        - Status → publish, pending
+        - Admin review quiz (create + update) → admin comment or approved game
+        - User comment game
+        - User Like / dis like game
+    - Dashboard by the most liked game ⭐
+        - The most star user
+        - Owner of the most liked game
 
 ## Members & Responsibility
 - 0% 66130500071 - Pakin Toomngern
-  - 
+  - Authentication
+  - Quiz Sandbox
 
 - 0% 66130500100 - Nithikorn Siriwichayaporn
-  - 
+  - Authentication
+  - Quiz Sandbox
 
 - 0% 66130500114 - Noppawut Phomchana
-  - 
+  - Dashboard by the most liked game
+  - Quiz Sandbox
 - 0% 66130500125 - Suchai Cholchaipaisal
-  - 
+  - Sign up (Register), Sign in (Login), log out
+  - Manage Role → user , admin
+
 
 
 ## Tutorial   
