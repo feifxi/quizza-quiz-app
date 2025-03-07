@@ -5,6 +5,9 @@
 ## About
 A platform quiz game that the world gonna cry😭😭
 
+## Collaborator tools 
+[Notion](https://blush-stitch-732.notion.site/Project-2-Platform-Quiz-game-186c0df7584d80979b90db8ff2409d85?pvs=4)
+[Figma](https://www.figma.com/design/9JFMquzBxruwnq4fFYA4Hl/Untitled?node-id=0-1&p=f&t=k7M9jm1dbxZ3dkjA-0)
 
 ## List Features (⭐ is hard level)
 - Feature

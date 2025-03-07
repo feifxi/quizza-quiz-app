@@ -5,6 +5,13 @@
       "email": "1",
       "userName": "2",
       "password": "3"
+    },
+    {
+      "id": "e2db",
+      "email": "fei",
+      "userName": "fei",
+      "password": "123",
+      "role": "user"
     }
   ],
   "quizs": [
