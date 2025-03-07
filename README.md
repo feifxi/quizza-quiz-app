@@ -1,29 +1,53 @@
-# hareruya
+# Platform Quiz Game : Roblox + Duolingo but better
 
-This template should help get you started developing with Vue 3 in Vite.
+<img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXfuBNWe6wRnax34wZ_ERYQCSFGDUsKagCo3tHaGZA4MEHf-KFEZpECazm7SeX_lpfXjZr_0RJBO2YYZ4Ai7YmULEZbuwHL0rnZLvVR7EHVx6EnXZAdzw8LhFuWjDFqDlezMMI_vWkR860joiiBZJUfFZug?key=09mMvSMm03wwM63SV_Ykbw" alt="Game Unemployed" width="500" />
 
-## Recommended IDE Setup
+## About
+A platform quiz game that the world gonna cry😭😭
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
-## Customize configuration
+## List Features
+- Feature
+    - Login Authentication → Role base
+    - Create Quiz Question → everyone can crete new game (but managed by admin)
+        - User can maintainance the content 
+        - status → publish, draft, archive,
+        - comment
+        - Like / dislike
+        - mini game
+            - โยงเส้น
+            - เติมคำ
+            - ทาย (Guess the character / vocabulary)
+    - User Dashboard by the most liked game
+    - Shop
+    - Chatbot (noob model im broke) 
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Members & Responsibility
+- 0% 66130500071 - Pakin Toomngern
+  - 
 
-## Project Setup
+- 0% 66130500100 - Nithikorn Siriwichayaporn
+  - 
 
-```sh
-npm install
-```
+- 0% 66130500114 - Noppawut Phomchana
+  - 
+- 0% 66130500125 - Suchai Cholchaipaisal
+  - 
 
-### Compile and Hot-Reload for Development
 
-```sh
-npm run dev
-```
+## Tutorial   
+### Objective 
+- Create new game and dont get banned 
+### Basic Controls
+- Step 1 - Create new sussy game
+- Step 2 - Get banned by admin
+- Step 3 - Create new account
+- Step 4 - do step 1 again
 
-### Compile and Minify for Production
+## Demo features
+[Watch the video](#)
 
-```sh
-npm run build
-```
+
+## References
+#
+- Roblox 
