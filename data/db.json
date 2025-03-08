@@ -1,12 +1,6 @@
 {
   "users": [
     {
-      "id": "f49c",
-      "email": "1",
-      "userName": "2",
-      "password": "3"
-    },
-    {
       "id": "e2db",
       "email": "fei",
       "userName": "fei",
@@ -14,12 +8,26 @@
       "role": "user"
     }
   ],
+
   "quizs": [
     {
       "id": "cb24",
       "title": "แกไม่รอดแน่",
       "createBy": "jeno",
+      "status": "publish",
       "levels": [
+        {
+          "type": "matched",
+          "content": {
+            "question": "test123",
+            "answer": "3",
+            "choices": [
+              "1",
+              "2",
+              "3"
+            ]
+          }
+        },
         {
           "type": "matched",
           "content": {
@@ -34,5 +42,22 @@
         }
       ]
     }
+  ],
+
+  "playing": [
+    {
+      "userId": "e2db",
+      "gameId": "cb24",
+      "currentLevel": 3
+    }
+  ],
+
+
+  "comments": [
+
+  ],
+
+  "reactions": [
+
   ]
 }

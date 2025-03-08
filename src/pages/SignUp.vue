@@ -25,8 +25,11 @@ import { reactive, ref, watch } from 'vue';
       const user = existUser.data[0]
       if (user) return alert('This email is belong to existing account')
       
-      userData.role = 'user'
-      const res = await createUser(userData)      
+      const res = await createUser({
+        ...userData,
+        role: 'user',
+        star: 0
+      })      
       console.log(res)
     }
 </script>
