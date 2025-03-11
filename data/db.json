@@ -5,59 +5,172 @@
       "email": "fei",
       "userName": "fei",
       "password": "123",
-      "role": "user"
+      "role": "user",
+      "star": 0
+    },
+    {
+      "id": "263c",
+      "email": "jeno",
+      "userName": "jeno",
+      "password": "123",
+      "role": "user",
+      "star": 0
     }
   ],
-
   "quizs": [
     {
-      "id": "cb24",
-      "title": "แกไม่รอดแน่",
+      "id": "629f",
+      "title": "",
+      "thumbnail": "",
       "createBy": "jeno",
-      "status": "publish",
+      "status": "pending",
       "levels": [
         {
-          "type": "matched",
-          "content": {
-            "question": "test123",
-            "answer": "3",
-            "choices": [
-              "1",
-              "2",
-              "3"
-            ]
-          }
+          "template": "Multiple-choice-text",
+          "question": "kuyyyyyyyyyyyyy",
+          "questionImage": "kuyyyyyyyyyyyyy",
+          "choices": [
+            {
+              "label": "kuyyyyyyyyyyyyy1",
+              "isAns": true
+            },
+            {
+              "label": "kuyyyyyyyyyyyyy2",
+              "isAns": false
+            },
+            {
+              "label": "kuyyyyyyyyyyyyy3",
+              "isAns": false
+            },
+            {
+              "label": "kuyyyyyyyyyyyyy4",
+              "isAns": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4ce2",
+      "title": "Kuy Jeno",
+      "thumbnail": "Kuy Jeno",
+      "createBy": "jeno",
+      "status": "pending",
+      "levels": [
+        {
+          "template": "Multiple-choice-text",
+          "question": "Kuy Jeno",
+          "questionImage": "Kuy Jeno",
+          "choices": [
+            {
+              "label": "Kuy Jeno",
+              "isAns": true
+            },
+            {
+              "label": "Kuy Jeno",
+              "isAns": false
+            },
+            {
+              "label": "Kuy Jeno",
+              "isAns": false
+            },
+            {
+              "label": "Kuy Jeno",
+              "isAns": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1744",
+      "title": "ijnnnknm",
+      "thumbnail": "injinjiuninj",
+      "createBy": "fei",
+      "status": "pending",
+      "levels": [
+        {
+          "template": "Multiple-choice-text",
+          "question": "kjnjjom;",
+          "questionImage": "njnijj",
+          "choices": [
+            {
+              "label": "jnjknjn",
+              "isAns": true
+            },
+            {
+              "label": " jknjnoi",
+              "isAns": false
+            },
+            {
+              "label": "jonjmkomkm",
+              "isAns": false
+            },
+            {
+              "label": "momionmiomiomi",
+              "isAns": false
+            }
+          ]
         },
         {
-          "type": "matched",
+          "template": "Multiple-choice-image",
           "content": {
-            "question": "test123",
-            "answer": "3",
-            "choices": [
-              "1",
-              "2",
-              "3"
-            ]
-          }
+            "question": "",
+            "answer": "",
+            "choices": []
+          },
+          "question": "iygygyguybuyo",
+          "questionImage": "hbiuihoiun",
+          "choices": [
+            {
+              "label": "hbiuihoiun",
+              "isAns": true
+            },
+            {
+              "label": "hbiuihoiun",
+              "isAns": false
+            },
+            {
+              "label": "hbiuihoiun",
+              "isAns": false
+            },
+            {
+              "label": "hbiuihoiun",
+              "isAns": false
+            }
+          ]
         }
       ]
     }
   ],
-
   "playing": [
     {
       "userId": "e2db",
       "gameId": "cb24",
-      "currentLevel": 3
+      "currentLevel": 3,
+      "id": "a38d"
     }
   ],
-
-
   "comments": [
-
+    {
+      "userId": "e2db",
+      "gameId": "cb24",
+      "text": "hello world",
+      "id": "c8b2"
+    }
   ],
-
+  "admin-comments": [
+    {
+      "gameId": "cb24",
+      "text": "hello world",
+      "id": "c8b2"
+    }
+  ],
   "reactions": [
-
+    {
+      "userId": "e2db",
+      "gameId": "cb24",
+      "id": "a642"
+    }
   ]
 }

@@ -1,73 +1,74 @@
 const BASE_URL = "http://localhost:5000/quizs"
 
-export const createGame = async (gameData) => {
+export const createQuiz = async (quizData) => {
     try {
         const res = await fetch(`${BASE_URL}`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(gameData)
+            body: JSON.stringify(quizData)
         })
         const data = await res.json()
         return {
             success: true,
-            message: 'Create game success',
+            message: 'Create quiz success',
             data: data
         }
     } catch (error) {
-        console.log('Error in create game : ', error)
+        console.log('Error in create quiz : ', error)
         return {
             success: true,
-            message: 'Fail to Create game',
+            message: 'Fail to Create quiz',
         }
     }
 }
 
 
-// == example option ==
-// {
-//     key: 'userName',
-//     value: 'jeno'    
-// }
-export const getAllGames = async (option) => {
+
+export const getAllQuizs = async (options) => {
     try {
-        const res = await fetch(`${BASE_URL}${ option ? `?${option.key}=${option.value}` : '' }`)
+        let queryString = ''
+        if (options && options.length > 0) {
+            queryString = options.reduce((prev, option) => prev + '&' + option.key + '=' + option.value , '')
+            queryString = '?' + queryString.slice(1, queryString.length)
+        }
+        const res = await fetch(`${BASE_URL}${queryString}`)
         const data = await res.json()
         return {
             success: true,
-            message: 'get all game success',
+            message: 'get all quiz success',
             data: data
         }
     } catch (error) {
-        console.log('Error in get all game : ', error)
+        console.log('Error in get all quiz : ', error)
         return {
             success: true,
-            message: 'Fail to get all game',
+            message: 'Fail to get all quiz',
         }
     }
 }
 
-export const getGameById = async (gameId) => {
+export const getQuizById = async (quizId) => {
     try {
-        const res = await fetch(`${BASE_URL}/${gameId}`)
+        const res = await fetch(`${BASE_URL}/${quizId}`)
         const data = await res.json()
         return {
             success: true,
-            message: 'Get game success',
+            message: 'Get quiz success',
             data: data
         }
     } catch (error) {
-        console.log('Error in get game : ', error)
+        console.log('Error in get quiz : ', error)
         return {
             success: true,
-            message: 'Fail to get game',
+            message: 'Fail to get quiz',
         }
     }
 }
 
 
-export const updateGame = async (gameId, newData) => {
+export const updateQuiz = async (quizId, newData) => {
     try {
-        const res = await fetch(`${BASE_URL}/${gameId}`,{
+        const res = await fetch(`${BASE_URL}/${quizId}`,{
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newData)
@@ -75,21 +76,21 @@ export const updateGame = async (gameId, newData) => {
         const data = await res.json()
         return {
             success: true,
-            message: 'Update game success',
+            message: 'Update quiz success',
             data: data
         }
     } catch (error) {
-        console.log('Error in update all game : ', error)
+        console.log('Error in update all quiz : ', error)
         return {
             success: true,
-            message: 'Fail to update all game',
+            message: 'Fail to update all quiz',
         }
     }
 }
 
-export const deleteGame = async (gameId) => {
+export const deleteQuiz = async (quizId) => {
     try {
-        const res = await fetch(`${BASE_URL}/${gameId}`,{
+        const res = await fetch(`${BASE_URL}/${quizId}`,{
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newData)
@@ -97,14 +98,14 @@ export const deleteGame = async (gameId) => {
         const data = await res.json()
         return {
             success: true,
-            message: 'Update game success',
+            message: 'Update quiz success',
             data: data
         }
     } catch (error) {
-        console.log('Error in update all game : ', error)
+        console.log('Error in update all quiz : ', error)
         return {
             success: true,
-            message: 'Fail to update all game',
+            message: 'Fail to update all quiz',
         }
     }
 }

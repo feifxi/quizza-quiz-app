@@ -1,0 +1,144 @@
+<script setup>
+import { createQuiz } from "@/api/quizsAPI";
+import { uploadImage } from "@/api/usersAPI";
+import MultipleChoiceImage from "@/components/quiz_templates/MultipleChoiceImage.vue";
+import MultipleChoiceText from "@/components/quiz_templates/MultipleChoiceText.vue";
+import { QUiZ_TEMPLATES_TYPE } from "@/constants";
+import { onBeforeMount, reactive, ref } from "vue";
+import { useRoute, useRouter } from "vue-router";
+
+const router = useRouter();
+
+const savedData = localStorage.getItem("user");
+const userName = savedData ? JSON.parse(savedData).userName : undefined;
+if (!userName) {
+  router.push("/");
+}
+
+const quizData = reactive({
+  title: "",
+  thumbnail: "",
+  createBy: userName,
+  status: "pending",
+  levels: [
+    {
+      template: QUiZ_TEMPLATES_TYPE[0].value,
+      question: "",
+      questionImage: "",
+      choices: [],
+    }
+  ],
+});
+
+
+const handleRemoveLevel = (index) => {
+  quizData.levels.splice(index, 1)
+}
+
+const addMoreQuiz = () => {
+  const newLevel = {
+    template: QUiZ_TEMPLATES_TYPE[0].value,
+    content: {
+      question: "",
+      answer: "",
+      choices: [],
+    },
+  };
+  quizData.levels.push(newLevel)
+};
+
+
+const handleChangeInput = (index, field, value) => {
+  quizData.levels[index][field] = value
+  // console.log('==========')
+  // console.log(quizData.levels[index][field][0])
+  // console.log(quizData.levels[index][field][1])
+  // console.log(quizData.levels[index][field][2])
+  // console.log(quizData.levels[index][field][3])
+  // console.log('==========')
+}
+
+const handleCreateGame = async () => {
+  console.log('Create Game')
+  console.log(quizData)
+
+  const res = await createQuiz(quizData)
+  if (res.success) {
+    alert(res.message)
+    router.push('/')
+  }
+  else {
+    alert(res.message)
+  }
+}
+
+</script>
+
+<template>
+  <section class="p-4">
+    <h1 class="text-4xl font-bold">Create Game</h1>
+
+    <div class="flex flex-col">
+      <label class="text-xl font-bold" >Quiz Title</label>
+      <input type="text" class="input" v-model="quizData.title" />
+    </div>  
+    <div class="flex flex-col">
+      <label class="text-xl font-bold">Quiz Thumbnail</label>
+      <input type="text" class="input" v-model="quizData.thumbnail" />
+    </div>
+
+    <!-- Template -->
+    <div class="mt-5 flex flex-col gap-4">
+      <div v-for="(level, index) of quizData.levels" class=" relative border border-black p-3">
+        <span
+          v-if="quizData.levels.length > 1"
+          @click="() => handleRemoveLevel(level)"
+          class="absolute right-0 top-0 cursor-pointer p-2 bg-red-500"  
+        >
+          X
+        </span>
+
+        <h2 class="text-2xl font-bold">Level : {{ index + 1 }}</h2>
+        <p class="text-2xl font-bold">Template : {{ level.template }}</p>
+
+        <!-- Template options -->
+        <div class="flex flex-col">
+          <label>Choose Template :</label>
+          <select class="border" @change="(e) => handleChangeInput(index, 'template', e.target.value)">
+            <option
+              v-for="template in QUiZ_TEMPLATES_TYPE"
+              :value="template.value"
+              :key="template.value"
+            >
+              {{ template.label }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Render Template -->
+        <div class="mt-4">
+          <MultipleChoiceText v-if="level.template === 'Multiple-choice-text'" @handle-input-change="handleChangeInput" :level-index="index" />
+          <MultipleChoiceImage v-else-if="level.template === 'Multiple-choice-image'" @handle-input-change="handleChangeInput" :level-index="index" />
+        </div>
+      </div>
+      
+      <div class="flex gap-3">
+        <button 
+          class="border border-black p-3 cursor-pointer mt-5 w-full"
+          @click="addMoreQuiz"
+        >
+          Add more quiz
+        </button>
+
+        <button 
+          class="border border-black p-3 cursor-pointer mt-5 w-full bg-green-400"
+          @click="handleCreateGame"
+        >
+          Create Game
+        </button>
+      </div>
+    </div>
+  </section>
+</template>
+
+<style scoped></style>

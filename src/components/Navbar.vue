@@ -1,8 +1,8 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 
-    const isLoggedin = true
-    
+    const isLoggedin = false
+
     const logout = () => {
         console.log('logout')
     }

@@ -16,20 +16,21 @@ export const createUser = async (userData) => {
     } catch (error) {
         console.log('Error in create user : ', error)
         return {
-            success: true,
+            success: false,
             message: 'Fail to Create user',
         }
     }
 }
  
-// == example option ==
-// {
-//     key: 'userName',
-//     value: 'jeno'    
-// }
-export const getAllUsers = async (option) => {
+
+export const getAllUsers = async (options) => {
     try {
-        const res = await fetch(`${BASE_URL}${ option ? `?${option.key}=${option.value}` : '' }`)
+        let queryString = ''
+        if (options && options.length > 0) {
+            queryString = options.reduce((prev, option) => prev + '&' + option.key + '=' + option.value , '')
+            queryString = '?' + queryString.slice(1, queryString.length)
+        }
+        const res = await fetch(`${BASE_URL}${queryString}`)
         const data = await res.json()
         return {
             success: true,
@@ -104,6 +105,28 @@ export const deleteUser = async (userId) => {
         return {
             success: true,
             message: 'Fail to update all user',
+        }
+    }
+}
+
+export const uploadImage = async (image) => {
+    try {
+        const res = await fetch(`http://localhost:5000/images`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ image })
+        })
+        const data = await res.json()
+        return {
+            success: true,
+            message: 'Upload image success',
+            data: data
+        }
+    } catch (error) {
+        console.log('Error in upload image : ', error)
+        return {
+            success: false,
+            message: 'Fail to upload image',
         }
     }
 }

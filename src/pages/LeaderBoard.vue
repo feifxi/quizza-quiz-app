@@ -1,5 +1,4 @@
 <script setup>
-import { getAllGames } from '@/api/quizsAPI';
 import { onBeforeMount, reactive, ref } from 'vue';
 
 
