@@ -4,74 +4,89 @@ import { uploadImage } from "@/api/usersAPI";
 import MultipleChoiceImage from "@/components/quiz_templates/MultipleChoiceImage.vue";
 import MultipleChoiceText from "@/components/quiz_templates/MultipleChoiceText.vue";
 import { QUiZ_TEMPLATES_TYPE } from "@/constants";
-import { onBeforeMount, reactive, ref } from "vue";
+import { onBeforeMount, reactive, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 
 const router = useRouter();
 
 const savedData = localStorage.getItem("user");
-const userName = savedData ? JSON.parse(savedData).userName : undefined;
-if (!userName) {
+const userData = savedData ? JSON.parse(savedData) : undefined;
+if (!userData) {
   router.push("/");
 }
+
+const initilizeQuizLevelData = {
+  template: QUiZ_TEMPLATES_TYPE[0].value,
+  question: "",
+  questionImage: "",
+  choices: [
+    { label: "", isAns: true },
+    { label: "", isAns: false },
+    { label: "", isAns: false },
+    { label: "", isAns: false },
+  ],
+};
 
 const quizData = reactive({
   title: "",
   thumbnail: "",
-  createBy: userName,
+  createBy: userData,
   status: "pending",
   levels: [
-    {
-      template: QUiZ_TEMPLATES_TYPE[0].value,
-      question: "",
-      questionImage: "",
-      choices: [],
-    }
+    initilizeQuizLevelData,
   ],
 });
 
 
-const handleRemoveLevel = (index) => {
-  quizData.levels.splice(index, 1)
+const isQuizDataValid = () => {
+  // Check quiz field
+  for (const key of Object.keys(quizData)) {
+    if (!quizData[key]) {
+      return false
+    }
+  }
+
+  for (const level of quizData.levels) {
+    // Check each level field
+    for (const key of Object.keys(level)) {
+      if (!level[key]) {
+        return false
+      }
+    }
+    // Check choices of each level
+    for (const choice of level.choices) {
+      if (!choice.label) {
+        return false
+      }
+    }
+  }
+  
+  return true
 }
 
-const addMoreQuiz = () => {
-  const newLevel = {
-    template: QUiZ_TEMPLATES_TYPE[0].value,
-    content: {
-      question: "",
-      answer: "",
-      choices: [],
-    },
-  };
-  quizData.levels.push(newLevel)
+const handleRemoveLevel = (index) => {
+  quizData.levels.splice(index, 1);
 };
 
+const addMoreQuiz = () => {
+  quizData.levels.push(initilizeQuizLevelData);
+};
 
 const handleChangeInput = (index, field, value) => {
-  quizData.levels[index][field] = value
-  // console.log('==========')
-  // console.log(quizData.levels[index][field][0])
-  // console.log(quizData.levels[index][field][1])
-  // console.log(quizData.levels[index][field][2])
-  // console.log(quizData.levels[index][field][3])
-  // console.log('==========')
-}
+  quizData.levels[index][field] = value;
+};
 
 const handleCreateGame = async () => {
-  console.log('Create Game')
-  console.log(quizData)
+  if (!isQuizDataValid()) return alert('Plase fill all the input')
 
-  const res = await createQuiz(quizData)
+  const res = await createQuiz(quizData);
   if (res.success) {
-    alert(res.message)
-    router.push('/')
+    alert(res.message);
+    router.push("/");
+  } else {
+    alert(res.message);
   }
-  else {
-    alert(res.message)
-  }
-}
-
+};
 </script>
 
 <template>
@@ -79,9 +94,9 @@ const handleCreateGame = async () => {
     <h1 class="text-4xl font-bold">Create Game</h1>
 
     <div class="flex flex-col">
-      <label class="text-xl font-bold" >Quiz Title</label>
+      <label class="text-xl font-bold">Quiz Title</label>
       <input type="text" class="input" v-model="quizData.title" />
-    </div>  
+    </div>
     <div class="flex flex-col">
       <label class="text-xl font-bold">Quiz Thumbnail</label>
       <input type="text" class="input" v-model="quizData.thumbnail" />
@@ -89,11 +104,14 @@ const handleCreateGame = async () => {
 
     <!-- Template -->
     <div class="mt-5 flex flex-col gap-4">
-      <div v-for="(level, index) of quizData.levels" class=" relative border border-black p-3">
+      <div
+        v-for="(level, index) of quizData.levels"
+        class="relative border border-black p-3"
+      >
         <span
           v-if="quizData.levels.length > 1"
           @click="() => handleRemoveLevel(level)"
-          class="absolute right-0 top-0 cursor-pointer p-2 bg-red-500"  
+          class="absolute right-0 top-0 cursor-pointer p-2 bg-red-500"
         >
           X
         </span>
@@ -104,7 +122,12 @@ const handleCreateGame = async () => {
         <!-- Template options -->
         <div class="flex flex-col">
           <label>Choose Template :</label>
-          <select class="border" @change="(e) => handleChangeInput(index, 'template', e.target.value)">
+          <select
+            class="border"
+            @change="
+              (e) => handleChangeInput(index, 'template', e.target.value)
+            "
+          >
             <option
               v-for="template in QUiZ_TEMPLATES_TYPE"
               :value="template.value"
@@ -117,22 +140,30 @@ const handleCreateGame = async () => {
 
         <!-- Render Template -->
         <div class="mt-4">
-          <MultipleChoiceText v-if="level.template === 'Multiple-choice-text'" @handle-input-change="handleChangeInput" :level-index="index" />
-          <MultipleChoiceImage v-else-if="level.template === 'Multiple-choice-image'" @handle-input-change="handleChangeInput" :level-index="index" />
+          <MultipleChoiceText
+            v-if="level.template === 'Multiple-choice-text'"
+            @handle-input-change="handleChangeInput"
+            :level-index="index"
+          />
+          <MultipleChoiceImage
+            v-else-if="level.template === 'Multiple-choice-image'"
+            @handle-input-change="handleChangeInput"
+            :level-index="index"
+          />
         </div>
       </div>
-      
+
       <div class="flex gap-3">
-        <button 
+        <button
           class="border border-black p-3 cursor-pointer mt-5 w-full"
           @click="addMoreQuiz"
         >
           Add more quiz
         </button>
 
-        <button 
-          class="border border-black p-3 cursor-pointer mt-5 w-full bg-green-400"
+        <button class=" 'border border-black p-3 mt-5 w-full bg-green-400 cursor-pointer"
           @click="handleCreateGame"
+          :disabled="false"
         >
           Create Game
         </button>

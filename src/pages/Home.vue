@@ -1,11 +1,11 @@
 <script setup>
 import { getAllQuizs } from '@/api/quizsAPI';
-import { getAllUsers } from '@/api/usersAPI';
+import { getAllUsers, getUserById } from '@/api/usersAPI';
 import { useCounterStore } from '@/stores/counter';
 import { onBeforeMount, reactive, ref } from 'vue';
 
   const quizs = ref([])
-
+  
   const fetchAllQuizs = async () => {
     const res = await getAllQuizs()
     quizs.value = res.data    
@@ -24,7 +24,7 @@ import { onBeforeMount, reactive, ref } from 'vue';
       class="border border-black p-5"
     >
       <p> Tittle : {{ quiz.title }}</p>
-      <p> by : {{ quiz.createBy }}</p>
+      <p> by : {{ quiz.createBy.userName }}</p>
     </div>  
   </div>
 

@@ -19,123 +19,38 @@
   ],
   "quizs": [
     {
-      "id": "629f",
-      "title": "",
-      "thumbnail": "",
-      "createBy": "jeno",
+      "id": "2932",
+      "title": "1",
+      "thumbnail": "1",
+      "createBy": {
+        "id": "e2db",
+        "email": "fei",
+        "userName": "fei",
+        "password": "123",
+        "role": "user",
+        "star": 0
+      },
       "status": "pending",
       "levels": [
         {
           "template": "Multiple-choice-text",
-          "question": "kuyyyyyyyyyyyyy",
-          "questionImage": "kuyyyyyyyyyyyyy",
+          "question": "1",
+          "questionImage": "1",
           "choices": [
             {
-              "label": "kuyyyyyyyyyyyyy1",
+              "label": "1",
               "isAns": true
             },
             {
-              "label": "kuyyyyyyyyyyyyy2",
+              "label": "1",
               "isAns": false
             },
             {
-              "label": "kuyyyyyyyyyyyyy3",
+              "label": "1",
               "isAns": false
             },
             {
-              "label": "kuyyyyyyyyyyyyy4",
-              "isAns": false
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "4ce2",
-      "title": "Kuy Jeno",
-      "thumbnail": "Kuy Jeno",
-      "createBy": "jeno",
-      "status": "pending",
-      "levels": [
-        {
-          "template": "Multiple-choice-text",
-          "question": "Kuy Jeno",
-          "questionImage": "Kuy Jeno",
-          "choices": [
-            {
-              "label": "Kuy Jeno",
-              "isAns": true
-            },
-            {
-              "label": "Kuy Jeno",
-              "isAns": false
-            },
-            {
-              "label": "Kuy Jeno",
-              "isAns": false
-            },
-            {
-              "label": "Kuy Jeno",
-              "isAns": false
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "1744",
-      "title": "ijnnnknm",
-      "thumbnail": "injinjiuninj",
-      "createBy": "fei",
-      "status": "pending",
-      "levels": [
-        {
-          "template": "Multiple-choice-text",
-          "question": "kjnjjom;",
-          "questionImage": "njnijj",
-          "choices": [
-            {
-              "label": "jnjknjn",
-              "isAns": true
-            },
-            {
-              "label": " jknjnoi",
-              "isAns": false
-            },
-            {
-              "label": "jonjmkomkm",
-              "isAns": false
-            },
-            {
-              "label": "momionmiomiomi",
-              "isAns": false
-            }
-          ]
-        },
-        {
-          "template": "Multiple-choice-image",
-          "content": {
-            "question": "",
-            "answer": "",
-            "choices": []
-          },
-          "question": "iygygyguybuyo",
-          "questionImage": "hbiuihoiun",
-          "choices": [
-            {
-              "label": "hbiuihoiun",
-              "isAns": true
-            },
-            {
-              "label": "hbiuihoiun",
-              "isAns": false
-            },
-            {
-              "label": "hbiuihoiun",
-              "isAns": false
-            },
-            {
-              "label": "hbiuihoiun",
+              "label": "1",
               "isAns": false
             }
           ]
