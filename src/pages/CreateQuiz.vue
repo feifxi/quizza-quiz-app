@@ -15,69 +15,48 @@ if (!userData) {
   router.push("/");
 }
 
-const initilizeQuizLevelData = {
-  template: QUiZ_TEMPLATES_TYPE[0].value,
-  question: "",
-  questionImage: "",
-  choices: [
-    { label: "", isAns: true },
-    { label: "", isAns: false },
-    { label: "", isAns: false },
-    { label: "", isAns: false },
-  ],
-};
-
 const quizData = reactive({
   title: "",
   thumbnail: "",
   createBy: userData,
   status: "pending",
   levels: [
-    initilizeQuizLevelData,
+    {
+      template: QUiZ_TEMPLATES_TYPE[0].value,
+      question: "",
+      questionImage: "",
+      choices: [
+        { value: "", isAns: true },
+        { value: "", isAns: false },
+        { value: "", isAns: false },
+        { value: "", isAns: false },
+      ],
+    },
   ],
 });
-
-
-const isQuizDataValid = () => {
-  // Check quiz field
-  for (const key of Object.keys(quizData)) {
-    if (!quizData[key]) {
-      return false
-    }
-  }
-
-  for (const level of quizData.levels) {
-    // Check each level field
-    for (const key of Object.keys(level)) {
-      if (!level[key]) {
-        return false
-      }
-    }
-    // Check choices of each level
-    for (const choice of level.choices) {
-      if (!choice.label) {
-        return false
-      }
-    }
-  }
-  
-  return true
-}
 
 const handleRemoveLevel = (index) => {
   quizData.levels.splice(index, 1);
 };
 
 const addMoreQuiz = () => {
-  quizData.levels.push(initilizeQuizLevelData);
-};
+  const newLevel = {
+    template: QUiZ_TEMPLATES_TYPE[0].value,
+    question: "",
+    questionImage: "",
+    choices: [
+      { value: "", isAns: true },
+      { value: "", isAns: false },
+      { value: "", isAns: false },
+      { value: "", isAns: false },
+    ],
+  };
 
-const handleChangeInput = (index, field, value) => {
-  quizData.levels[index][field] = value;
+  quizData.levels.push(newLevel);
 };
 
 const handleCreateGame = async () => {
-  if (!isQuizDataValid()) return alert('Plase fill all the input')
+  if (!isQuizDataValid()) return alert("Plase fill all the input");
 
   const res = await createQuiz(quizData);
   if (res.success) {
@@ -86,6 +65,32 @@ const handleCreateGame = async () => {
   } else {
     alert(res.message);
   }
+};
+
+const isQuizDataValid = () => {
+  // Check quiz field
+  for (const key of Object.keys(quizData)) {
+    if (!quizData[key]) {
+      return false;
+    }
+  }
+
+  for (const level of quizData.levels) {
+    // Check each level field
+    for (const key of Object.keys(level)) {
+      if (!level[key]) {
+        return false;
+      }
+    }
+    // Check choices of each level
+    for (const choice of level.choices) {
+      if (!choice.value) {
+        return false;
+      }
+    }
+  }
+
+  return true;
 };
 </script>
 
@@ -99,6 +104,12 @@ const handleCreateGame = async () => {
     </div>
     <div class="flex flex-col">
       <label class="text-xl font-bold">Quiz Thumbnail</label>
+      <img 
+          v-if="quizData.thumbnail"
+          :src="quizData.thumbnail" 
+          class="w-[300px] h-[100px] bg-neutral-200 "
+          alt="preview question image " 
+        />
       <input type="text" class="input" v-model="quizData.thumbnail" />
     </div>
 
@@ -125,7 +136,7 @@ const handleCreateGame = async () => {
           <select
             class="border"
             @change="
-              (e) => handleChangeInput(index, 'template', e.target.value)
+              (e) => level['template'] = e.target.value
             "
           >
             <option
@@ -142,13 +153,11 @@ const handleCreateGame = async () => {
         <div class="mt-4">
           <MultipleChoiceText
             v-if="level.template === 'Multiple-choice-text'"
-            @handle-input-change="handleChangeInput"
-            :level-index="index"
+            :level-data="level"
           />
           <MultipleChoiceImage
             v-else-if="level.template === 'Multiple-choice-image'"
-            @handle-input-change="handleChangeInput"
-            :level-index="index"
+            :level-data="level"
           />
         </div>
       </div>
@@ -161,7 +170,8 @@ const handleCreateGame = async () => {
           Add more quiz
         </button>
 
-        <button class=" 'border border-black p-3 mt-5 w-full bg-green-400 cursor-pointer"
+        <button
+          class="'border border-black p-3 mt-5 w-full bg-green-400 cursor-pointer"
           @click="handleCreateGame"
           :disabled="false"
         >
