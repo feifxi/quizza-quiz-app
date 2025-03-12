@@ -91,21 +91,17 @@ export const updateQuiz = async (quizId, newData) => {
 export const deleteQuiz = async (quizId) => {
     try {
         const res = await fetch(`${BASE_URL}/${quizId}`,{
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(newData)
+            method: "DELETE"
         })
-        const data = await res.json()
         return {
             success: true,
-            message: 'Update quiz success',
-            data: data
+            message: 'Delete quiz success'
         }
     } catch (error) {
-        console.log('Error in update all quiz : ', error)
+        console.log('Error in delete quiz : ', error)
         return {
             success: true,
-            message: 'Fail to update all quiz',
+            message: 'Fail to delete the specified quiz',
         }
     }
 }
