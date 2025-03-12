@@ -19,9 +19,9 @@
   ],
   "quizs": [
     {
-      "id": "2932",
-      "title": "1",
-      "thumbnail": "1",
+      "id": "7230",
+      "title": "test1",
+      "thumbnail": "https://testrigor.com/wp-content/uploads/2023/03/vuejs-logo.png",
       "createBy": {
         "id": "e2db",
         "email": "fei",
@@ -34,23 +34,46 @@
       "levels": [
         {
           "template": "Multiple-choice-text",
-          "question": "1",
-          "questionImage": "1",
+          "question": "the most handsome boi",
+          "questionImage": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
           "choices": [
             {
-              "label": "1",
+              "value": "chanombude",
               "isAns": true
             },
             {
-              "label": "1",
+              "value": "kuy jeno",
               "isAns": false
             },
             {
-              "label": "1",
+              "value": "kuy jeno",
               "isAns": false
             },
             {
-              "label": "1",
+              "value": "kuy jeno",
+              "isAns": false
+            }
+          ]
+        },
+        {
+          "template": "Multiple-choice-image",
+          "question": "The most loved frontend framework",
+          "questionImage": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
+          "choices": [
+            {
+              "value": "https://miro.medium.com/v2/resize:fit:1400/0*OLBBmwZWiKUNk685.png",
+              "isAns": true
+            },
+            {
+              "value": "https://testrigor.com/wp-content/uploads/2023/03/vuejs-logo.png",
+              "isAns": false
+            },
+            {
+              "value": "https://testrigor.com/wp-content/uploads/2023/03/vuejs-logo.png",
+              "isAns": false
+            },
+            {
+              "value": "https://testrigor.com/wp-content/uploads/2023/03/vuejs-logo.png",
               "isAns": false
             }
           ]

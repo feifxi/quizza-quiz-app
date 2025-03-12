@@ -4,7 +4,7 @@ export const QUiZ_TEMPLATES_TYPE = [
         value: 'Multiple-choice-text'
     },
     {
-        label: 'Choice หลายตัวเลือก (image))',
+        label: 'Choice หลายตัวเลือก (image)',
         value: 'Multiple-choice-image'
     },
     {
