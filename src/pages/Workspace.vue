@@ -35,7 +35,7 @@ onBeforeMount(async () => {
     const res = await getAllQuizs();
     const adminData = res.data; 
     const userData = res.data;
-    adminQuizzes.value = adminData;
+    adminQuizzes.value = adminData.filter(quiz => quiz.createBy.role === 'admin' || quiz.status === 'pending');
     userQuizzes.value = userData.filter(quiz => quiz.createBy.id === UsedUser.value)
   } catch (error) {
     console.error(error);
