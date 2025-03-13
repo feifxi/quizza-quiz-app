@@ -7,7 +7,7 @@ import CreateGame from '@/pages/CreateQuiz.vue'
 import EditGame from '@/pages/EditGame.vue'
 import Workspace from '@/pages/Workspace.vue'
 import Quiz from '@/pages/Quiz.vue'
-import AdminReview from '@/pages/AdminReview.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -52,11 +52,7 @@ const router = createRouter({
       name: 'leaderboard',
       component: LeaderBoard,
     },
-    {
-      path: '/review',
-      name: 'review',
-      component: AdminReview
-    }
+   
   ],
 })
 
