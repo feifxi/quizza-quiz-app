@@ -9,13 +9,12 @@ import MultipleChoiceText from "@/components/quiz_templates/MultipleChoiceText.v
 const router = useRouter();
 const route = useRoute();
 const id = route.params.quizId;
-const quizData = ref();
+const quizData = ref(null);
 
 const getQuiz = async () => {
   try {
     const res = await getQuizById(id);
-    const data = res.data;
-    quizData.value = data;
+    quizData.value = res.data;
   } catch (error) {
     console.log(`Something went wrong! T-T\n${error}`);
   }
@@ -56,7 +55,7 @@ const handleUpdateGame = async () => {
 const isQuizDataValid = () => {
   // Check quiz field
   for (const key of Object.keys(quizData.value)) {
-    if (!key) {
+    if (!quizData.value[key] && key !== 'thumbnail') {
       return false;
     }
   }
@@ -64,7 +63,7 @@ const isQuizDataValid = () => {
   for (const level of quizData.value.levels) {
     // Check each level field
     for (const key of Object.keys(level)) {
-      if (!level[key]) {
+      if (!level[key] && key !== 'questionImage') {
         return false;
       }
     }
@@ -92,6 +91,7 @@ onBeforeMount(getQuiz);
       <div class="flex flex-col">
         <span class="text-4xl font-bold">Quiz Thumbnail</span>
         <img
+          v-if="quizData.thumbnail"
           :src="quizData.thumbnail"
           alt="Quiz image"
           class="w-[300px] h-[100px] bg-neutral-200"

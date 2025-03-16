@@ -108,25 +108,3 @@ export const deleteUser = async (userId) => {
         }
     }
 }
-
-export const uploadImage = async (image) => {
-    try {
-        const res = await fetch(`http://localhost:5000/images`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ image })
-        })
-        const data = await res.json()
-        return {
-            success: true,
-            message: 'Upload image success',
-            data: data
-        }
-    } catch (error) {
-        console.log('Error in upload image : ', error)
-        return {
-            success: false,
-            message: 'Fail to upload image',
-        }
-    }
-}

@@ -20,22 +20,28 @@
   "quizs": [
     {
       "id": "7230",
-      "reactions": ["263c", "e2db"],
+      "reactions": [
+        "263c",
+        "e2db"
+      ],
       "comments": [
         {
           "userId": "263c",
           "text": "hello wowrld"
         }
       ],
-      "adminComments": ["hello world", "Hello world2"],
-      "playingHistory": [
+      "adminComments": [
+        "hello world",
+        "Hello world2"
+      ],
+      "playerProgress": [
         {
           "userId": "263c",
           "currentLevel": 0
         }
-      ], 
+      ],
       "title": "test1",
-      "thumbnail": "https://testrigor.com/wp-content/uploads/2023/03/vuejs-logo.png",
+      "thumbnail": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
       "createBy": {
         "id": "e2db",
         "email": "fei",
@@ -232,23 +238,89 @@
         },
         {
           "template": "Multiple-choice-image",
-          "question": "The most loved frontend framework",
+          "question": "บิดแล้วรวยซวยแล้วมึง",
           "questionImage": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
           "choices": [
             {
-              "value": "https://miro.medium.com/v2/resize:fit:1400/0*OLBBmwZWiKUNk685.png",
+              "value": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
               "isAns": true
             },
             {
-              "value": "https://testrigor.com/wp-content/uploads/2023/03/vuejs-logo.png",
+              "value": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
               "isAns": false
             },
             {
-              "value": "https://testrigor.com/wp-content/uploads/2023/03/vuejs-logo.png",
+              "value": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
               "isAns": false
             },
             {
-              "value": "https://testrigor.com/wp-content/uploads/2023/03/vuejs-logo.png",
+              "value": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
+              "isAns": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cd58",
+      "title": "test2",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGs18CLaoBV9q4jTYtxK8C4zLAc0OH73xfWg&s",
+      "createBy": {
+        "id": "e2db",
+        "email": "fei",
+        "userName": "fei",
+        "password": "123",
+        "role": "admin",
+        "star": 0
+      },
+      "status": "pending",
+      "reactions": [],
+      "comments": [],
+      "adminComments": [],
+      "playerProgress": [],
+      "levels": [
+        {
+          "template": "Multiple-choice-text",
+          "question": "test2",
+          "questionImage": "",
+          "choices": [
+            {
+              "value": "test2 cccc",
+              "isAns": true
+            },
+            {
+              "value": "test2",
+              "isAns": false
+            },
+            {
+              "value": "test2",
+              "isAns": false
+            },
+            {
+              "value": "test2",
+              "isAns": false
+            }
+          ]
+        },
+        {
+          "template": "Multiple-choice-image",
+          "question": "บิด 2",
+          "questionImage": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
+          "choices": [
+            {
+              "value": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
+              "isAns": true
+            },
+            {
+              "value": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
+              "isAns": false
+            },
+            {
+              "value": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
+              "isAns": false
+            },
+            {
+              "value": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
               "isAns": false
             }
           ]

@@ -1,25 +1,24 @@
 <script setup>
 import { createQuiz } from "@/api/quizsAPI";
-import { uploadImage } from "@/api/usersAPI";
 import MultipleChoiceImage from "@/components/quiz_templates/MultipleChoiceImage.vue";
 import MultipleChoiceText from "@/components/quiz_templates/MultipleChoiceText.vue";
 import { QUiZ_TEMPLATES_TYPE } from "@/constants";
-import { onBeforeMount, reactive, ref, watch } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { useAuthStore } from "@/stores/user";
+import { reactive } from "vue";
+import { useRouter } from "vue-router";
 
 const router = useRouter();
-
-const savedData = localStorage.getItem("user");
-const userData = savedData ? JSON.parse(savedData) : undefined;
-if (!userData) {
-  router.push("/");
-}
+const authStore = useAuthStore()
 
 const quizData = reactive({
   title: "",
   thumbnail: "",
-  createBy: userData,
+  createBy: authStore.authUser,
   status: "pending",
+  reactions: [],
+  comments: [],
+  adminComments: [],
+  playerProgress: [],
   levels: [
     {
       template: QUiZ_TEMPLATES_TYPE[0].value,
@@ -70,7 +69,7 @@ const handleCreateGame = async () => {
 const isQuizDataValid = () => {
   // Check quiz field
   for (const key of Object.keys(quizData)) {
-    if (!quizData[key]) {
+    if (!quizData[key] && key !== 'thumbnail') {
       return false;
     }
   }
@@ -78,7 +77,7 @@ const isQuizDataValid = () => {
   for (const level of quizData.levels) {
     // Check each level field
     for (const key of Object.keys(level)) {
-      if (!level[key]) {
+      if (!level[key] && key !== 'questionImage') {
         return false;
       }
     }
