@@ -1,10 +1,11 @@
 <script setup>
 import { RouterLink } from 'vue-router';
-
-    const isLoggedin = false
+import { useAuthStore } from '@/stores/user';
+    const authStore = useAuthStore()
 
     const logout = () => {
-        console.log('logout')
+        authStore.setAuthUser(null)
+        localStorage.removeItem('userId')
     }
 </script>
 
@@ -13,13 +14,14 @@ import { RouterLink } from 'vue-router';
         <RouterLink to="/">
             <h2 class="text-2xl font-bold cursor-pointer">Roblox but better</h2>
         </RouterLink>
-        <nav v-if="isLoggedin" class="flex gap-5">
+        <nav v-if="authStore.isAuthenticated" class="flex items-center gap-5">
             <RouterLink to="/workspace" class="hover:underline cursor-pointer">Workspace</RouterLink>
             <RouterLink to="/leaderboard" class="hover:underline cursor-pointer">Leaderboard</RouterLink>
+            <p class="p-1 border border-white">{{ authStore.authUser.userName }}</p>
             <button @click="logout" class="hover:underline cursor-pointer">Logout</button>
         </nav>
         <nav v-else class="flex gap-5">
-            <RouterLink to="/signin" class="hover:underline cursor-pointer">Login</RouterLink>
+            <RouterLink to="/signin" class="hover:underline cursor-pointer">SignIn</RouterLink>
             <RouterLink to="/signup" class="hover:underline cursor-pointer">SignUp</RouterLink>
         </nav>
     </header>
