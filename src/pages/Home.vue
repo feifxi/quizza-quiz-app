@@ -67,13 +67,13 @@ onBeforeMount(() => {
   </div>
 
   <section v-else>
-    <div class="grid grid-cols-5 gap-3 p-3">
+    <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3 p-3">
       <QuizCard 
         v-for="quiz of quizs" 
         :quiz="quiz"
         :show-level-modal="() => { handleShowModal(quiz.id, 'LEVEL') }"
         :show-comment-modal="() => { handleShowModal(quiz.id, 'COMMENT') }"
-        :is-edit-mode="false"
+        :is-edit-mode="true"
       />
     </div>
   </section>

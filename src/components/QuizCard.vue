@@ -11,19 +11,16 @@
 <template>
     <div class="relative border border-black cursor-pointer rounded-xl shadow-2xl hover:scale-105 transition-all">
         <div v-if="isEditMode" class="absolute right-3 top-3 flex gap-2">
-            <RouterLink :to="{ name: 'update', params: { quizId: quiz.id } }" 
-                class="bg-green-500 p-2 cursor-pointer"
-            >
+            <RouterLink :to="{ name: 'update', params: { quizId: quiz.id } }"  class="bg-green-500 p-2 cursor-pointer" >
                 Edit
             </RouterLink>
             <button class="bg-red-500 p-2 cursor-pointer" @click="deleteQuiz">Delete</button>
         </div>
         <RouterLink :to="{ name: 'home', query: { quizId: quiz.id } }" @click="showLevelModal">
             <img 
-                v-if="quiz.thumbnail" 
-                :src="quiz.thumbnail" 
+                :src="quiz.thumbnail || 'https://preview.redd.it/zozlzva328291.jpg?auto=webp&s=cc842e6ec98b8791639cbb5ec8890712bfb5f21c'" 
                 alt="quiz thumbnail" 
-                class="" 
+                class="object-cover rounded-t-xl w-full h-[200px]" 
             />
             <div class="p-3">
                 <p class="text-xl font-bold text-wrap">{{ quiz.title }}</p>
@@ -32,6 +29,9 @@
                 </p>
             </div>
         </RouterLink>
+        <p v-if="isEditMode" :class="'py-1 px-3 ' + ( quiz.status === 'pending' ? 'bg-yellow-300' : 'bg-green-300')">
+            {{ quiz.status === 'pending' ? 'Pending...' : 'Publish' }}
+        </p>
         <button class="bg-neutral-300 w-full p-3 rounded-b-xl cursor-pointer"  @click="showCommentModal" >
             comment
         </button>
