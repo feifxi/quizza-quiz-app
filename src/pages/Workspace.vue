@@ -1,13 +1,14 @@
 <script setup>
 import { getAllQuizs, getQuizById, deleteQuiz } from '@/api/quizsAPI';
+import { useAuthStore } from '@/stores/user';
 import { onBeforeMount, ref } from 'vue';
 
 // quizz of admin and user
+const authStore = useAuthStore()
 const userQuizzes = ref([]);
 const adminQuizzes = ref([])
 
-let CheckUser = localStorage.getItem('user');
-const userObj = JSON.parse(CheckUser);
+const userObj = authStore.authUser
 
 let UsedRole = userObj.role
 let UsedUser = ref(userObj.id)
@@ -109,6 +110,7 @@ const deleteQuizById = async (quizId) => {
       </ul>
     </div>
 </section>
+
   <!-- user workspace -->
   <section v-else-if="state">
     <h1>Workspace</h1>

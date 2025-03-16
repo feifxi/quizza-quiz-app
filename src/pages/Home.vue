@@ -2,20 +2,23 @@
 import { getAllQuizs, getQuizById } from '@/api/quizsAPI';
 import { getAllUsers, getUserById } from '@/api/usersAPI';
 import Button from '@/components/Button.vue';
+import CommentModal from '@/components/CommentModal.vue';
+import QuizCard from '@/components/QuizCard.vue';
 import QuizLevelModal from '@/components/QuizLevelModal.vue';
 import { useAuthStore } from '@/stores/user';
-import { computed, onBeforeMount, reactive, ref } from 'vue';
+import { onBeforeMount, reactive, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
 const authStore = useAuthStore()
 const route = useRoute()
 const router = useRouter()
 
-const quizs = ref([])
+const quizs = ref(null)
 const isLoading = ref(false)
-const selectedQuiz = reactive({
-  quizData: null,
-  playingData: null,
+const modal = reactive({
+  isShowModal: false,
+  type: '',
+  quizData: null
 })
 
 const fetchAllQuizs = async () => {
@@ -25,71 +28,66 @@ const fetchAllQuizs = async () => {
   isLoading.value = false
 }
 
-const handleShowLevelModal = async (quizId) => {
+const handleShowModal = async (quizId, modalType = '') => {
   if (!authStore.isAuthenticated) return router.push('/signin')
   isLoading.value = true
 
-  const quizRes = await getQuizById(quizId)
-  // const playingRes = await g(quizId)
-  const playingRes = {
-    success: true,
-    data: null
-  };
-  if (quizRes.success && playingRes.success) {
-    selectedQuiz.quizData = quizRes.data
-    selectedQuiz.playingData = playingRes.data != null
-      ? playingRes.data
-      : {
-        userId: authStore.authUser.id,
-        quizId: quizId,
-        currentLevel: 0,
-      }
+  const res = await getQuizById(quizId)
+  if (res.success) {
+    modal.type = modalType
+    modal.quizData = res.data
+    modal.isShowModal = true
   } else {
     alert('Something went wrong')
   }
   isLoading.value = false
 }
 
-const handleCloseLevelModal = () => {
-  selectedQuiz.quizData = null
-  selectedQuiz.playingData = null
+const handleCloseModal = () => {
+  modal.isShowModal = false
+  modal.quizData = null
+  modal.type = ''
   router.replace({ path: route.path, query: {} });
 }
 
+
 onBeforeMount(() => {
-  // All QUiz
   fetchAllQuizs()
-  // Quiz Level Modal
+  // Show Quiz Level Modal
   const { quizId } = route.query
   if (quizId) {
-    handleShowLevelModal(quizId)
+    handleShowModal(quizId, "LEVEL")
   }
 })
-
-
 </script>
 
 <template>
   <div v-if="isLoading">
     Loading...
   </div>
+
   <section v-else>
-    <h1>HOME</h1>
     <div class="grid grid-cols-5 gap-3 p-3">
-      <RouterLink v-for="quiz of quizs" :to="{ name: 'home', query: { quizId: quiz.id } }"
-        class="border border-black p-5 cursor-pointer rounded-xl shadow-2xl"
-        @click="() => { handleShowLevelModal(quiz.id) }"
-      >
-        <div>
-          <img v-if="quiz.thumbnail" :src="quiz.thumbnail" alt="quiz thumbnail" class="">
-          <p class="text-xl"> {{ quiz.title }}</p>
-        </div>
-      </RouterLink>
+      <QuizCard 
+        v-for="quiz of quizs" 
+        :quiz="quiz"
+        :show-level-modal="() => { handleShowModal(quiz.id, 'LEVEL') }"
+        :show-comment-modal="() => { handleShowModal(quiz.id, 'COMMENT') }"
+        :is-edit-mode="false"
+      />
     </div>
   </section>
 
-  <QuizLevelModal v-if="selectedQuiz.quizData != null" :quiz-data="selectedQuiz.quizData"
-    :playing-data="selectedQuiz.playingData" :close-modal="handleCloseLevelModal" />
+  <QuizLevelModal 
+    v-if="modal.quizData && modal.isShowModal && modal.type === 'LEVEL'" 
+    :quiz="modal.quizData"
+    :close-modal="handleCloseModal" 
+  />
+  <CommentModal 
+    v-if="modal.quizData && modal.isShowModal && modal.type === 'COMMENT'" 
+    :quiz="modal.quizData"
+    :close-modal="handleCloseModal"
+  />
 </template>
 
 <style scoped></style>

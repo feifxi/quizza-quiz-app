@@ -20,6 +20,20 @@
   "quizs": [
     {
       "id": "7230",
+      "reactions": ["263c", "e2db"],
+      "comments": [
+        {
+          "userId": "263c",
+          "text": "hello wowrld"
+        }
+      ],
+      "adminComments": ["hello world", "Hello world2"],
+      "playingHistory": [
+        {
+          "userId": "263c",
+          "currentLevel": 0
+        }
+      ], 
       "title": "test1",
       "thumbnail": "https://testrigor.com/wp-content/uploads/2023/03/vuejs-logo.png",
       "createBy": {
@@ -240,30 +254,6 @@
           ]
         }
       ]
-    }
-  ],
-  "playing": [
-  ],
-  "comments": [
-    {
-      "userId": "e2db",
-      "quizId": "cb24",
-      "text": "hello world",
-      "id": "c8b2"
-    }
-  ],
-  "admin-comments": [
-    {
-      "gameId": "cb24",
-      "text": "hello world",
-      "id": "c8b2"
-    }
-  ],
-  "reactions": [
-    {
-      "userId": "e2db",
-      "gameId": "cb24",
-      "id": "a642"
     }
   ]
 }
