@@ -1,11 +1,16 @@
 <script setup>
+import { useAuthStore } from "@/stores/user";
 import { ref, watch } from "vue";
 import { useRoute } from "vue-router";
-const { quizData, playingData } = defineProps({
+const { quiz } = defineProps({
+    quiz: Object,
     closeModal: Function,
-    quizData: Object,
-    playingData: Object,
 });
+const authStore = useAuthStore()
+
+const playingHistory = quiz.playingHistory.find((history) => history.userId === authStore.authUser) 
+    || {  userId: authStore.authUser.id, currentLevel: 0 }
+
 </script>
 
 <template>
@@ -14,9 +19,9 @@ const { quizData, playingData } = defineProps({
             <span class="absolute top-4 right-4 cursor-pointer" @click="closeModal">X</span>
             <!-- Quiz Info -->
             <div class="flex-1">
-                <h2 class="text-2xl font-bold">{{ quizData.title }}</h2>
+                <h2 class="text-2xl font-bold">{{ quiz.title }}</h2>
                 <p class="border-b-2 border-neutral-200">
-                    By : {{ quizData.createBy.userName }}
+                    By : {{ quiz.createBy.userName }}
                 </p>
                 <p class="">
                     {{ "description..." }}
@@ -24,23 +29,22 @@ const { quizData, playingData } = defineProps({
             </div>
             <!-- Level -->
             <div class="flex-1 flex flex-col p-3 items-center gap-2 border border-black max-w-50 overflow-y-scroll">
-                <div v-for="(level, index) of quizData.levels" :class="index % 2 == 0 ? 'self-end' : 'self-start'">
-                    <RouterLink :to="playingData.currentLevel < index
-                            ? ''
-                            : {
-                                name: 'quiz',
-                                params: { quizId: quizData.id },
-                                query: { level: index },
-                            }
-                        " :class="'text-3xl font-bold size-25 flex items-center justify-center rounded-full hover:scale-110 transition-all ' +
-                (playingData.currentLevel < index
-                    ? 'bg-neutral-200 cursor-not-allowed'
-                    : 'bg-green-400 active:scale-95')
-                ">
+                <div v-for="(level, index) of quiz.levels" :class="index % 2 == 0 ? 'self-end' : 'self-start'">
+                    <RouterLink 
+                        :to="playingHistory.currentLevel < index
+                            ? { name: 'home', query: { quizId: quiz.id } }
+                            : { name: 'quiz', params: { quizId: quiz.id }, query: { level: index } }
+                        " 
+                        :class="'text-3xl font-bold size-25 flex items-center justify-center rounded-full hover:scale-110 transition-all ' +
+                            (playingHistory.currentLevel < index
+                            ? 'bg-neutral-200 cursor-not-allowed'
+                            : 'bg-green-400 active:scale-95')
+                        "
+                        >
                         {{ index + 1 }}
                     </RouterLink>
 
-                    <!-- <div v-if="(index != quizData.levels.length - 1) && (quizData.levels.length > 1)">
+                    <!-- <div v-if="(index != quiz.levels.length - 1) && (quiz.levels.length > 1)">
                         VVV
                     </div> -->
                 </div>
