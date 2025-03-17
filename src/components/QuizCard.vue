@@ -1,5 +1,5 @@
 <script setup>
-import { deleteQuiz } from '@/api/quizsAPI';
+import { deleteQuiz ,getQuizById, patchQuiz} from '@/api/quizsAPI';
 
     const { quiz, approveQuiz, isAdmin } = defineProps({
         quiz: Object,
@@ -8,7 +8,7 @@ import { deleteQuiz } from '@/api/quizsAPI';
         isEditMode: Boolean,
         isAdmin: Boolean,
     })
-    console.log(quiz)
+
     const handleDeleteQuiz = async () => {
         if (confirm("Are you sure to delete this quiz?")) {
             const res = await deleteQuiz(quiz.id)
@@ -17,7 +17,13 @@ import { deleteQuiz } from '@/api/quizsAPI';
     }
 
     const handleApproveQuiz = async () => {
-        console.log('Approve')
+        if (confirm("Are you sure to Approve this quiz?")) {
+            const res = await patchQuiz(quiz.id , {status:'publish'});
+            // quizData.value = res.data;
+            // const result = await patchQuiz(quizData.value.id)
+            alert('Quiz approved!')
+            
+        }
     }
 </script>
 

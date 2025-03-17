@@ -52,21 +52,28 @@ const headAdmin = (data) => {
 
 
 // GET
+
+
 onBeforeMount(async () => {
-  isLoading.value = true
+  isLoading.value = true;
   try {
     const res = await getAllQuizs();
-    const adminData = res.data; 
+    const adminData = res.data;
     const userData = res.data;
-    adminQuizzes.value = adminData.filter(quiz => quiz.createBy.role === 'admin' || quiz.status === 'pending');
-    userQuizzes.value = userData.filter(quiz => quiz.createBy.id === usedUser.value)
+    adminQuizzes.value = adminData.filter(quiz => quiz.status === 'pending');
+
+    userQuizzes.value = userData.filter(quiz => {
+  if (UsedRole === 'admin') {
+    return quiz.status === 'publish'; 
+  } else {
+    return quiz.status === 'publish' && quiz.createBy.id === usedUser.value; 
+  }
+})
   } catch (error) {
     console.error(error);
   }
-  isLoading.value = false
+  isLoading.value = false;
 });
-
-
 
 const handleShowModal = async (quizId, modalType = '') => {
   if (!authStore.isAuthenticated) return router.push('/signin')
@@ -117,6 +124,7 @@ const handleCloseModal = () => {
         :quiz="quiz"
         :show-comment-modal="() => { handleShowModal(quiz.id, 'COMMENT') }"
         :is-edit-mode="true"
+        :is-admin="true"
       />
   </div>
 </section>

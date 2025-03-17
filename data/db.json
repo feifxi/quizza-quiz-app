@@ -101,7 +101,7 @@
         "password": "123",
         "role": "user"
       },
-      "status": "pending",
+      "status": "publish",
       "reactions": [],
       "comments": [],
       "adminComments": [],
