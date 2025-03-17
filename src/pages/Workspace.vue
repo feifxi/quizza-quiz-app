@@ -4,19 +4,26 @@ import { useAuthStore } from '@/stores/user';
 import { onBeforeMount, ref , reactive} from 'vue';
 import {useRouter } from 'vue-router';
 import QuizCard from '@/components/QuizCard.vue';
-
+import CommentModal from '@/components/CommentModal.vue';
 
 
 // quizz of admin and user
 const authStore = useAuthStore()
 const userQuizzes = ref([]);
 const adminQuizzes = ref([])
+const isLoading = ref(false)
 
 const userObj = authStore.authUser
 
 let UsedRole = userObj.role
 let UsedUser = ref(userObj.id)
 let testUser = userObj.userName
+
+const modal = reactive({
+  isShowModal: false,
+  type: '',
+  quizData: null
+})
 
 // check Username and Role
 console.log("user : " + testUser + " role : " + UsedRole)
@@ -36,6 +43,7 @@ const headAdmin = (data) => {
 
 // GET
 onBeforeMount(async () => {
+  isLoading.value = true
   try {
     const res = await getAllQuizs();
     const adminData = res.data; 
@@ -45,6 +53,7 @@ onBeforeMount(async () => {
   } catch (error) {
     console.error(error);
   }
+  isLoading.value = false
 });
 
 // DELETE
@@ -64,43 +73,29 @@ const deleteQuizById = async (quizId) => {
   }
 }
 
-const isLoading = ref(false)
-const fetchAllQuizs = async () => {
-  isLoading.value = true
-  const res = await getAllQuizs()
-  quizs.value = res.data
-  isLoading.value = false
-}
-onBeforeMount(() => {
-  fetchAllQuizs()
-  // Show Quiz Level Modal
-  const { quizId } = route.query
-  if (quizId) {
-    handleShowModal(quizId, "LEVEL")
-  }
-})
-
-const router = useRouter()
-const quizs = ref(null)
-const modal = reactive({
-  isShowModal: false,
-  type: '',
-  quizData: null
-})
 
 const handleShowModal = async (quizId, modalType = '') => {
   if (!authStore.isAuthenticated) return router.push('/signin')
-  console.log('hell')
+  isLoading.value = true
   const res = await getQuizById(quizId)
   if (res.success) {
+    if (modalType === 'LEVEL') router.push({ name:'home', query: { quizId:quizId } })
     modal.type = modalType
     modal.quizData = res.data
     modal.isShowModal = true
-  } else {
+  } 
+  else {
     alert('Something went wrong')
   }
+  isLoading.value = false
 }
 
+const handleCloseModal = () => {
+  modal.isShowModal = false
+  modal.quizData = null
+  modal.type = ''
+  router.replace({ path: route.path, query: {} });
+}
 </script>
 
 <template>
@@ -109,9 +104,9 @@ const handleShowModal = async (quizId, modalType = '') => {
   </div>
   <!-- head for Admin -->
    <section v-else-if="UsedRole === 'admin'">
-    <div class="flex flex-row">
-      <button class="border-1 border-red-500 p-2 m-2" @click="headAdmin('workspace')">WorkSpace</button>
-      <button class="border-1 border-red-500 p-2 m-2" @click="headAdmin('admin')">AdminReview</button>
+    <div class="flex gap-3 p-3 border-b-2 border-neutral-300">
+      <button :class="'text-neutral-700 hover:text-neutral-900 ' + (state ? 'text-blue-500' : '')" @click="headAdmin('workspace')">WorkSpace</button>
+      <button :class="'text-neutral-700 hover:text-neutral-900 ' +  (state ? '' : 'text-blue-500')" @click="headAdmin('admin')">AdminReview</button>
     </div>
    </section>
     <!-- Addmin Review -->  
@@ -120,46 +115,12 @@ const handleShowModal = async (quizId, modalType = '') => {
   <h1>Game Review</h1>
   <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3 p-3">
       <QuizCard 
-        v-for="quiz of quizs" 
+        v-for="quiz of userQuizzes" 
         :quiz="quiz"
         :show-comment-modal="() => { handleShowModal(quiz.id, 'COMMENT') }"
-        :is-edit-mode="false"
-        
+        :is-edit-mode="true"
       />
-    </div>
-    <div class="m-1">
-      <ul>
-        <li v-for="(quiz, index) in adminQuizzes"
-          :key="index"
-          class="shadow-md border border-black p-1"
-        >
-          <button class="mt-1 px-1 absolute right-10 border border-black text-black bg-amber-600
-          cursor-pointer hover:text-gray-800 hover:bg-amber-500">
-            Edit
-          </button>
-          <button class="mt-1 px-1 absolute right-3 border border-black text-black bg-red-600
-          cursor-pointer hover:text-gray-800 hover:bg-red-500"
-          @click="deleteQuizById(quiz.id)">
-            X
-          </button>
-          <p>
-            <span><img :src="quiz.thumbnail" alt="vue logo" class="max-w-40" /></span>
-            <span>ID: </span>{{ quiz.id }}<br />
-            <span>Title: </span>{{ quiz.title }}<br />
-            <span>Created By: </span>{{ quiz.createdBy }}<br />
-            <span>Status: </span>{{ quiz.status }}
-          </p>
-          <button class="px-1 border border-black text-white bg-blue-600
-          cursor-pointer hover:text-gray-200 hover:bg-blue-500">
-            Comment
-          </button>
-          <button class="px-1 absolute right-3 border border-black text-black bg-green-600
-          cursor-pointer hover:text-gray-800 hover:bg-green-500">
-            Approve
-          </button>
-        </li>
-      </ul>
-    </div>
+  </div>
 </section>
 
   <!-- user workspace -->
@@ -196,6 +157,12 @@ const handleShowModal = async (quizId, modalType = '') => {
       </ul>
     </div>
   </section>
+
+  <CommentModal 
+    v-if="modal.quizData && modal.isShowModal && modal.type === 'COMMENT'" 
+    :quiz="modal.quizData"
+    :close-modal="handleCloseModal"
+  />
 </template>
 <style scoped>
 </style>
