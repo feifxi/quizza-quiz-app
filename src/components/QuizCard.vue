@@ -1,24 +1,30 @@
 <script setup>
 import { deleteQuiz } from '@/api/quizsAPI';
 
-    const { quiz } = defineProps({
+    const { quiz, approveQuiz, isAdmin } = defineProps({
         quiz: Object,
         showLevelModal: Function,
         showCommentModal: Function,
         isEditMode: Boolean,
+        isAdmin: Boolean,
     })
-
+    console.log(quiz)
     const handleDeleteQuiz = async () => {
         if (confirm("Are you sure to delete this quiz?")) {
             const res = await deleteQuiz(quiz.id)
             alert('Remove quiz success')
         }
     }
+
+    const handleApproveQuiz = async () => {
+        console.log('Approve')
+    }
 </script>
 
 <template>
     <div class="relative border border-black rounded-xl shadow-2xl hover:scale-105 transition-all">
         <div v-if="isEditMode" class="absolute right-3 top-3 flex gap-2">
+            <button v-if="isAdmin && quiz.status == 'pending'" class="bg-yellow-300 p-2 cursor-pointer" @click="handleApproveQuiz">Approve</button>
             <RouterLink :to="{ name: 'update', params: { quizId: quiz.id } }"  class="bg-green-500 p-2 cursor-pointer" >
                 Edit
             </RouterLink>

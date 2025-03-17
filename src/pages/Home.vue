@@ -23,7 +23,7 @@ const modal = reactive({
 
 const fetchAllQuizs = async () => {
   isLoading.value = true
-  const res = await getAllQuizs()
+  const res = await getAllQuizs([{ key:'status', value:'publish' }])
   quizs.value = res.data
   isLoading.value = false
 }
@@ -78,7 +78,7 @@ onBeforeMount(() => {
         :quiz="quiz"
         :show-level-modal="() => { handleShowModal(quiz.id, 'LEVEL') }"
         :show-comment-modal="() => { handleShowModal(quiz.id, 'COMMENT') }"
-        :is-edit-mode="false"
+        :is-edit-mode="true"
       />
     </div>
 
