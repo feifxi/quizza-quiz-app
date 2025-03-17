@@ -1,7 +1,11 @@
 <script setup>
 import { getAllQuizs, getQuizById, deleteQuiz } from '@/api/quizsAPI';
 import { useAuthStore } from '@/stores/user';
-import { onBeforeMount, ref } from 'vue';
+import { onBeforeMount, ref , reactive} from 'vue';
+import {useRouter } from 'vue-router';
+import QuizCard from '@/components/QuizCard.vue';
+
+
 
 // quizz of admin and user
 const authStore = useAuthStore()
@@ -60,14 +64,51 @@ const deleteQuizById = async (quizId) => {
   }
 }
 
+const isLoading = ref(false)
+const fetchAllQuizs = async () => {
+  isLoading.value = true
+  const res = await getAllQuizs()
+  quizs.value = res.data
+  isLoading.value = false
+}
+onBeforeMount(() => {
+  fetchAllQuizs()
+  // Show Quiz Level Modal
+  const { quizId } = route.query
+  if (quizId) {
+    handleShowModal(quizId, "LEVEL")
+  }
+})
 
+const router = useRouter()
+const quizs = ref(null)
+const modal = reactive({
+  isShowModal: false,
+  type: '',
+  quizData: null
+})
 
+const handleShowModal = async (quizId, modalType = '') => {
+  if (!authStore.isAuthenticated) return router.push('/signin')
+  console.log('hell')
+  const res = await getQuizById(quizId)
+  if (res.success) {
+    modal.type = modalType
+    modal.quizData = res.data
+    modal.isShowModal = true
+  } else {
+    alert('Something went wrong')
+  }
+}
 
 </script>
 
 <template>
+  <div v-if="isLoading">
+    Loading...
+  </div>
   <!-- head for Admin -->
-   <section v-if="UsedRole === 'admin'">
+   <section v-else-if="UsedRole === 'admin'">
     <div class="flex flex-row">
       <button class="border-1 border-red-500 p-2 m-2" @click="headAdmin('workspace')">WorkSpace</button>
       <button class="border-1 border-red-500 p-2 m-2" @click="headAdmin('admin')">AdminReview</button>
@@ -75,7 +116,17 @@ const deleteQuizById = async (quizId) => {
    </section>
     <!-- Addmin Review -->  
 <section v-if="!state && UsedRole === 'admin'">
+
   <h1>Game Review</h1>
+  <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3 p-3">
+      <QuizCard 
+        v-for="quiz of quizs" 
+        :quiz="quiz"
+        :show-comment-modal="() => { handleShowModal(quiz.id, 'COMMENT') }"
+        :is-edit-mode="false"
+        
+      />
+    </div>
     <div class="m-1">
       <ul>
         <li v-for="(quiz, index) in adminQuizzes"
