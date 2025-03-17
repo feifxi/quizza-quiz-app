@@ -1,5 +1,5 @@
 @import "tailwindcss";
 
 .input {
-    @apply border border-black px-3 py-2
+  @apply border border-black px-3 py-2;
 }

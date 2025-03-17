@@ -2,36 +2,36 @@
 import { createUser, getAllUsers } from '@/api/usersAPI';
 import { reactive, ref, watch } from 'vue';
 
-    const userData = reactive({
-        email: '',
-        userName: '',
-        password: '',
-    })
+const userData = reactive({
+  email: '',
+  userName: '',
+  password: '',
+})
 
 
-    const validateDate = () => {
-      
-    }
+const validateDate = () => {
 
-    const signUp = async (e) => {
-      e.preventDefault()
-      if (!userData.email || !userData.userName || !userData.password) {
-        return alert('fill all input')
-      }
-      const existUser = await getAllUsers({
-        key: 'email',
-        value: userData.email
-      })
-      const user = existUser.data[0]
-      if (user) return alert('This email is belong to existing account')
-      
-      const res = await createUser({
-        ...userData,
-        role: 'user',
-        star: 0
-      })      
-      console.log(res)
-    }
+}
+
+const signUp = async (e) => {
+  e.preventDefault()
+  if (!userData.email || !userData.userName || !userData.password) {
+    return alert('fill all input')
+  }
+  const existUser = await getAllUsers({
+    key: 'email',
+    value: userData.email
+  })
+  const user = existUser.data[0]
+  if (user) return alert('This email is belong to existing account')
+
+  const res = await createUser({
+    ...userData,
+    role: 'user',
+    star: 0
+  })
+  console.log(res)
+}
 </script>
 
 <template>
@@ -61,5 +61,4 @@ import { reactive, ref, watch } from 'vue';
   </section>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

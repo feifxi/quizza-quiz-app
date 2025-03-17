@@ -1,16 +1,16 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import { useAuthStore } from '@/stores/user';
-    const authStore = useAuthStore()
+const authStore = useAuthStore()
 
-    const logout = () => {
-        authStore.setAuthUser(null)
-        localStorage.removeItem('userId')
-    }
+const logout = () => {
+    authStore.setAuthUser(null)
+    localStorage.removeItem('userId')
+}
 </script>
 
 <template>
-    <header class="flex justify-between items-center bg-black text-white px-10 py-3">        
+    <header class="flex justify-between items-center bg-black text-white px-10 py-3">
         <RouterLink to="/">
             <h2 class="text-2xl font-bold cursor-pointer">Roblox but better</h2>
         </RouterLink>
@@ -27,5 +27,4 @@ import { useAuthStore } from '@/stores/user';
     </header>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -17,14 +17,13 @@ onBeforeMount(async () => {
 <template>
   <div v-if="isLoading">
     Loading...
-  </div> 
+  </div>
 
   <main v-else>
     <Navbar />
     <RouterView />
-    <Chatbot />
+    <!-- <Chatbot /> -->
   </main>
 </template>
 
-<style scoped>
-</style> 
+<style scoped></style>

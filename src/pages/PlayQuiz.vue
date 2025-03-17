@@ -46,19 +46,19 @@ const handleMoveToNextLevel = async () => {
         // console.log('add new')
         latestProgess.push(newProgress)
         // console.log(latestProgess)
-      }   
+      }
       const result = await patchQuiz(quizData.value.id, { playerProgress: latestProgess })
       alert('End Game!! - saved data')
-      router.push({ name: 'home', query:{ quizId: quizData.value.id }})
+      router.push({ name: 'home', query: { quizId: quizData.value.id } })
     }
-  } 
+  }
 }
 
 const increaseScore = () => {
   currentScore.value = currentScore.value + 1
 }
 
-onBeforeMount(async ()=>{
+onBeforeMount(async () => {
   await fetchQuiz()
 });
 
@@ -74,17 +74,14 @@ onBeforeMount(async ()=>{
     <h1 class="font-bold">Score : {{ currentScore }}</h1>
 
     <div>
-      <MultiChoiceTextQuiz 
-        v-if="quizData.levels[currentLevel]?.template === 'Multiple-choice-text'"
-        :level-data="quizData.levels[currentLevel]"
-        :increase-score="increaseScore"
-        :go-next="handleMoveToNextLevel"  
-      />
+      <MultiChoiceTextQuiz v-if="quizData.levels[currentLevel]?.template === 'Multiple-choice-text'"
+        :level-data="quizData.levels[currentLevel]" :increase-score="increaseScore" :go-next="handleMoveToNextLevel" />
     </div>
-    
-    <!-- <MultiChoiceImgQuiz /> -->
+    <div>
+      <MultiChoiceImgQuiz v-if="quizData.levels[currentLevel]?.template === 'Multiple-choice-image'"
+        :level-data="quizData.levels[currentLevel]" :increase-score="increaseScore" :go-next="handleMoveToNextLevel" />
+    </div>
   </section>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

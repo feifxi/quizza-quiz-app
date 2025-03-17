@@ -1,6 +1,15 @@
 export const toUpperCase = (word) => {
-    return word.toUpperCase()
-}
+  return word.toUpperCase();
+};
 
-const arr = [1,2,3]
-const newarr = [3,1,2]
+export const random = (object) => {
+  const oldChoices = Array.from(object.choices);
+  const newChoices = [];
+  let randomChoice = 0;
+  for (let i = 0; i < object.choices.length; i++) {
+    randomChoice = Math.floor(Math.random() * oldChoices.length);
+    newChoices[i] = oldChoices[randomChoice];
+    oldChoices.splice(randomChoice, 1);
+  }
+  return newChoices;
+};

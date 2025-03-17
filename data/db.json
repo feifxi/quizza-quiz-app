@@ -37,52 +37,75 @@
       "playerProgress": [
         {
           "userId": "e2db",
-          "star": 2
+          "star": 3
         }
       ],
       "levels": [
         {
-          "template": "Multiple-choice-text",
-          "question": "test1",
+          "template": "Multiple-choice-image",
+          "question": "js?",
           "questionImage": "",
           "choices": [
             {
-              "value": "test1",
+              "value": "https://ellipsiseducation.com/wp-content/uploads/2023/02/javascript-736400_1280.png",
               "isAns": true
             },
             {
-              "value": "test1",
+              "value": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj5K08rKxUEHZsgxTHElnQc6bFEmuVzD6FUg&s",
               "isAns": false
             },
             {
-              "value": "test1",
+              "value": "https://www.coywolf.news/wp-content/uploads/2024/11/official-css-logo.webp",
               "isAns": false
             },
             {
-              "value": "test1",
+              "value": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE-jRZ8r7TmUYfX4yqoiabzWXlqMiU4mZbxw&s",
               "isAns": false
             }
           ]
         },
         {
-          "template": "Multiple-choice-text",
-          "question": "test1",
+          "template": "Multiple-choice-image",
+          "question": "java?",
           "questionImage": "",
           "choices": [
             {
-              "value": "test1",
+              "value": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE-jRZ8r7TmUYfX4yqoiabzWXlqMiU4mZbxw&s",
               "isAns": true
             },
             {
-              "value": "test1",
+              "value": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN4W4k4zseh-AKurUNiz98TiScprGtQNykdQ&s",
               "isAns": false
             },
             {
-              "value": "test1",
+              "value": "https://www.netgen.co.za/wp-content/uploads/2023/05/SQL-Database.png",
               "isAns": false
             },
             {
-              "value": "test1",
+              "value": "https://bs-uploads.toptal.io/blackfish-uploads/components/blog_post_page/4085715/cover_image/regular_1708x683/0925-3D_Data_Visualization_with_Open_Source_Tools_A_Tutorial_Using_VTK_Dan_Newsletter-8de886e8cfe7817dd6f2502c43aacdce.png",
+              "isAns": false
+            }
+          ]
+        },
+        {
+          "template": "Multiple-choice-image",
+          "question": "kmutt?",
+          "questionImage": "",
+          "choices": [
+            {
+              "value": "https://www.kmutt.ac.th/wp-content/uploads/2020/09/KMUTT_CI_Primary_Logo-Full-1200x1200.png",
+              "isAns": true
+            },
+            {
+              "value": "https://www.kmutnb.ac.th/getattachment/about/symbols/logo_kmutnb-(6).png.aspx?width=250&height=246",
+              "isAns": false
+            },
+            {
+              "value": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjHl0MLdnO9QuI5B8vOUvHVe3riihyjjXcWw&s",
+              "isAns": false
+            },
+            {
+              "value": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Mahidol_U.png/800px-Mahidol_U.png",
               "isAns": false
             }
           ]
@@ -105,27 +128,78 @@
       "reactions": [],
       "comments": [],
       "adminComments": [],
-      "playerProgress": [],
+      "playerProgress": [
+        {
+          "userId": "e2db",
+          "star": 3
+        }
+      ],
       "levels": [
         {
           "template": "Multiple-choice-text",
-          "question": "jeno1",
+          "question": "true?",
           "questionImage": "",
           "choices": [
             {
-              "value": "jeno1",
+              "value": "true",
               "isAns": true
             },
             {
-              "value": "jeno1",
+              "value": "false",
               "isAns": false
             },
             {
-              "value": "jeno1",
+              "value": "f",
               "isAns": false
             },
             {
-              "value": "jeno1",
+              "value": "no",
+              "isAns": false
+            }
+          ]
+        },
+        {
+          "template": "Multiple-choice-text",
+          "question": "false?",
+          "questionImage": "",
+          "choices": [
+            {
+              "value": "false",
+              "isAns": true
+            },
+            {
+              "value": "true",
+              "isAns": false
+            },
+            {
+              "value": "t",
+              "isAns": false
+            },
+            {
+              "value": "yes",
+              "isAns": false
+            }
+          ]
+        },
+        {
+          "template": "Multiple-choice-text",
+          "question": "hello",
+          "questionImage": "",
+          "choices": [
+            {
+              "value": "world",
+              "isAns": true
+            },
+            {
+              "value": "you",
+              "isAns": false
+            },
+            {
+              "value": "two",
+              "isAns": false
+            },
+            {
+              "value": "bye",
               "isAns": false
             }
           ]
