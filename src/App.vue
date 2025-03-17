@@ -2,6 +2,7 @@
 import { onBeforeMount, ref } from 'vue';
 import Navbar from './components/Navbar.vue';
 import { useAuthStore } from '@/stores/user';
+import Chatbot from './components/Chatbot.vue';
 
 const authStore = useAuthStore()
 const isLoading = ref(false)
@@ -21,6 +22,7 @@ onBeforeMount(async () => {
   <main v-else>
     <Navbar />
     <RouterView />
+    <Chatbot />
   </main>
 </template>
 
