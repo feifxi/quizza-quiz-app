@@ -2,6 +2,7 @@
 import { getAllQuizs, getQuizById } from '@/api/quizsAPI';
 import { getAllUsers, getUserById } from '@/api/usersAPI';
 import Button from '@/components/Button.vue';
+import Chatbot from '@/components/Chatbot.vue';
 import CommentModal from '@/components/CommentModal.vue';
 import QuizCard from '@/components/QuizCard.vue';
 import QuizLevelModal from '@/components/QuizLevelModal.vue';
