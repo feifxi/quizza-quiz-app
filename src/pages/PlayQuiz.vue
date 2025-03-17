@@ -1,5 +1,8 @@
 <script setup>
 import { getQuizById } from '@/api/quizsAPI';
+import Button from '@/components/Button.vue';
+import MultiChoiceImgQuiz from '@/components/quiz_templates/playing/MultiChoiceImgQuiz.vue';
+import MultiChoiceTextQuiz from '@/components/quiz_templates/playing/MultiChoiceTextQuiz.vue';
 import { useAuthStore } from '@/stores/user';
 import { computed, onBeforeMount, reactive, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
@@ -7,39 +10,62 @@ const route = useRoute();
 const router = useRouter();
 const authStore = useAuthStore();
 const { quizId } = route.params
-const { level } = route.query
 
+
+const currentLevel = ref(0)
+const isLoading = ref(false)
+const currentScore = ref(0)
 const quizData = ref(null)
-const currentProgress = ref(null)
- 
+
 const fetchQuiz = async () => {
   try {
+    isLoading.value = true
     const res = await getQuizById(quizId);
     quizData.value = res.data;
-    currentProgress.value = res.data.playerProgress.find((history) => history.userId === authStore.authUser.id) 
-    || {  userId: authStore.authUser.id, currentLevel: 0 }
-    console.log(currentProgress.value)
+    isLoading.value = false
   } catch (error) {
     console.log(`Something went wrong! T-T : ${error}`);
   }
 }
 
+const handleMoveToNextLevel = () => {
+  currentLevel.value = currentLevel.value + 1
 
+  if (currentLevel.value === quizData.value.levels.length) {
+    console.log('active')
+    alert('End Quiz Back to Home idiot!')
+    router.push({ name: 'home', query:{ quizId: quizData.value.id }})
+  } 
+}
 
+const increaseScore = () => {
+  currentScore.value = currentScore.value + 1
+}
 
 onBeforeMount(async ()=>{
   await fetchQuiz()
-  if (level < 0 || level > currentProgress.value.currentLevel) {
-    router.push({ name:'home', query: { quizId:quizId } })
-  }
 });
 
 </script>
 
 <template>
-  <section>
-    <h1>Play Quiz : {{ quizId }}</h1>
-    <h1>Level : {{ level }}</h1>
+  <div v-if="isLoading">
+    Loading...
+  </div>
+  <section v-else>
+    <h1 class="text-3xl font-bold">Play Quiz : {{ quizId }}</h1>
+    <h1 class="font-bold">Level : {{ (currentLevel + 1) + "/" + quizData.levels.length }}</h1>
+    <h1 class="font-bold">Score : {{ currentScore }}</h1>
+
+    <div>
+
+    </div>
+    <MultiChoiceTextQuiz 
+      :level-data="quizData?.levels[currentLevel]"
+      :increase-score="increaseScore"
+      :go-next="handleMoveToNextLevel"  
+    />
+    <!-- <MultiChoiceImgQuiz /> -->
   </section>
 </template>
 

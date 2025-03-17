@@ -16,7 +16,7 @@ export const createQuiz = async (quizData) => {
     } catch (error) {
         console.log('Error in create quiz : ', error)
         return {
-            success: true,
+            success: false,
             message: 'Fail to Create quiz',
         }
     }
@@ -41,7 +41,7 @@ export const getAllQuizs = async (options) => {
     } catch (error) {
         console.log('Error in get all quiz : ', error)
         return {
-            success: true,
+            success: false,
             message: 'Fail to get all quiz',
         }
     }
@@ -59,7 +59,7 @@ export const getQuizById = async (quizId) => {
     } catch (error) {
         console.log('Error in get quiz : ', error)
         return {
-            success: true,
+            success: false,
             message: 'Fail to get quiz',
         }
     }
@@ -80,10 +80,32 @@ export const updateQuiz = async (quizId, newData) => {
             data: data
         }
     } catch (error) {
-        console.log('Error in update all quiz : ', error)
+        console.log('Error in update quiz : ', error)
+        return {
+            success: false,
+            message: 'Fail to update quiz',
+        }
+    }
+}
+
+export const patchQuiz = async (quizId, newData) => {
+    try {
+        const res = await fetch(`${BASE_URL}/${quizId}`,{
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newData)
+        })
+        const data = await res.json()
         return {
             success: true,
-            message: 'Fail to update all quiz',
+            message: 'Patch quiz success',
+            data: data
+        }
+    } catch (error) {
+        console.log('Error in patch quiz : ', error)
+        return {
+            success: false,
+            message: 'Fail to patch all quiz',
         }
     }
 }
@@ -100,7 +122,7 @@ export const deleteQuiz = async (quizId) => {
     } catch (error) {
         console.log('Error in delete quiz : ', error)
         return {
-            success: true,
+            success: false,
             message: 'Fail to delete the specified quiz',
         }
     }

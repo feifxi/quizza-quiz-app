@@ -13,7 +13,7 @@ const authStore = useAuthStore()
 const route = useRoute()
 const router = useRouter()
 
-const quizs = ref(null)
+const quizs = ref([])
 const isLoading = ref(false)
 const modal = reactive({
   isShowModal: false,
@@ -31,13 +31,14 @@ const fetchAllQuizs = async () => {
 const handleShowModal = async (quizId, modalType = '') => {
   if (!authStore.isAuthenticated) return router.push('/signin')
   isLoading.value = true
-
   const res = await getQuizById(quizId)
   if (res.success) {
+    if (modalType === 'LEVEL') router.push({ name:'home', query: { quizId:quizId } })
     modal.type = modalType
     modal.quizData = res.data
     modal.isShowModal = true
-  } else {
+  } 
+  else {
     alert('Something went wrong')
   }
   isLoading.value = false
@@ -65,7 +66,11 @@ onBeforeMount(() => {
   <div v-if="isLoading">
     Loading...
   </div>
-
+  
+  <div v-else-if="quizs.length === 0" 
+  class=" text-3xl font-bold text-neutral-400 text-center mt-10" >
+    There is no quizs
+  </div>
   <section v-else>
     <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3 p-3">
       <QuizCard 
@@ -73,7 +78,7 @@ onBeforeMount(() => {
         :quiz="quiz"
         :show-level-modal="() => { handleShowModal(quiz.id, 'LEVEL') }"
         :show-comment-modal="() => { handleShowModal(quiz.id, 'COMMENT') }"
-        :is-edit-mode="true"
+        :is-edit-mode="false"
       />
     </div>
   </section>

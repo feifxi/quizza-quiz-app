@@ -9,7 +9,7 @@ const { quiz } = defineProps({
 const authStore = useAuthStore()
 
 const playerProgress = quiz.playerProgress.find((history) => history.userId === authStore.authUser.id) 
-    || {  userId: authStore.authUser.id, currentLevel: 0 }
+    || {  userId: authStore.authUser.id, star: 0 }
 
 </script>
 
@@ -24,19 +24,21 @@ const playerProgress = quiz.playerProgress.find((history) => history.userId === 
                     By : {{ quiz.createBy.userName }}
                 </p>
                 <p class="">
-                    {{ "description..." }}
+                    {{ quiz.description }}
+                </p>
+                <p class="">
+                    {{ playerProgress.star + '/' + quiz.levels.length + "⭐" }}
                 </p>
             </div>
             <!-- Level -->
             <div class="flex-1 flex flex-col p-3 items-center gap-2 border border-black max-w-50 overflow-y-scroll">
                 <div v-for="(level, index) of quiz.levels" :class="index % 2 == 0 ? 'self-end' : 'self-start'">
-                    <RouterLink 
-                        :to="playerProgress.currentLevel < index
+                    <RouterLink :to=" index > 0
                             ? { name: 'home', query: { quizId: quiz.id } }
-                            : { name: 'quiz', params: { quizId: quiz.id }, query: { level: index } }
-                        " 
+                            : { name: 'quiz', params: { quizId: quiz.id } }
+                        "   
                         :class="'text-3xl font-bold size-25 flex items-center justify-center rounded-full hover:scale-110 transition-all ' +
-                            (playerProgress.currentLevel < index
+                            (index > 0
                             ? 'bg-neutral-200 cursor-not-allowed'
                             : 'bg-green-400 active:scale-95')
                         "

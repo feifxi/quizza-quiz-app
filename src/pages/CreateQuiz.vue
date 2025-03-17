@@ -1,7 +1,7 @@
 <script setup>
 import { createQuiz } from "@/api/quizsAPI";
-import MultipleChoiceImage from "@/components/quiz_templates/MultipleChoiceImage.vue";
-import MultipleChoiceText from "@/components/quiz_templates/MultipleChoiceText.vue";
+import MultiChoiceImgForm from "@/components/quiz_templates/form/MultiChoiceImgForm.vue";
+import MultiChoiceTextForm from "@/components/quiz_templates/form/MultiChoiceTextForm.vue";
 import { QUiZ_TEMPLATES_TYPE } from "@/constants";
 import { useAuthStore } from "@/stores/user";
 import { reactive } from "vue";
@@ -13,6 +13,7 @@ const authStore = useAuthStore()
 const quizData = reactive({
   title: "",
   thumbnail: "",
+  description: "",
   createBy: authStore.authUser,
   status: "pending",
   reactions: [],
@@ -95,11 +96,15 @@ const isQuizDataValid = () => {
 
 <template>
   <section class="p-4">
-    <h1 class="text-4xl font-bold">Create Game</h1>
+    <h1 class="text-4xl font-bold">Create Quiz</h1>
 
     <div class="flex flex-col">
       <label class="text-xl font-bold">Quiz Title</label>
       <input type="text" class="input" v-model="quizData.title" />
+    </div>
+    <div class="flex flex-col">
+      <label class="text-xl font-bold">Description</label>
+      <input type="text" class="input" v-model="quizData.description" />
     </div>
     <div class="flex flex-col">
       <label class="text-xl font-bold">Quiz Thumbnail</label>
@@ -114,12 +119,10 @@ const isQuizDataValid = () => {
 
     <!-- Template -->
     <div class="mt-5 flex flex-col gap-4">
-      <div
-        v-for="(level, index) of quizData.levels"
+      <div v-for="(level, index) of quizData.levels"
         class="relative border border-black p-3"
       >
-        <span
-          v-if="quizData.levels.length > 1"
+        <span v-if="quizData.levels.length > 1"
           @click="() => handleRemoveLevel(level)"
           class="absolute right-0 top-0 cursor-pointer p-2 bg-red-500"
         >
@@ -150,11 +153,11 @@ const isQuizDataValid = () => {
 
         <!-- Render Template -->
         <div class="mt-4">
-          <MultipleChoiceText
+          <MultiChoiceTextForm
             v-if="level.template === 'Multiple-choice-text'"
             :level-data="level"
           />
-          <MultipleChoiceImage
+          <MultiChoiceImgForm
             v-else-if="level.template === 'Multiple-choice-image'"
             :level-data="level"
           />

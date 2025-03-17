@@ -19,252 +19,10 @@
   ],
   "quizs": [
     {
-      "id": "7230",
-      "reactions": [
-        "263c",
-        "e2db"
-      ],
-      "comments": [
-        {
-          "userId": "263c",
-          "text": "hello wowrld"
-        }
-      ],
-      "adminComments": [
-        "hello world",
-        "Hello world2"
-      ],
-      "playerProgress": [
-        {
-          "userId": "263c",
-          "currentLevel": 0
-        }
-      ],
+      "id": "0e07",
       "title": "test1",
-      "thumbnail": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
-      "createBy": {
-        "id": "e2db",
-        "email": "fei",
-        "userName": "fei",
-        "password": "123",
-        "role": "user",
-        "star": 0
-      },
-      "status": "pending",
-      "levels": [
-        {
-          "template": "Multiple-choice-text",
-          "question": "the most handsome boi",
-          "questionImage": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
-          "choices": [
-            {
-              "value": "chanombude",
-              "isAns": true
-            },
-            {
-              "value": "kuy jeno",
-              "isAns": false
-            },
-            {
-              "value": "kuy jeno",
-              "isAns": false
-            },
-            {
-              "value": "kuy jeno",
-              "isAns": false
-            }
-          ]
-        },
-        {
-          "template": "Multiple-choice-text",
-          "question": "the most handsome boi",
-          "questionImage": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
-          "choices": [
-            {
-              "value": "chanombude",
-              "isAns": true
-            },
-            {
-              "value": "kuy jeno",
-              "isAns": false
-            },
-            {
-              "value": "kuy jeno",
-              "isAns": false
-            },
-            {
-              "value": "kuy jeno",
-              "isAns": false
-            }
-          ]
-        },
-        {
-          "template": "Multiple-choice-text",
-          "question": "the most handsome boi",
-          "questionImage": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
-          "choices": [
-            {
-              "value": "chanombude",
-              "isAns": true
-            },
-            {
-              "value": "kuy jeno",
-              "isAns": false
-            },
-            {
-              "value": "kuy jeno",
-              "isAns": false
-            },
-            {
-              "value": "kuy jeno",
-              "isAns": false
-            }
-          ]
-        },
-        {
-          "template": "Multiple-choice-text",
-          "question": "the most handsome boi",
-          "questionImage": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
-          "choices": [
-            {
-              "value": "chanombude",
-              "isAns": true
-            },
-            {
-              "value": "kuy jeno",
-              "isAns": false
-            },
-            {
-              "value": "kuy jeno",
-              "isAns": false
-            },
-            {
-              "value": "kuy jeno",
-              "isAns": false
-            }
-          ]
-        },
-        {
-          "template": "Multiple-choice-text",
-          "question": "the most handsome boi",
-          "questionImage": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
-          "choices": [
-            {
-              "value": "chanombude",
-              "isAns": true
-            },
-            {
-              "value": "kuy jeno",
-              "isAns": false
-            },
-            {
-              "value": "kuy jeno",
-              "isAns": false
-            },
-            {
-              "value": "kuy jeno",
-              "isAns": false
-            }
-          ]
-        },
-        {
-          "template": "Multiple-choice-text",
-          "question": "the most handsome boi",
-          "questionImage": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
-          "choices": [
-            {
-              "value": "chanombude",
-              "isAns": true
-            },
-            {
-              "value": "kuy jeno",
-              "isAns": false
-            },
-            {
-              "value": "kuy jeno",
-              "isAns": false
-            },
-            {
-              "value": "kuy jeno",
-              "isAns": false
-            }
-          ]
-        },
-        {
-          "template": "Multiple-choice-text",
-          "question": "the most handsome boi",
-          "questionImage": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
-          "choices": [
-            {
-              "value": "chanombude",
-              "isAns": true
-            },
-            {
-              "value": "kuy jeno",
-              "isAns": false
-            },
-            {
-              "value": "kuy jeno",
-              "isAns": false
-            },
-            {
-              "value": "kuy jeno",
-              "isAns": false
-            }
-          ]
-        },
-        {
-          "template": "Multiple-choice-text",
-          "question": "the most handsome boi",
-          "questionImage": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
-          "choices": [
-            {
-              "value": "chanombude",
-              "isAns": true
-            },
-            {
-              "value": "kuy jeno",
-              "isAns": false
-            },
-            {
-              "value": "kuy jeno",
-              "isAns": false
-            },
-            {
-              "value": "kuy jeno",
-              "isAns": false
-            }
-          ]
-        },
-        {
-          "template": "Multiple-choice-image",
-          "question": "บิดแล้วรวยซวยแล้วมึง",
-          "questionImage": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
-          "choices": [
-            {
-              "value": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
-              "isAns": true
-            },
-            {
-              "value": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
-              "isAns": false
-            },
-            {
-              "value": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
-              "isAns": false
-            },
-            {
-              "value": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
-              "isAns": false
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "cd58",
-      "title": "test2",
-      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGs18CLaoBV9q4jTYtxK8C4zLAc0OH73xfWg&s",
+      "thumbnail": "",
+      "description": "test1",
       "createBy": {
         "id": "e2db",
         "email": "fei",
@@ -277,50 +35,55 @@
       "reactions": [],
       "comments": [],
       "adminComments": [],
-      "playerProgress": [],
+      "playerProgress": [
+        {
+          "userId": "263c",
+          "star": 1
+        }
+      ],
       "levels": [
         {
           "template": "Multiple-choice-text",
-          "question": "test2",
+          "question": "test1",
           "questionImage": "",
           "choices": [
             {
-              "value": "test2 cccc",
+              "value": "test1",
               "isAns": true
             },
             {
-              "value": "test2",
+              "value": "test1",
               "isAns": false
             },
             {
-              "value": "test2",
+              "value": "test1",
               "isAns": false
             },
             {
-              "value": "test2",
+              "value": "test1",
               "isAns": false
             }
           ]
         },
         {
-          "template": "Multiple-choice-image",
-          "question": "บิด 2",
-          "questionImage": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
+          "template": "Multiple-choice-text",
+          "question": "test1",
+          "questionImage": "",
           "choices": [
             {
-              "value": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
+              "value": "test1",
               "isAns": true
             },
             {
-              "value": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
+              "value": "test1",
               "isAns": false
             },
             {
-              "value": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
+              "value": "test1",
               "isAns": false
             },
             {
-              "value": "https://cdn.readawrite.com/articles/16540/16539664/thumbnail/large.gif?1",
+              "value": "test1",
               "isAns": false
             }
           ]
