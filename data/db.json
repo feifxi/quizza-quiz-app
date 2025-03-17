@@ -19,7 +19,7 @@
   ],
   "quizs": [
     {
-      "id": "0e07",
+      "id": "2c3d",
       "title": "test1",
       "thumbnail": "",
       "description": "test1",
@@ -28,8 +28,7 @@
         "email": "fei",
         "userName": "fei",
         "password": "123",
-        "role": "admin",
-        "star": 0
+        "role": "admin"
       },
       "status": "pending",
       "reactions": [],
@@ -37,8 +36,8 @@
       "adminComments": [],
       "playerProgress": [
         {
-          "userId": "263c",
-          "star": 1
+          "userId": "e2db",
+          "star": 2
         }
       ],
       "levels": [

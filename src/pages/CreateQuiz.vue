@@ -14,7 +14,7 @@ const quizData = reactive({
   title: "",
   thumbnail: "",
   description: "",
-  createBy: authStore.authUser,
+  createBy: { ...authStore.authUser, star: undefined }, // get all field except star
   status: "pending",
   reactions: [],
   comments: [],

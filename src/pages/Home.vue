@@ -67,10 +67,10 @@ onBeforeMount(() => {
     Loading...
   </div>
   
-  <div v-else-if="quizs.length === 0" 
-  class=" text-3xl font-bold text-neutral-400 text-center mt-10" >
+  <div v-else-if="quizs.length === 0" class="text-3xl font-bold text-neutral-400 text-center mt-10" >
     There is no quizs
   </div>
+
   <section v-else>
     <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3 p-3">
       <QuizCard 
@@ -81,18 +81,18 @@ onBeforeMount(() => {
         :is-edit-mode="false"
       />
     </div>
-  </section>
 
-  <QuizLevelModal 
-    v-if="modal.quizData && modal.isShowModal && modal.type === 'LEVEL'" 
-    :quiz="modal.quizData"
-    :close-modal="handleCloseModal" 
-  />
-  <CommentModal 
-    v-if="modal.quizData && modal.isShowModal && modal.type === 'COMMENT'" 
-    :quiz="modal.quizData"
-    :close-modal="handleCloseModal"
-  />
+    <QuizLevelModal 
+      v-if="modal.quizData && modal.isShowModal && modal.type === 'LEVEL'" 
+      :quiz="modal.quizData"
+      :close-modal="handleCloseModal" 
+    />
+    <CommentModal 
+      v-if="modal.quizData && modal.isShowModal && modal.type === 'COMMENT'" 
+      :quiz="modal.quizData"
+      :close-modal="handleCloseModal"
+    />
+  </section>
 </template>
 
 <style scoped></style>

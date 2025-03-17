@@ -6,13 +6,30 @@ import Button from '@/components/Button.vue';
     increaseScore: Function,
   });
 
-  console.log(levelData)
+  const handleChooseChoice = (isCorrect) => {
+    if (isCorrect) {
+      alert('Correct Ans! :DD')
+      increaseScore()
+      goNext()
+    } else {
+      alert('Incorrect Ans! :CC')
+      goNext()
+    }
+  }
 </script>
 <template>
   <div class="border border-black p-3">
-    <h2 class="">Multiple Choice Text Template</h2>
-    <Button :label="'go next'" :click="goNext"></Button>
-    <Button :label="'increaseScore'" :click="increaseScore"></Button>
+    <h2 class="font-bold"> {{ levelData.question }}</h2>
+
+    <div class=" grid grid-cols-2 gap-3">
+      <button
+        v-for="choice of levelData.choices"
+        class="border border-black p-3 cursor-pointer"
+        @click="()=>{ handleChooseChoice(choice.isAns) }"
+      >
+      {{ choice.value }}
+    </button>
+    </div>
   </div>
 </template>
 
