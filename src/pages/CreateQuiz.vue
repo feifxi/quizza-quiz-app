@@ -61,7 +61,7 @@ const handleCreateGame = async () => {
   const res = await createQuiz(quizData);
   if (res.success) {
     alert(res.message);
-    router.push("/");
+    router.push({ name: 'workspace' });
   } else {
     alert(res.message);
   }

@@ -46,7 +46,7 @@ const handleUpdateGame = async () => {
   const res = await updateQuiz(quizData.value.id, quizData.value);
   if (res.success) {
     alert(res.message);
-    router.push("/");
+    router.push({ name: 'workspace' });
   } else {
     alert(res.message);
   }
