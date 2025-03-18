@@ -4,7 +4,7 @@ import Button from '@/components/Button.vue';
 import MultiChoiceImgQuiz from '@/components/quiz_templates/playing/MultiChoiceImgQuiz.vue';
 import MultiChoiceTextQuiz from '@/components/quiz_templates/playing/MultiChoiceTextQuiz.vue';
 import { useAuthStore } from '@/stores/user';
-import { computed, onBeforeMount, reactive, ref } from 'vue';
+import { computed, onBeforeMount, onBeforeUnmount, reactive, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 const route = useRoute();
 const router = useRouter();
@@ -16,6 +16,7 @@ const quizData = ref(null)
 const isLoading = ref(false)
 const currentLevel = ref(0)
 const currentScore = ref(0)
+const isDone = ref(false)
 
 const fetchQuiz = async () => {
   try {
@@ -29,9 +30,14 @@ const fetchQuiz = async () => {
 }
 
 const handleMoveToNextLevel = async () => {
-  currentLevel.value = currentLevel.value + 1
+  if (currentLevel.value < quizData.value.levels.length - 1) {
+    currentLevel.value = currentLevel.value + 1;
+    isDone.value = false;
+  } else {
+    isDone.value = true;
+  }
 
-  if (currentLevel.value === quizData.value.levels.length) {
+  if (currentLevel.value === quizData.value.levels.length - 1 && isDone.value === true) {
     // Get the latest quiz data
     const res = await getQuizById(quizData.value.id)
     if (res.success) {
@@ -61,7 +67,6 @@ const increaseScore = () => {
 onBeforeMount(async () => {
   await fetchQuiz()
 });
-
 </script>
 
 <template>
