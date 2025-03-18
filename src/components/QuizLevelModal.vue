@@ -8,8 +8,8 @@ const { quiz } = defineProps({
 });
 const authStore = useAuthStore()
 
-const playerProgress = quiz.playerProgress.find((history) => history.userId === authStore.authUser.id) 
-    || {  userId: authStore.authUser.id, star: 0 }
+const playerProgress = quiz.playerProgress.find((history) => history.userId === authStore.authUser.id)
+    || { userId: authStore.authUser.id, star: 0 }
 
 </script>
 
@@ -33,16 +33,14 @@ const playerProgress = quiz.playerProgress.find((history) => history.userId === 
             <!-- Level -->
             <div class="flex-1 flex flex-col p-3 items-center gap-2 border border-black max-w-50 overflow-y-scroll">
                 <div v-for="(level, index) of quiz.levels" :class="index % 2 == 0 ? 'self-end' : 'self-start'">
-                    <RouterLink :to=" index > 0
-                            ? { name: 'home', query: { quizId: quiz.id } }
-                            : { name: 'quiz', params: { quizId: quiz.id } }
-                        "   
-                        :class="'text-3xl font-bold size-25 flex items-center justify-center rounded-full hover:scale-110 transition-all ' +
+                    <RouterLink :to="index > 0
+                        ? { name: 'home', query: { quizId: quiz.id } }
+                        : { name: 'quiz', params: { quizId: quiz.id } }
+                        " :class="'text-3xl font-bold size-25 flex items-center justify-center rounded-full hover:scale-110 transition-all ' +
                             (index > 0
-                            ? 'bg-neutral-200 cursor-not-allowed'
-                            : 'bg-green-400 active:scale-95')
-                        "
-                        >
+                                ? 'bg-neutral-200 cursor-not-allowed'
+                                : 'bg-green-400 active:scale-95')
+                            ">
                         {{ index + 1 }}
                     </RouterLink>
 

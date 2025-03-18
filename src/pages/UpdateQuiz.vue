@@ -92,7 +92,7 @@ onBeforeMount(getQuiz);
       <div class="flex flex-col">
         <label class="text-xl font-bold">Description</label>
         <input type="text" class="input" v-model="quizData.description" />
-    </div>
+      </div>
       <div class="flex flex-col">
         <span class="text-xl font-bold">Quiz Thumbnail</span>
         <img v-if="quizData.thumbnail" :src="quizData.thumbnail" alt="Quiz image"

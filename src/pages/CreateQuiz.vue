@@ -108,24 +108,16 @@ const isQuizDataValid = () => {
     </div>
     <div class="flex flex-col">
       <label class="text-xl font-bold">Quiz Thumbnail</label>
-      <img 
-          v-if="quizData.thumbnail"
-          :src="quizData.thumbnail" 
-          class="w-[300px] h-[100px] bg-neutral-200 "
-          alt="preview question image " 
-        />
+      <img v-if="quizData.thumbnail" :src="quizData.thumbnail" class="w-[300px] h-[100px] bg-neutral-200 "
+        alt="preview question image " />
       <input type="text" class="input" v-model="quizData.thumbnail" />
     </div>
 
     <!-- Template -->
     <div class="mt-5 flex flex-col gap-4">
-      <div v-for="(level, index) of quizData.levels"
-        class="relative border border-black p-3"
-      >
-        <span v-if="quizData.levels.length > 1"
-          @click="() => handleRemoveLevel(level)"
-          class="absolute right-0 top-0 cursor-pointer p-2 bg-red-500"
-        >
+      <div v-for="(level, index) of quizData.levels" class="relative border border-black p-3">
+        <span v-if="quizData.levels.length > 1" @click="() => handleRemoveLevel(level)"
+          class="absolute right-0 top-0 cursor-pointer p-2 bg-red-500">
           X
         </span>
 
@@ -135,17 +127,10 @@ const isQuizDataValid = () => {
         <!-- Template options -->
         <div class="flex flex-col">
           <label>Choose Template :</label>
-          <select
-            class="border"
-            @change="
-              (e) => level['template'] = e.target.value
-            "
-          >
-            <option
-              v-for="template in QUiZ_TEMPLATES_TYPE"
-              :value="template.value"
-              :key="template.value"
-            >
+          <select class="border" @change="
+            (e) => level['template'] = e.target.value
+          ">
+            <option v-for="template in QUiZ_TEMPLATES_TYPE" :value="template.value" :key="template.value">
               {{ template.label }}
             </option>
           </select>
@@ -153,30 +138,18 @@ const isQuizDataValid = () => {
 
         <!-- Render Template -->
         <div class="mt-4">
-          <MultiChoiceTextForm
-            v-if="level.template === 'Multiple-choice-text'"
-            :level-data="level"
-          />
-          <MultiChoiceImgForm
-            v-else-if="level.template === 'Multiple-choice-image'"
-            :level-data="level"
-          />
+          <MultiChoiceTextForm v-if="level.template === 'Multiple-choice-text'" :level-data="level" />
+          <MultiChoiceImgForm v-else-if="level.template === 'Multiple-choice-image'" :level-data="level" />
         </div>
       </div>
 
       <div class="flex gap-3">
-        <button
-          class="border border-black p-3 cursor-pointer mt-5 w-full"
-          @click="addMoreQuiz"
-        >
+        <button class="border border-black p-3 cursor-pointer mt-5 w-full" @click="addMoreQuiz">
           Add more quiz
         </button>
 
-        <button
-          class="'border border-black p-3 mt-5 w-full bg-green-400 cursor-pointer"
-          @click="handleCreateGame"
-          :disabled="false"
-        >
+        <button class="'border border-black p-3 mt-5 w-full bg-green-400 cursor-pointer" @click="handleCreateGame"
+          :disabled="false">
           Create Game
         </button>
       </div>

@@ -1,7 +1,7 @@
 <script setup>
 import { getAllQuizs, getQuizById, deleteQuiz } from '@/api/quizsAPI';
 import { useAuthStore } from '@/stores/user';
-import { onBeforeMount, ref , reactive} from 'vue';
+import { onBeforeMount, ref, reactive } from 'vue';
 import { RouterLink } from 'vue-router';
 import QuizCard from '@/components/QuizCard.vue';
 import CommentModal from '@/components/CommentModal.vue';
@@ -34,15 +34,15 @@ console.log("user : " + testUser + " role : " + UsedRole)
 
 
 let state = ref(true);
-let stateClass1  
+let stateClass1
 let stateClass2 = 'border-red-300 border-1 px-1'
 const headAdmin = (data) => {
-  if(data === 'admin'){
+  if (data === 'admin') {
     state.value = false
     stateClass1 = 'border-red-300 border-1 px-1'
     stateClass2 = ''
   }
-  if(data === 'workspace'){
+  if (data === 'workspace') {
     state.value = true
     stateClass2 = 'border-red-300 border-1 px-1'
     stateClass1 = ''
@@ -63,12 +63,12 @@ onBeforeMount(async () => {
     adminQuizzes.value = adminData.filter(quiz => quiz.status === 'pending');
 
     userQuizzes.value = userData.filter(quiz => {
-  if (UsedRole === 'admin') {
-    return quiz.status === 'publish'; 
-  } else {
-    return quiz.status === 'publish' && quiz.createBy.id === usedUser.value; 
-  }
-})
+      if (UsedRole === 'admin') {
+        return quiz.status === 'publish';
+      } else {
+        return quiz.status === 'publish' && quiz.createBy.id === usedUser.value;
+      }
+    })
   } catch (error) {
     console.error(error);
   }
@@ -80,11 +80,11 @@ const handleShowModal = async (quizId, modalType = '') => {
   isLoading.value = true
   const res = await getQuizById(quizId)
   if (res.success) {
-    if (modalType === 'LEVEL') router.push({ name:'home', query: { quizId:quizId } })
+    if (modalType === 'LEVEL') router.push({ name: 'home', query: { quizId: quizId } })
     modal.type = modalType
     modal.quizData = res.data
     modal.isShowModal = true
-  } 
+  }
   else {
     alert('Something went wrong')
   }
@@ -101,53 +101,41 @@ const handleCloseModal = () => {
 </script>
 
 <template>
-    <div class=" p-2 m-2">
-      <RouterLink to="/create" class="hover:underline cursor-pointer border-red-500 bg-green-400 border-1 p-2 rounded-xl">CreateGame</RouterLink>
-    </div>
+  <div class=" p-2 m-2">
+    <RouterLink to="/create" class="hover:underline cursor-pointer border-red-500 bg-green-400 border-1 p-2 rounded-xl">
+      CreateGame</RouterLink>
+  </div>
   <div v-if="isLoading">
     Loading...
   </div>
   <!-- head for Admin -->
-   <section v-else-if="UsedRole === 'admin'">
+  <section v-else-if="UsedRole === 'admin'">
     <div class="flex gap-3 p-3 border-b-2 border-neutral-300">
-      <button :class="stateClass2"  @click="headAdmin('workspace')">WorkSpace</button>
-      <button :class="stateClass1"  @click="headAdmin('admin')">AdminReview</button>
+      <button :class="stateClass2" @click="headAdmin('workspace')">WorkSpace</button>
+      <button :class="stateClass1" @click="headAdmin('admin')">AdminReview</button>
     </div>
-   </section>
-    <!-- Addmin Review -->  
-<section v-if="!state && UsedRole === 'admin'">
+  </section>
+  <!-- Addmin Review -->
+  <section v-if="!state && UsedRole === 'admin'">
 
-  <h1>Game Review</h1>
-  <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3 p-3">
-      <QuizCard 
-        v-for="quiz of adminQuizzes" 
-        :quiz="quiz"
-        :show-comment-modal="() => { handleShowModal(quiz.id, 'COMMENT') }"
-        :is-edit-mode="true"
-        :is-admin="true"
-      />
-  </div>
-</section>
+    <h1>Game Review</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3 p-3">
+      <QuizCard v-for="quiz of adminQuizzes" :quiz="quiz"
+        :show-comment-modal="() => { handleShowModal(quiz.id, 'COMMENT') }" :is-edit-mode="true" :is-admin="true" />
+    </div>
+  </section>
 
   <!-- user workspace -->
   <section v-else-if="state">
-    
+
     <h1>Workspace</h1>
     <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3 p-3">
-      <QuizCard 
-        v-for="quiz of userQuizzes" 
-        :quiz="quiz"
-        :show-comment-modal="() => { handleShowModal(quiz.id, 'COMMENT') }"
-        :is-edit-mode="true"
-      />
-  </div>
+      <QuizCard v-for="quiz of userQuizzes" :quiz="quiz"
+        :show-comment-modal="() => { handleShowModal(quiz.id, 'COMMENT') }" :is-edit-mode="true" />
+    </div>
   </section>
 
-  <CommentModal 
-    v-if="modal.quizData && modal.isShowModal && modal.type === 'COMMENT'" 
-    :quiz="modal.quizData"
-    :close-modal="handleCloseModal"
-  />
+  <CommentModal v-if="modal.quizData && modal.isShowModal && modal.type === 'COMMENT'" :quiz="modal.quizData"
+    :close-modal="handleCloseModal" />
 </template>
-<style scoped>
-</style>
+<style scoped></style>

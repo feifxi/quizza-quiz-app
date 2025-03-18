@@ -24,7 +24,7 @@ const modal = reactive({
 
 const fetchAllQuizs = async () => {
   isLoading.value = true
-  const res = await getAllQuizs([{ key:'status', value:'publish' }])
+  const res = await getAllQuizs([{ key: 'status', value: 'publish' }])
   quizs.value = res.data
   isLoading.value = false
 }
@@ -34,11 +34,11 @@ const handleShowModal = async (quizId, modalType = '') => {
   isLoading.value = true
   const res = await getQuizById(quizId)
   if (res.success) {
-    if (modalType === 'LEVEL') router.push({ name:'home', query: { quizId:quizId } })
+    if (modalType === 'LEVEL') router.push({ name: 'home', query: { quizId: quizId } })
     modal.type = modalType
     modal.quizData = res.data
     modal.isShowModal = true
-  } 
+  }
   else {
     alert('Something went wrong')
   }
@@ -67,32 +67,21 @@ onBeforeMount(() => {
   <div v-if="isLoading">
     Loading...
   </div>
-  
-  <div v-else-if="quizs.length === 0" class="text-3xl font-bold text-neutral-400 text-center mt-10" >
+
+  <div v-else-if="quizs.length === 0" class="text-3xl font-bold text-neutral-400 text-center mt-10">
     There is no quizs
   </div>
 
   <section v-else>
     <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3 p-3">
-      <QuizCard 
-        v-for="quiz of quizs" 
-        :quiz="quiz"
-        :show-level-modal="() => { handleShowModal(quiz.id, 'LEVEL') }"
-        :show-comment-modal="() => { handleShowModal(quiz.id, 'COMMENT') }"
-        :is-edit-mode="true"
-      />
+      <QuizCard v-for="quiz of quizs" :quiz="quiz" :show-level-modal="() => { handleShowModal(quiz.id, 'LEVEL') }"
+        :show-comment-modal="() => { handleShowModal(quiz.id, 'COMMENT') }" :is-edit-mode="false" />
     </div>
 
-    <QuizLevelModal 
-      v-if="modal.quizData && modal.isShowModal && modal.type === 'LEVEL'" 
-      :quiz="modal.quizData"
-      :close-modal="handleCloseModal" 
-    />
-    <CommentModal 
-      v-if="modal.quizData && modal.isShowModal && modal.type === 'COMMENT'" 
-      :quiz="modal.quizData"
-      :close-modal="handleCloseModal"
-    />
+    <QuizLevelModal v-if="modal.quizData && modal.isShowModal && modal.type === 'LEVEL'" :quiz="modal.quizData"
+      :close-modal="handleCloseModal" />
+    <CommentModal v-if="modal.quizData && modal.isShowModal && modal.type === 'COMMENT'" :quiz="modal.quizData"
+      :close-modal="handleCloseModal" />
   </section>
 </template>
 
