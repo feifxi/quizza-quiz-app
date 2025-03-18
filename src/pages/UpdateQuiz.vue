@@ -42,7 +42,7 @@ const addMoreQuiz = () => {
 
 const handleUpdateGame = async () => {
   if (!isQuizDataValid()) return alert("Plase fill all the input");
-
+  quizData.value.status = 'pending'
   const res = await updateQuiz(quizData.value.id, quizData.value);
   if (res.success) {
     alert(res.message);

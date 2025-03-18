@@ -33,7 +33,7 @@ const handleApproveQuiz = async () => {
             <button v-if="isAdmin && quiz.status == 'pending'" class="bg-yellow-300 p-2 cursor-pointer"
                 @click="handleApproveQuiz">Approve</button>
             <RouterLink :to="{ name: 'update', params: { quizId: quiz.id } }" class="bg-green-500 p-2 cursor-pointer">
-                Edit
+                {{ isAdmin ? 'Preview' : 'Edit' }}
             </RouterLink>
             <button class="bg-red-500 p-2 cursor-pointer" @click="handleDeleteQuiz">Delete</button>
         </div>
@@ -43,6 +43,9 @@ const handleApproveQuiz = async () => {
             <div class="p-3">
                 <p class="text-xl font-bold text-wrap">
                     {{ quiz.title }}
+                </p>
+                <p v-if="isEditMode && isAdmin" class="font-bold text-wrap">
+                    By {{ quiz.createBy.userName }}
                 </p>
                 <p class="font-bold text-wrap">
                     👍 {{ quiz.reactions.length > 999 ? "999+" : quiz.reactions.length }}

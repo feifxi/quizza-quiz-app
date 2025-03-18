@@ -20,7 +20,7 @@
   "quizs": [
     {
       "id": "2c3d",
-      "title": "test1",
+      "title": "test22",
       "thumbnail": "",
       "description": "test1",
       "createBy": {
@@ -114,7 +114,7 @@
     },
     {
       "id": "4b37",
-      "title": "jeno1",
+      "title": "jeno12",
       "thumbnail": "",
       "description": "jeno1",
       "createBy": {
@@ -124,7 +124,7 @@
         "password": "123",
         "role": "user"
       },
-      "status": "publish",
+      "status": "pending",
       "reactions": [],
       "comments": [],
       "adminComments": [],
