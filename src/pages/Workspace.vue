@@ -66,7 +66,7 @@ onBeforeMount(async () => {
       if (UsedRole === 'admin') {
         return quiz.status === 'publish';
       } else {
-        return quiz.status === 'publish' && quiz.createBy.id === usedUser.value;
+        return quiz.createBy.id === usedUser.value;
       }
     })
   } catch (error) {
