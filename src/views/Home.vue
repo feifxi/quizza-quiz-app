@@ -64,7 +64,7 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <div v-if="isLoading">
+  <div v-if="isLoading && !quizs">
     Loading...
   </div>
 
