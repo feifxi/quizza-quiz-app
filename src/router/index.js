@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "@/pages/Home.vue";
-import SignUp from "@/pages/SignUp.vue";
-import SignIn from "@/pages/SignIn.vue";
-import LeaderBoard from "@/pages/LeaderBoard.vue";
-import CreateGame from "@/pages/CreateQuiz.vue";
-import EditGame from "@/pages/UpdateQuiz.vue";
-import Workspace from "@/pages/Workspace.vue";
-import PlayQuiz from "@/pages/PlayQuiz.vue";
+import Home from "@/views/Home.vue";
+import SignUp from "@/views/SignUp.vue";
+import SignIn from "@/views/SignIn.vue";
+import LeaderBoard from "@/views/LeaderBoard.vue";
+import CreateGame from "@/views/CreateQuiz.vue";
+import EditGame from "@/views/UpdateQuiz.vue";
+import Workspace from "@/views/Workspace.vue";
+import PlayQuiz from "@/views/PlayQuiz.vue";
 import { useAuthStore } from "@/stores/user";
 
 const router = createRouter({

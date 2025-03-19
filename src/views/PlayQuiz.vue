@@ -1,21 +1,38 @@
-<script setup>
-import { getAllQuizs, getQuizById, patchQuiz } from '@/api/quizsAPI';
+<script>
+import {
+  getAllQuizs,
+  getQuizById,
+  patchQuiz
+} from '@/api/quizsAPI';
 import Button from '@/components/Button.vue';
 import MultiChoiceImgQuiz from '@/components/quiz_templates/playing/MultiChoiceImgQuiz.vue';
 import MultiChoiceTextQuiz from '@/components/quiz_templates/playing/MultiChoiceTextQuiz.vue';
-import { useAuthStore } from '@/stores/user';
-import { computed, onBeforeMount, reactive, ref } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import {
+  useAuthStore
+} from '@/stores/user';
+import {
+  computed,
+  onBeforeMount,
+  onBeforeUnmount,
+  reactive,
+  ref
+} from 'vue';
+import {
+  useRoute,
+  useRouter
+} from 'vue-router';
 const route = useRoute();
 const router = useRouter();
 const authStore = useAuthStore();
-const { quizId } = route.params
-
+const {
+  quizId
+} = route.params
 
 const quizData = ref(null)
 const isLoading = ref(false)
 const currentLevel = ref(0)
 const currentScore = ref(0)
+const isDone = ref(false)
 
 const fetchQuiz = async () => {
   try {
@@ -29,16 +46,24 @@ const fetchQuiz = async () => {
 }
 
 const handleMoveToNextLevel = async () => {
-  currentLevel.value = currentLevel.value + 1
+  if (currentLevel.value < quizData.value.levels.length - 1) {
+    currentLevel.value = currentLevel.value + 1;
+    isDone.value = false;
+  } else {
+    isDone.value = true;
+  }
 
-  if (currentLevel.value === quizData.value.levels.length) {
+  if (currentLevel.value === quizData.value.levels.length - 1 && isDone.value === true) {
     // Get the latest quiz data
     const res = await getQuizById(quizData.value.id)
     if (res.success) {
       const latestProgess = res.data.playerProgress
       // If progress of player is existed update the existed data but if not push the new data
       const progressIdx = latestProgess.findIndex((progress) => progress.userId === authStore.authUser.id)
-      const newProgress = { userId: authStore.authUser.id, star: currentScore.value }
+      const newProgress = {
+        userId: authStore.authUser.id,
+        star: currentScore.value
+      }
       if (progressIdx >= 0) {
         // console.log('replace')
         latestProgess[progressIdx] = newProgress
@@ -47,9 +72,16 @@ const handleMoveToNextLevel = async () => {
         latestProgess.push(newProgress)
         // console.log(latestProgess)
       }
-      const result = await patchQuiz(quizData.value.id, { playerProgress: latestProgess })
+      const result = await patchQuiz(quizData.value.id, {
+        playerProgress: latestProgess
+      })
       alert('End Game!! - saved data')
-      router.push({ name: 'home', query: { quizId: quizData.value.id } })
+      router.push({
+        name: 'home',
+        query: {
+          quizId: quizData.value.id
+        }
+      })
     }
   }
 }
@@ -61,7 +93,6 @@ const increaseScore = () => {
 onBeforeMount(async () => {
   await fetchQuiz()
 });
-
 </script>
 
 <template>
