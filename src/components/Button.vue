@@ -1,14 +1,14 @@
 <script setup>
 defineProps({
   label: String,
-  type: String,
-  click: Function
+  click: Function,
+  className: String,
 })
 </script>
 
 <template>
   <button @click="click"
-    class=" px-4 py-2 bg-green-600 rounded-xl text-white  active:bg-green-800  active:tranform active:scale-[0.9] transition-all  cursor-pointer ">
+    :class="' hover:scale-105 active:scale-100 border-b-3 border-green-600 px-4 py-2 font-bold rounded-xl text-white bg-green-500 active:bg-green-600 transition-all cursor-pointer ' + className">
     {{ label }}
   </button>
 </template>

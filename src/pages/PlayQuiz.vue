@@ -29,9 +29,9 @@ const fetchQuiz = async () => {
 }
 
 const handleMoveToNextLevel = async () => {
-  currentLevel.value = currentLevel.value + 1
+  
 
-  if (currentLevel.value === quizData.value.levels.length) {
+  if (currentLevel.value + 1 === quizData.value.levels.length) {
     // Get the latest quiz data
     const res = await getQuizById(quizData.value.id)
     if (res.success) {
@@ -48,9 +48,11 @@ const handleMoveToNextLevel = async () => {
         // console.log(latestProgess)
       }
       const result = await patchQuiz(quizData.value.id, { playerProgress: latestProgess })
-      alert('End Game!! - saved data')
+      alert('End Game!! - You achive ' + currentScore.value + ' Star! ⭐')
       router.push({ name: 'home', query: { quizId: quizData.value.id } })
     }
+  } else {
+    currentLevel.value = currentLevel.value + 1
   }
 }
 
@@ -68,12 +70,14 @@ onBeforeMount(async () => {
   <div v-if="isLoading">
     Loading...
   </div>
-  <section v-else>
-    <h1 class="text-3xl font-bold">Play Quiz : {{ quizId }}</h1>
-    <h1 class="font-bold">Level : {{ (currentLevel + 1) + "/" + quizData.levels.length }}</h1>
-    <h1 class="font-bold">Score : {{ currentScore }}</h1>
 
+  <section v-else class="p-3">
     <div>
+      <h2 class="text-2xl font-bold">Question : {{ (currentLevel + 1) + " / " + quizData.levels.length }}</h2>
+      <h2 class="font-bold">Current Score : {{ currentScore + '⭐'}}</h2>
+    </div>
+
+    <div class="mt-2">
       <MultiChoiceTextQuiz v-if="quizData.levels[currentLevel]?.template === 'Multiple-choice-text'"
         :level-data="quizData.levels[currentLevel]" :increase-score="increaseScore" :go-next="handleMoveToNextLevel" />
     </div>
