@@ -26,7 +26,7 @@ const modal = reactive({
 })
 
 // check Username and Role
-console.log("user : " + testUser + " role : " + UsedRole)
+// console.log("user : " + testUser + " role : " + UsedRole)
 
 
 
