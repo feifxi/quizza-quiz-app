@@ -123,7 +123,7 @@ const isQuizDataValid = () => {
 
     <!-- Template -->
     <div class="mx-auto mt-5 flex flex-col max-w-xl gap-4">
-      <div v-for="(level, index) of quizData.levels" class="relative bg-white border border-neutral-300 p-3 rounded-xl">
+      <div v-for="(level, index) of quizData.levels" class="relative bg-white border border-neutral-300 p-3 rounded-xl shadow">
         <span v-if="quizData.levels.length > 1" @click="() => handleRemoveLevel(level)"
           class="absolute right-0 top-0 cursor-pointer p-2 bg-red-500 rounded-tr-xl rounded-bl-xl">
           <Icon name="close"></Icon>
