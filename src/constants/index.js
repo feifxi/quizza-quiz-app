@@ -8,7 +8,7 @@ export const QUiZ_TEMPLATES_TYPE = [
     value: "Multiple-choice-image",
   },
   {
-    label: "เกมโยงเส้น",
+    label: "เกมจับคู่",
     value: "Matched",
   },
 ];
