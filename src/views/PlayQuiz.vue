@@ -5,6 +5,7 @@ import {
   patchQuiz
 } from '@/api/quizsAPI';
 import Button from '@/components/Button.vue';
+import Icon from '@/components/Icon.vue';
 import MultiChoiceImgQuiz from '@/components/quiz_templates/playing/MultiChoiceImgQuiz.vue';
 import MultiChoiceTextQuiz from '@/components/quiz_templates/playing/MultiChoiceTextQuiz.vue';
 import {
@@ -69,11 +70,15 @@ const handleMoveToNextLevel = async () => {
       }
       const result = await patchQuiz(quizData.value.id, { playerProgress: latestProgess })
       alert('End Game!! - You achive ' + currentScore.value + ' Star! ⭐')
-      router.push({ name: 'home', query: { quizId: quizData.value.id } })
+      handleBackHome()
     }
   } else {
     currentLevel.value = currentLevel.value + 1
   }
+}
+
+const handleBackHome = () => {
+  router.push({ name: 'home', query: { quizId: quizData.value.id } })
 }
 
 const increaseScore = () => {
@@ -91,7 +96,12 @@ onBeforeMount(async () => {
   </div>
 
   <section v-else class="p-3">
-    <div>
+    <div class="relative">
+      <span class="absolute right-5 flex items-center gap-3 cursor-pointer" @click="handleBackHome">
+        <Icon name="back" class-name="fill-black size-8"></Icon>
+        <p class="text-xl font-bold">Back to home</p>
+      </span>
+
       <h2 class="text-2xl font-bold">Question : {{ (currentLevel + 1) + " / " + quizData.levels.length }}</h2>
       <h2 class="font-bold">Current Score : {{ currentScore + '⭐'}}</h2>
     </div>

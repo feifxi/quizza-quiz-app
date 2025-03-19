@@ -2,6 +2,7 @@
 import { useAuthStore } from "@/stores/user";
 import { ref, watch } from "vue";
 import { useRoute } from "vue-router";
+import Icon from "./Icon.vue";
 const { quiz } = defineProps({
     quiz: Object,
     closeModal: Function,
@@ -15,8 +16,10 @@ const playerProgress = quiz.playerProgress.find((history) => history.userId === 
 
 <template>
     <div class="fixed top-0 left-0 bg-black/80 w-full h-screen flex items-center justify-center">
-        <div class="relative bg-white w-full max-w-2xl max-h-3/4 p-6 pr-10 rounded-xl flex">
-            <span class="absolute top-4 right-4 cursor-pointer" @click="closeModal">X</span>
+        <div class="relative bg-white w-full max-w-2xl max-h-3/4 p-6 pr-15 rounded-xl flex">
+            <span class="absolute top-4 right-4 cursor-pointer" @click="closeModal">
+                <Icon name="close" class-name="fill-black"></Icon>
+            </span>
             <!-- Quiz Info -->
             <div class="flex-1 relative">
                 <span class="absolute right-3 shadow p-2 font-bold rounded-full transition-all hover:scale-105">
@@ -34,7 +37,7 @@ const playerProgress = quiz.playerProgress.find((history) => history.userId === 
                 </p>
             </div>
             <!-- Level -->
-            <div class="flex-1 flex flex-col p-3 items-center gap-2 border-l-3 border-neutral-300 max-w-50 overflow-y-scroll">
+            <div class="flex-1 flex flex-col p-3 items-center gap-2 border-l-3 border-neutral-300 max-w-55 overflow-y-scroll">
                 <div v-for="(level, index) of quiz.levels" :class="index % 2 == 0 ? 'self-end' : 'self-start'">
                     <RouterLink :to="index > 0
                         ? { name: 'home', query: { quizId: quiz.id } }

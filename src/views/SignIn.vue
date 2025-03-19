@@ -1,5 +1,6 @@
 <script setup>
 import { getAllUsers } from "@/api/usersAPI";
+import Button from "@/components/Button.vue";
 import { useAuthStore } from "@/stores/user";
 import { reactive } from "vue";
 import { useRouter } from "vue-router";
@@ -38,25 +39,21 @@ const signIn = async (e) => {
 </script>
 
 <template>
-  <section class="">
-    <h1 class="text-3xl font-bold">Sign In</h1>
-
-    <div class="max-w-3xl p-3 bg-neutral-100">
-      <form @submit="signIn">
-        <div class="gap-3">
-          <div class="flex flex-col">
-            <label for="">Email</label>
-            <input type="text" class="input" v-model="userData.email" />
-          </div>
-          <div class="flex flex-col">
-            <label for="">Password</label>
-            <input type="text" class="input" v-model="userData.password" />
-          </div>
+  <section class="max-w-xl mx-auto bg-white p-3 mt-5 rounded-xl shadow">
+    <h1 class="text-3xl font-bold text-center">Sign In</h1>
+    <div class="max-w-3xl p-3">
+      <form @submit="signIn" class="flex flex-col gap-3">
+        <div class="flex flex-col">
+          <label class="text-gray-900 font-bold">Email</label>
+          <input type="text" class="input" v-model="userData.email" />
+        </div>
+        
+        <div class="flex flex-col">
+          <label class="text-gray-900 font-bold">Password</label>
+          <input type="text" class="input" v-model="userData.password" />
         </div>
 
-        <button class="bg-black text-white p-3" @click="signIn">
-          create account
-        </button>
+        <Button label="Sign In" :click="signIn"></Button>
       </form>
     </div>
   </section>
