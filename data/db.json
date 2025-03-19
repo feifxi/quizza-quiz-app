@@ -37,7 +37,7 @@
       "playerProgress": [
         {
           "userId": "e2db",
-          "star": 3
+          "star": 2
         }
       ],
       "levels": [
@@ -109,12 +109,35 @@
               "isAns": false
             }
           ]
+        },
+        {
+          "template": "Multiple-choice-text",
+          "question": "who the most stupid",
+          "questionImage": "",
+          "choices": [
+            {
+              "value": "jeno",
+              "isAns": true
+            },
+            {
+              "value": "fei",
+              "isAns": false
+            },
+            {
+              "value": "fei",
+              "isAns": false
+            },
+            {
+              "value": "fei",
+              "isAns": false
+            }
+          ]
         }
       ]
     },
     {
-      "id": "4b37",
-      "title": "jeno12",
+      "id": "c629",
+      "title": "jeno1",
       "thumbnail": "",
       "description": "jeno1",
       "createBy": {
@@ -124,125 +147,36 @@
         "password": "123",
         "role": "user"
       },
-      "status": "pending",
+      "status": "publish",
       "reactions": [],
       "comments": [],
       "adminComments": [],
       "playerProgress": [
         {
           "userId": "e2db",
-          "star": 3
+          "star": 1
         }
       ],
       "levels": [
         {
           "template": "Multiple-choice-text",
-          "question": "true?",
+          "question": "jeno1",
           "questionImage": "",
           "choices": [
             {
-              "value": "true",
+              "value": "jeno1",
               "isAns": true
             },
             {
-              "value": "false",
+              "value": "jeno1",
               "isAns": false
             },
             {
-              "value": "f",
+              "value": "jeno1",
               "isAns": false
             },
             {
-              "value": "no",
-              "isAns": false
-            }
-          ]
-        },
-        {
-          "template": "Multiple-choice-text",
-          "question": "false?",
-          "questionImage": "",
-          "choices": [
-            {
-              "value": "false",
-              "isAns": true
-            },
-            {
-              "value": "true",
-              "isAns": false
-            },
-            {
-              "value": "t",
-              "isAns": false
-            },
-            {
-              "value": "yes",
-              "isAns": false
-            }
-          ]
-        },
-        {
-          "template": "Multiple-choice-text",
-          "question": "hello",
-          "questionImage": "",
-          "choices": [
-            {
-              "value": "world",
-              "isAns": true
-            },
-            {
-              "value": "you",
-              "isAns": false
-            },
-            {
-              "value": "two",
-              "isAns": false
-            },
-            {
-              "value": "bye",
-              "isAns": false
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "b9de",
-      "title": "11",
-      "thumbnail": "",
-      "description": "11",
-      "createBy": {
-        "id": "263c",
-        "email": "jeno",
-        "userName": "jeno",
-        "password": "123",
-        "role": "user"
-      },
-      "status": "pending",
-      "reactions": [],
-      "comments": [],
-      "adminComments": [],
-      "playerProgress": [],
-      "levels": [
-        {
-          "template": "Multiple-choice-text",
-          "question": "111",
-          "questionImage": "11",
-          "choices": [
-            {
-              "value": "11",
-              "isAns": true
-            },
-            {
-              "value": "111",
-              "isAns": false
-            },
-            {
-              "value": "11",
-              "isAns": false
-            },
-            {
-              "value": "11",
+              "value": "jeno1",
               "isAns": false
             }
           ]
