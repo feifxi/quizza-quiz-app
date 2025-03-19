@@ -29,8 +29,7 @@ const handleApproveQuiz = async () => {
 </script>
 
 <template>
-    <div
-        :class="'relative border-2 border-neutral-300 rounded-xl shadow-2xl transition-all ' + (isEditMode ? '' : 'hover:scale-105')">
+    <div :class="'relative border-2 border-neutral-300 rounded-xl shadow-2xl transition-all ' + (isEditMode ? '' : 'hover:scale-105')">
         <div v-if="isEditMode" class="absolute right-3 top-3 flex flex-col items-end gap-2">
             <div class="flex gap-2">
                 <RouterLink :to="{ name: 'update', params: { quizId: quiz.id } }">
