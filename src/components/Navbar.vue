@@ -17,7 +17,7 @@ const logout = () => {
         <nav v-if="authStore.isAuthenticated" class="flex items-center gap-5">
             <RouterLink to="/workspace" class="hover:underline cursor-pointer">Workspace</RouterLink>
             <RouterLink to="/leaderboard" class="hover:underline cursor-pointer">Leaderboard</RouterLink>
-            <p class="p-1 border-2  border-white size-10 rounded-full flex items-center justify-center">{{ authStore.authUser.userName }}</p>
+            <RouterLink to="/profile" class="p-1 border-2  border-white size-10 rounded-full flex items-center justify-center">{{ authStore.authUser.userName }}</RouterLink>
             <button @click="logout" class="hover:underline cursor-pointer">Logout</button>
         </nav>
         <nav v-else class="flex gap-5">
