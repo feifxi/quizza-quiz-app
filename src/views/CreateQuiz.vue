@@ -58,6 +58,40 @@ const addMoreQuiz = () => {
   quizData.levels.push(newLevel);
 };
 
+const handleChangeTemplate = (templateType, levelIndex) => {
+  const multiChoiceLevel = {
+    template: templateType,
+    question: "",
+    questionImage: "",
+    choices: [
+      { value: "", isAns: true, paired: "" },
+      { value: "", isAns: false, paired: "" },
+      { value: "", isAns: false, paired: "" },
+      { value: "", isAns: false, paired: "" }
+    ],
+  };
+
+  const matchedLevel = {
+    template: templateType,
+    question: "",
+    questionImage: "",
+    choices: [
+      { key: "", pair: "", selectedPair: "" },
+      { key: "", pair: "", selectedPair: "" },
+      { key: "", pair: "", selectedPair: "" },
+      { key: "", pair: "", selectedPair: "" }
+    ],
+  };
+
+  if (templateType === 'Multiple-choice-text' || templateType === "Multiple-choice-image") {
+    quizData.levels[levelIndex] = multiChoiceLevel
+
+  } else if (templateType === "Matched") {
+    quizData.levels[levelIndex] = matchedLevel
+
+  }  
+}
+
 const handleCreateGame = async () => {
   if (!isQuizDataValid()) return alert("Plase fill all the input");
 
@@ -148,9 +182,7 @@ const isQuizDataValid = () => {
         <!-- Template options -->
         <div class="flex flex-col gap-2 mt-3 pb-4 border-b-2 border-neutral-300">
           <label class="font-bold">Choose Template :</label>
-          <select class="bg-gray-50 border border-gray-300 p-2 rounded font-bold" @change="
-            (e) => level['template'] = e.target.value
-          ">
+          <select class="bg-gray-50 border border-gray-300 p-2 rounded font-bold" @change="(e) => { handleChangeTemplate(e.target.value, index) }">
             <option v-for="template in QUiZ_TEMPLATES_TYPE" :value="template.value" :key="template.value"
               class="font-bold">
               {{ template.label }}
