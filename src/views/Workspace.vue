@@ -5,7 +5,7 @@ import { onBeforeMount, ref, reactive } from 'vue';
 import { RouterLink } from 'vue-router';
 import QuizCard from '@/components/QuizCard.vue';
 import CommentModal from '@/components/CommentModal.vue';
-
+import Button from '@/components/Button.vue';
 
 // quizz of admin and user
 const authStore = useAuthStore()
@@ -34,18 +34,18 @@ const modal = reactive({
 
 
 let state = ref(true);
-let stateClass1
-let stateClass2 = 'border-red-300 border-1 px-1'
+let stateClass1 = 'px-1 pb-2'
+let stateClass2 = 'border-green-500 border-b-2 px-1 pb-2'
 const headAdmin = (data) => {
   if (data === 'admin') {
     state.value = false
-    stateClass1 = 'border-red-300 border-1 px-1'
-    stateClass2 = ''
+    stateClass1 = 'border-green-500 border-b-2 px-1 pb-2'
+    stateClass2 = 'px-1 pb-2'
   }
   if (data === 'workspace') {
     state.value = true
-    stateClass2 = 'border-red-300 border-1 px-1'
-    stateClass1 = ''
+    stateClass2 = 'border-green-500 border-b-2 px-1 pb-2'
+    stateClass1 = 'px-1 pb-2'
   }
 }
 
@@ -101,16 +101,19 @@ const handleCloseModal = () => {
 </script>
 
 <template>
-  <div class=" p-2 m-2">
-    <RouterLink to="/create" class="hover:underline cursor-pointer border-red-500 bg-green-400 border-1 p-2 rounded-xl">
-      CreateGame</RouterLink>
-  </div>
+  <div class="m-2 p-2 float-end">
+    <RouterLink to="/create">
+    <Button label="Create"></Button>
+  </RouterLink>
+  
+</div>
+  
   <div v-if="isLoading">
     Loading...
   </div>
   <!-- head for Admin -->
   <section v-else-if="UsedRole === 'admin'">
-    <div class="flex gap-3 p-3 border-b-2 border-neutral-300">
+    <div class="flex gap-3 p-3 border-neutral-300 text-3xl font-bold m-3 ">
       <button :class="stateClass2" @click="headAdmin('workspace')">WorkSpace</button>
       <button :class="stateClass1" @click="headAdmin('admin')">AdminReview</button>
     </div>
@@ -118,7 +121,6 @@ const handleCloseModal = () => {
   <!-- Addmin Review -->
   <section v-if="!state && UsedRole === 'admin'">
 
-    <h1>Game Review</h1>
     <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3 p-3">
       <QuizCard v-for="quiz of adminQuizzes" :quiz="quiz"
         :show-comment-modal="() => { handleShowModal(quiz.id, 'COMMENT') }" :is-edit-mode="true" :is-admin="true" />
@@ -128,7 +130,7 @@ const handleCloseModal = () => {
   <!-- user workspace -->
   <section v-else-if="state">
 
-    <h1>Workspace</h1>
+    <h1 v-if="UsedRole ==='user'" class="text-3xl font-bold m-3 mb-6">Workspace</h1>
     <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3 p-3">
       <QuizCard v-for="quiz of userQuizzes" :quiz="quiz"
         :show-comment-modal="() => { handleShowModal(quiz.id, 'COMMENT') }" :is-edit-mode="true" />

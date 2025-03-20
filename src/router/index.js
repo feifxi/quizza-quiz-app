@@ -8,6 +8,7 @@ import EditGame from "@/views/UpdateQuiz.vue";
 import Workspace from "@/views/Workspace.vue";
 import PlayQuiz from "@/views/PlayQuiz.vue";
 import { useAuthStore } from "@/stores/user";
+import Profiles from "@/views/Profiles.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -60,6 +61,12 @@ const router = createRouter({
       component: LeaderBoard,
       meta: { requiresAuth: false },
     },
+    {
+      path: "/profile",
+      name: "profile",
+      component: Profiles,
+      meta: { requiresAuth: true}
+    }
   ],
 });
 
