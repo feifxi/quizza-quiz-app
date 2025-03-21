@@ -33,15 +33,48 @@ const addMoreQuiz = () => {
     question: "",
     questionImage: "",
     choices: [
-      { value: "", isAns: true, paired: "" },
-      { value: "", isAns: false, paired: "" },
-      { value: "", isAns: false, paired: "" },
-      { value: "", isAns: false, paired: "" }
+      { value: "", isAns: true },
+      { value: "", isAns: false },
+      { value: "", isAns: false },
+      { value: "", isAns: false }
     ],
   };
 
   quizData.value.levels.push(newLevel);
 };
+
+const handleChangeTemplate = (templateType, levelIndex) => {
+  const multiChoiceLevel = {
+    template: templateType,
+    question: "",
+    questionImage: "",
+    choices: [
+      { value: "", isAns: true },
+      { value: "", isAns: false },
+      { value: "", isAns: false },
+      { value: "", isAns: false }
+    ],
+  };
+
+  const matchedLevel = {
+    template: templateType,
+    question: "",
+    questionImage: "",
+    choices: [
+      { key: "", pair: "", selectedPair: "" },
+      { key: "", pair: "", selectedPair: "" },
+      { key: "", pair: "", selectedPair: "" },
+      { key: "", pair: "", selectedPair: "" }
+    ],
+  };
+
+  if (templateType === 'Multiple-choice-text' || templateType === "Multiple-choice-image") {
+    quizData.value.levels[levelIndex] = multiChoiceLevel
+
+  } else if (templateType === "Matched") {
+    quizData.value.levels[levelIndex] = matchedLevel
+  }
+}
 
 const handleUpdateGame = async () => {
   if (!isQuizDataValid()) return alert("Plase fill all the input");
@@ -57,30 +90,24 @@ const handleUpdateGame = async () => {
 
 const isQuizDataValid = () => {
   // Check quiz field
-  for (const key of Object.keys(quizData)) {
-    if (!quizData[key] && key !== 'thumbnail') {
+  for (const key of Object.keys(quizData.value)) {
+    if (!quizData.value[key] && key !== 'thumbnail') {
       return false;
     }
   }
 
-  for (const level of quizData.levels) {
+  for (const level of quizData.value.levels) {
     // Check each level field
     for (const key of Object.keys(level)) {
       if ((!level[key] && level[key] === "Matched") && key !== 'questionImage') {
         return false;
       }
       if (level[key] === "Matched") {
-        for (const pair of level.choices) {
-          if (!pair.paired) {
+        for (const keyPair of level.choices) {
+          if (!keyPair.pair || !keyPair.key) {
             return false;
           }
         }
-      }
-    }
-    // Check choices of each level
-    for (const choice of level.choices) {
-      if (!choice.value) {
-        return false;
       }
     }
   }
@@ -138,7 +165,7 @@ onBeforeMount(async () => {
         <div class="flex flex-col gap-2 mt-3 pb-4 border-b-2 border-neutral-300">
           <label class="font-bold">Choose Template :</label>
           <select class="bg-gray-50 border border-gray-300 p-2 rounded font-bold"
-            @change="(e) => level.template = e.target.value" v-model="level.template">
+            @change="(e) => { handleChangeTemplate(e.target.value, index) }" v-model="level.template">
             <option v-for="template in QUiZ_TEMPLATES_TYPE" :value="template.value" :key="template.value"
               class="font-bold">
               {{ template.label }}

@@ -29,10 +29,10 @@ const quizData = reactive({
       question: "",
       questionImage: "",
       choices: [
-        { value: "", isAns: true, paired: "" },
-        { value: "", isAns: false, paired: "" },
-        { value: "", isAns: false, paired: "" },
-        { value: "", isAns: false, paired: "" }
+        { value: "", isAns: true },
+        { value: "", isAns: false },
+        { value: "", isAns: false },
+        { value: "", isAns: false }
       ],
     },
   ],
@@ -48,10 +48,10 @@ const addMoreQuiz = () => {
     question: "",
     questionImage: "",
     choices: [
-      { value: "", isAns: true, paired: "" },
-      { value: "", isAns: false, paired: "" },
-      { value: "", isAns: false, paired: "" },
-      { value: "", isAns: false, paired: "" }
+      { value: "", isAns: true },
+      { value: "", isAns: false },
+      { value: "", isAns: false },
+      { value: "", isAns: false }
     ],
   };
 
@@ -64,10 +64,10 @@ const handleChangeTemplate = (templateType, levelIndex) => {
     question: "",
     questionImage: "",
     choices: [
-      { value: "", isAns: true, paired: "" },
-      { value: "", isAns: false, paired: "" },
-      { value: "", isAns: false, paired: "" },
-      { value: "", isAns: false, paired: "" }
+      { value: "", isAns: true },
+      { value: "", isAns: false },
+      { value: "", isAns: false },
+      { value: "", isAns: false }
     ],
   };
 
@@ -88,8 +88,7 @@ const handleChangeTemplate = (templateType, levelIndex) => {
 
   } else if (templateType === "Matched") {
     quizData.levels[levelIndex] = matchedLevel
-
-  }  
+  }
 }
 
 const handleCreateGame = async () => {
@@ -119,17 +118,11 @@ const isQuizDataValid = () => {
         return false;
       }
       if (level[key] === "Matched") {
-        for (const pair of level.choices) {
-          if (!pair.paired) {
+        for (const keyPair of level.choices) {
+          if (!keyPair.pair || !keyPair.key) {
             return false;
           }
         }
-      }
-    }
-    // Check choices of each level
-    for (const choice of level.choices) {
-      if (!choice.value) {
-        return false;
       }
     }
   }
@@ -176,13 +169,14 @@ const isQuizDataValid = () => {
         <h2
           class="text-2xl font-bold bg-green-500 border-3 border-green-600 py-1 px-2 rounded-full inline-block text-white">
           Level : {{ index + 1 }}</h2>
-        <p class="text-2xl font-bold mt-2">{{ QUiZ_TEMPLATES_TYPE.find((template)=>template.value ===
-          level.template)?.label }}</p>
+        <p class="text-2xl font-bold mt-2">{{QUiZ_TEMPLATES_TYPE.find((template) => template.value ===
+          level.template)?.label}}</p>
 
         <!-- Template options -->
         <div class="flex flex-col gap-2 mt-3 pb-4 border-b-2 border-neutral-300">
           <label class="font-bold">Choose Template :</label>
-          <select class="bg-gray-50 border border-gray-300 p-2 rounded font-bold" @change="(e) => { handleChangeTemplate(e.target.value, index) }">
+          <select class="bg-gray-50 border border-gray-300 p-2 rounded font-bold"
+            @change="(e) => { handleChangeTemplate(e.target.value, index) }">
             <option v-for="template in QUiZ_TEMPLATES_TYPE" :value="template.value" :key="template.value"
               class="font-bold">
               {{ template.label }}

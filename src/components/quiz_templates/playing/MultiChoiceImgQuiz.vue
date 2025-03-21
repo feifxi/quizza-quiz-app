@@ -18,7 +18,7 @@ const handleChooseChoice = (isCorrect) => {
 }
 
 const shuffleChoices = (levelData) => {
-  return random(levelData);
+  return random(levelData.choices);
 };
 </script>
 <template>

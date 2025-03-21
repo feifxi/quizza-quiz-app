@@ -19,14 +19,14 @@ const handleChooseChoice = (isCorrect) => {
 }
 
 const shuffleChoices = (levelData) => {
-  return random(levelData);
+  return random(levelData.choices);
 };
 </script>
 <template>
   <div class="border border-black p-3">
     <h2 class="font-bold"> {{ levelData.question }}</h2>
 
-    <div class=" grid grid-cols-2 gap-3">
+    <div class="grid grid-cols-2 gap-3">
       <button v-for="choice of shuffleChoices(levelData)" class="border border-black p-3 cursor-pointer"
         @click="() => { handleChooseChoice(choice.isAns) }">
         {{ choice.value }}

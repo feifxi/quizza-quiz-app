@@ -8,6 +8,7 @@ import Button from '@/components/Button.vue';
 import Icon from '@/components/Icon.vue';
 import MultiChoiceImgQuiz from '@/components/quiz_templates/playing/MultiChoiceImgQuiz.vue';
 import MultiChoiceTextQuiz from '@/components/quiz_templates/playing/MultiChoiceTextQuiz.vue';
+import MatchedQuiz from '@/components/quiz_templates/playing/MatchedQuiz.vue';
 import {
   useAuthStore
 } from '@/stores/user';
@@ -47,8 +48,6 @@ const fetchQuiz = async () => {
 }
 
 const handleMoveToNextLevel = async () => {
-  
-
   if (currentLevel.value + 1 === quizData.value.levels.length) {
     // Get the latest quiz data
     const res = await getQuizById(quizData.value.id)
@@ -103,15 +102,19 @@ onBeforeMount(async () => {
       </span>
 
       <h2 class="text-2xl font-bold">Question : {{ (currentLevel + 1) + " / " + quizData.levels.length }}</h2>
-      <h2 class="font-bold">Current Score : {{ currentScore + '⭐'}}</h2>
+      <h2 class="font-bold">Current Score : {{ currentScore + '⭐' }}</h2>
     </div>
 
     <div class="mt-2">
       <MultiChoiceTextQuiz v-if="quizData.levels[currentLevel]?.template === 'Multiple-choice-text'"
         :level-data="quizData.levels[currentLevel]" :increase-score="increaseScore" :go-next="handleMoveToNextLevel" />
     </div>
-    <div>
+    <div class="mt-2">
       <MultiChoiceImgQuiz v-if="quizData.levels[currentLevel]?.template === 'Multiple-choice-image'"
+        :level-data="quizData.levels[currentLevel]" :increase-score="increaseScore" :go-next="handleMoveToNextLevel" />
+    </div>
+    <div class="mt-2">
+      <MatchedQuiz v-if="quizData.levels[currentLevel]?.template === 'Matched'"
         :level-data="quizData.levels[currentLevel]" :increase-score="increaseScore" :go-next="handleMoveToNextLevel" />
     </div>
   </section>
