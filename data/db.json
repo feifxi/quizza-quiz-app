@@ -6,7 +6,7 @@
       "userName": "fei",
       "password": "123",
       "role": "admin",
-      "star": 0
+      "profilePic": "https://snworksceo.imgix.net/dth/84e832cc-b853-40d1-bcf9-bd0d2aae2bec.sized-1000x1000.png?w=1000"
     },
     {
       "id": "263c",
@@ -14,7 +14,7 @@
       "userName": "jeno",
       "password": "123",
       "role": "user",
-      "star": 0
+      "profilePic": ""
     },
     {
       "id": "736a",
@@ -22,7 +22,7 @@
       "userName": "guy",
       "password": "123",
       "role": "user",
-      "star": 0
+      "profilePic": ""
     },
     {
       "id": "065e",
@@ -30,7 +30,7 @@
       "userName": "yorch",
       "password": "123",
       "role": "user",
-      "star": 0
+      "profilePic": ""
     }
   ],
   "quizs": [

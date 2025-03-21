@@ -17,7 +17,16 @@ const logout = () => {
         <nav v-if="authStore.isAuthenticated" class="flex items-center gap-5">
             <RouterLink to="/workspace" class="hover:underline cursor-pointer">Workspace</RouterLink>
             <RouterLink to="/leaderboard" class="hover:underline cursor-pointer">Leaderboard</RouterLink>
-            <RouterLink to="/profile" class="p-1 border-2  border-white size-10 rounded-full flex items-center justify-center">{{ authStore.authUser.userName }}</RouterLink>
+            <RouterLink to="/profile">
+                <div class="flex items-center gap-1">
+                    <!-- <p class="text-black">{{ authStore.authUser.userName }}</p> -->
+                    <img 
+                        :src="authStore.authUser.profilePic || 'https://img.myloview.com/posters/default-avatar-profile-icon-vector-social-media-user-photo-700-205577532.jpg'" 
+                        alt="profilepic"
+                        class="border-white border-2 size-10 rounded-full"
+                    >
+                </div>
+            </RouterLink>
             <button @click="logout" class="hover:underline cursor-pointer">Logout</button>
         </nav>
         <nav v-else class="flex gap-5">

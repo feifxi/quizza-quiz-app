@@ -50,6 +50,7 @@ onBeforeMount(async () => {
       userName: quiz.createBy.userName,
       title: quiz.title,
       like: quiz.reactions.length,
+      thumbnail: quiz.thumbnail,
     })
   );
 });
@@ -76,7 +77,7 @@ onBeforeMount(async () => {
           <h1 class="text-xl">{{ index+1 }}</h1>
           <div>
             <img  
-              src="https://i1.sndcdn.com/artworks-9R6zUytOmPor6P2n-8tUdCw-t1080x1080.jpg" 
+              :src="user.profilePic || 'https://i1.sndcdn.com/artworks-9R6zUytOmPor6P2n-8tUdCw-t1080x1080.jpg'" 
               alt="" 
               class="w-12 h-12 rounded-full bg-gray-300"
             >
@@ -95,7 +96,11 @@ onBeforeMount(async () => {
           class="bg-white shadow-md rounded-xl p-4 flex items-center gap-4 mb-3 transition hover:scale-105">
           <h1 class="text-xl">{{ index+1 }}</h1>
           <div>
-            <img  src="" alt="" class="w-12 h-12 rounded-full bg-gray-300">
+            <img  
+              :src="quiz.thumbnail || 'https://i1.sndcdn.com/artworks-9R6zUytOmPor6P2n-8tUdCw-t1080x1080.jpg'" 
+              alt="thumbnail" 
+              class="w-12 h-12 rounded-xl bg-gray-300"
+            >
           </div>
           <div class="flex-1">
             <h2 class="font-bold text-gray-800">{{ quiz.title }}</h2>

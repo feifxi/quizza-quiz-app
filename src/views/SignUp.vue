@@ -29,7 +29,7 @@ const signUp = async (e) => {
   const res = await createUser({
     ...userData,
     role: 'user',
-    star: 0
+    profilePic: '',
   })
   alert('Create Account Success!')
 }
