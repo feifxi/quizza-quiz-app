@@ -19,7 +19,7 @@ onBeforeMount(async () => {
     Loading...
   </div>
 
-  <main v-else class="bg-neutral-100 min-h-screen">
+  <main v-else class="min-h-screen bg-gradient-to-b from-green-100 to-white">
     <Navbar />
     <RouterView />
     <!-- <Chatbot /> -->
