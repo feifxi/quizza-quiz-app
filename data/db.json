@@ -31,6 +31,14 @@
       "password": "123",
       "role": "user",
       "profilePic": ""
+    },
+    {
+      "id": "b3ce",
+      "email": "test",
+      "userName": "test",
+      "password": "test",
+      "role": "user",
+      "profilePic": ""
     }
   ],
   "quizs": [
@@ -47,7 +55,12 @@
         "role": "admin"
       },
       "status": "publish",
-      "reactions": ["e2db","263c","736a","065e"],
+      "reactions": [
+        "e2db",
+        "263c",
+        "736a",
+        "065e"
+      ],
       "comments": [],
       "adminComments": [],
       "playerProgress": [
@@ -164,7 +177,9 @@
         "role": "user"
       },
       "status": "pending",
-      "reactions": ["065e"],
+      "reactions": [
+        "065e"
+      ],
       "comments": [],
       "adminComments": [],
       "playerProgress": [
@@ -255,7 +270,9 @@
         "role": "admin"
       },
       "status": "publish",
-      "reactions": ["065e"],
+      "reactions": [
+        "065e"
+      ],
       "comments": [],
       "adminComments": [],
       "playerProgress": [
@@ -441,7 +458,7 @@
         "password": "123",
         "role": "user"
       },
-      "status": "pending",
+      "status": "publish",
       "reactions": [],
       "comments": [],
       "adminComments": [],
