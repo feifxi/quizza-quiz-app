@@ -29,7 +29,7 @@ const handleApproveQuiz = async () => {
 </script>
 
 <template>
-    <div :class="'relative border-2 border-neutral-300 rounded-xl shadow-2xl transition-all ' + (isEditMode ? '' : 'hover:scale-105')">
+    <div :class="'relative flex flex-col border-2 border-neutral-300 rounded-xl shadow-2xl transition-all ' + (isEditMode ? '' : 'hover:scale-105')">
         <div v-if="isEditMode" class="absolute right-3 top-3 flex flex-col items-end gap-2">
             <div class="flex gap-2">
                 <RouterLink :to="{ name: 'update', params: { quizId: quiz.id } }">
@@ -42,11 +42,11 @@ const handleApproveQuiz = async () => {
                 :click="handleApproveQuiz">
             </Button>        
         </div>
-        <div @click="showLevelModal" :class="isEditMode ? '' : 'cursor-pointer'">
+        <div @click="showLevelModal" :class="'flex-1 ' + (isEditMode ? '' : 'cursor-pointer')">
             <img :src="quiz.thumbnail || 'https://preview.redd.it/zozlzva328291.jpg?auto=webp&s=cc842e6ec98b8791639cbb5ec8890712bfb5f21c'"
                 alt="quiz thumbnail" class="object-cover rounded-t-xl w-full h-[200px]" />
-            <div class="p-3">
-                <p class="text-xl font-bold text-wrap">
+            <div class="p-3 flex flex-col">
+                <p class="text-xl font-bold text-wrap flex-1">
                     {{ quiz.title }}
                 </p>
                 <div class="flex items-end justify-between">
