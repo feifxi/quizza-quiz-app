@@ -123,7 +123,7 @@ const handleCloseModal = () => {
   <!-- user workspace -->
   <section v-else-if="state">
     <h1 v-if="UsedRole ==='user'" class="flex items-center gap-3 text-3xl font-bold py-3 px-6 bg-white shadow">
-      <h2>Workspace</h2>
+      <p>Workspace</p>
       <RouterLink to="/create" class="ml-auto">
         <Button label="Create"></Button>
       </RouterLink>
