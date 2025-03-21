@@ -30,16 +30,16 @@ const modal = reactive({
 // chage State By AdminRole
 let state = ref(true);
 let stateClass1 = 'px-1 pb-2'
-let stateClass2 = 'border-green-500 border-b-2 px-1 pb-2 text-green-600'
+let stateClass2 = 'border-green-500 border-b-3 px-1 pb-2 text-green-600'
 const headAdmin = (data) => {
   if (data === 'admin') {
     state.value = false
-    stateClass1 = 'border-green-500 border-b-2 px-1 pb-2 text-green-600'
+    stateClass1 = 'border-green-500 border-b-3 px-1 pb-2 text-green-600'
     stateClass2 = 'px-1 pb-2'
   }
   if (data === 'workspace') {
     state.value = true
-    stateClass2 = 'border-green-500 border-b-2 px-1 pb-2 text-green-600'
+    stateClass2 = 'border-green-500 border-b-3 px-1 pb-2 text-green-600'
     stateClass1 = 'px-1 pb-2'
   }
 }
@@ -95,24 +95,22 @@ const handleCloseModal = () => {
 
 </script>
 
-<template>
-  <div class="m-2 p-2 float-end">
-    <RouterLink to="/create">
-    <Button label="Create"></Button>
-  </RouterLink>
-  
-</div>
-  
+<template>  
   <div v-if="isLoading">
     Loading...
   </div>
   <!-- head for Admin -->
   <section v-else-if="UsedRole === 'admin'">
-    <div class="flex gap-3 p-3 border-neutral-300 text-3xl font-bold m-3 ">
+    <div class="flex gap-3 text-3xl font-bold py-3 px-6 bg-white shadow">
       <button :class="stateClass2" @click="headAdmin('workspace')">WorkSpace</button>
       <button :class="stateClass1" @click="headAdmin('admin')">AdminReview</button>
+
+      <RouterLink to="/create" class="ml-auto">
+        <Button label="Create"></Button>
+      </RouterLink>
     </div>
   </section>
+
   <!-- Addmin Review -->
   <section v-if="!state && UsedRole === 'admin'">
 
@@ -124,13 +122,22 @@ const handleCloseModal = () => {
 
   <!-- user workspace -->
   <section v-else-if="state">
-
-    <h1 v-if="UsedRole ==='user'" class="text-3xl font-bold m-3 mb-6">Workspace</h1>
+    <h1 v-if="UsedRole ==='user'" class="flex items-center gap-3 text-3xl font-bold py-3 px-6 bg-white shadow">
+      <p>Workspace</p>
+      <RouterLink to="/create" class="ml-auto">
+        <Button label="Create"></Button>
+      </RouterLink>
+    </h1>
     <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3 p-3">
       <QuizCard v-for="quiz of userQuizzes" :quiz="quiz"
         :show-comment-modal="() => { handleShowModal(quiz.id, 'COMMENT') }" :is-edit-mode="true" />
     </div>
   </section>
+
+   <!-- No Quiz -->
+  <div v-if="userQuizzes?.length === 0 || adminQuizzes?.length === 0" class="text-3xl font-bold text-neutral-400 text-center mt-10">
+    There is no quizs
+  </div>
 
   <CommentModal v-if="modal.quizData && modal.isShowModal && modal.type === 'COMMENT'" :quiz="modal.quizData"
     :close-modal="handleCloseModal" />
