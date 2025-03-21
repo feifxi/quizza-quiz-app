@@ -8,56 +8,56 @@ const { levelData } = defineProps({
         <div class="max-w-md mr-1">
             <h2 class="font-bold">Pair 1</h2>
             <div class="flex flex-col">
-                <input type="text" class="input" v-model="levelData.choices[0].value" />
+                <input type="text" class="input" v-model="levelData.choices[0].key" />
             </div>
         </div>
 
         <div class="max-w-md ml-1">
             <h2 class="font-bold">Pair 1</h2>
             <div class="flex flex-col">
-                <input type="text" class="input" v-model="levelData.choices[0].paired" />
+                <input type="text" class="input" v-model="levelData.choices[0].pair" />
             </div>
         </div>
 
         <div class="max-w-md mr-1">
             <h2 class="font-bold">Pair 2</h2>
             <div class="flex flex-col">
-                <input type="text" class="input" v-model="levelData.choices[1].value" />
+                <input type="text" class="input" v-model="levelData.choices[1].key" />
             </div>
         </div>
 
         <div class="max-w-md ml-1">
             <h2 class="font-bold">Pair 2</h2>
             <div class="flex flex-col">
-                <input type="text" class="input" v-model="levelData.choices[1].paired" />
+                <input type="text" class="input" v-model="levelData.choices[1].pair" />
             </div>
         </div>
 
         <div class="max-w-md mr-1">
             <h2 class="font-bold">Pair 3</h2>
             <div class="flex flex-col">
-                <input type="text" class="input" v-model="levelData.choices[2].value" />
+                <input type="text" class="input" v-model="levelData.choices[2].key" />
             </div>
         </div>
 
         <div class="max-w-md ml-1">
             <h2 class="font-bold">Pair 3</h2>
             <div class="flex flex-col">
-                <input type="text" class="input" v-model="levelData.choices[2].paired" />
+                <input type="text" class="input" v-model="levelData.choices[2].pair" />
             </div>
         </div>
 
         <div class="max-w-md mr-1">
             <h2 class="font-bold">Pair 4</h2>
             <div class="flex flex-col">
-                <input type="text" class="input" v-model="levelData.choices[3].value" />
+                <input type="text" class="input" v-model="levelData.choices[3].key" />
             </div>
         </div>
 
         <div class="max-w-md ml-1">
             <h2 class="font-bold">Pair 4</h2>
             <div class="flex flex-col">
-                <input type="text" class="input" v-model="levelData.choices[3].paired" />
+                <input type="text" class="input" v-model="levelData.choices[3].pair" />
             </div>
         </div>
     </div>
