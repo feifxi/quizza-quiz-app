@@ -1,15 +1,47 @@
 <script setup>
 import Button from '@/components/Button.vue';
+import { getAllQuizs } from '@/api/quizsAPI';
 import { useAuthStore } from '@/stores/user';
-import { ref } from 'vue';
+import { ref, onBeforeMount } from 'vue';
 
-const authStore = useAuthStore()
-const userUsed = ref(authStore.authUser)
-console.log(userUsed)
+const authStore = useAuthStore();
+const userUsed = ref(authStore.authUser); 
+
+const gameHasPlayed = ref(0); 
+let allGameInPlatform
+
+onBeforeMount(async () => {
+  try {
+    const res = await getAllQuizs();
+    const allGameData = res.data; // คาดว่าเป็น Array ของเกม
+    allGameInPlatform = ref(res.data.length).value
+    console.log(allGameInPlatform)
+    
+    // ตรวจสอบโครงสร้างข้อมูลก่อนใช้
+    if (Array.isArray(allGameData)) {
+      gameHasPlayed.value = allGameData.reduce((total, game) => {
+        if (Array.isArray(game.playerProgress)) {
+          return total + game.playerProgress.filter(player => player.userId === userUsed.value.id).length;
+        }
+        return total;
+      }, 0);
+    }
+
+    console.log(gameHasPlayed.value);
+  } catch (error) {
+    console.error("Error fetching quiz data:", error);
+  }
+});
 </script>
 
+
 <template>
+    
     <section class="max-w-xl mx-auto bg-white p-3 mt-5 rounded-xl shadow">
+      <!-- <div class="flex gap-3 p-3 border-neutral-300 text-3xl font-bold m-3 ">
+      <button :class="stateClass2" @click="headAdmin('workspace')">WorkSpace</button>
+      <button :class="stateClass1" @click="headAdmin('admin')">AdminReview</button>
+    </div> -->
     <div class="w-full text-center justify-items-center mb-5">
         <img
         class="rounded-full w-65 border-2"  
@@ -40,6 +72,11 @@ console.log(userUsed)
         <div class="flex flex-row">
           <label class="text-gray-900 font-bold">Star :</label>
           <p class=" mx-3">{{ userUsed.star }}</p>
+        </div>
+
+        <div class="flex flex-row">
+          <label class="text-gray-900 font-bold">Game played :</label>
+          <p class=" mx-3">{{ gameHasPlayed }} / {{ allGameInPlatform }}</p>
         </div>
         
     </div>
