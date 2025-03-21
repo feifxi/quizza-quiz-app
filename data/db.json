@@ -47,17 +47,13 @@
         "role": "admin"
       },
       "status": "publish",
-      "reactions": [],
+      "reactions": ["e2db","263c","736a","065e"],
       "comments": [],
       "adminComments": [],
       "playerProgress": [
         {
           "userId": "e2db",
           "star": 2
-        },
-        {
-          "userId": "736a",
-          "star": 3
         }
       ],
       "levels": [
@@ -168,7 +164,7 @@
         "role": "user"
       },
       "status": "pending",
-      "reactions": [],
+      "reactions": ["065e"],
       "comments": [],
       "adminComments": [],
       "playerProgress": [
@@ -259,17 +255,13 @@
         "role": "admin"
       },
       "status": "publish",
-      "reactions": [],
+      "reactions": ["065e"],
       "comments": [],
       "adminComments": [],
       "playerProgress": [
         {
           "userId": "e2db",
           "star": 1
-        },
-        {
-          "userId": "736a",
-          "star": 2
         }
       ],
       "levels": [
