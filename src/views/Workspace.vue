@@ -17,7 +17,6 @@ const userObj = authStore.authUser
 
 let UsedRole = userObj.role
 let usedUser = ref(userObj.id)
-let testUser = userObj.userName
 
 const modal = reactive({
   isShowModal: false,
@@ -25,26 +24,22 @@ const modal = reactive({
   quizData: null
 })
 
-// check Username and Role
-// console.log("user : " + testUser + " role : " + UsedRole)
 
 
 
 // chage State By AdminRole
-
-
 let state = ref(true);
 let stateClass1 = 'px-1 pb-2'
-let stateClass2 = 'border-green-500 border-b-2 px-1 pb-2'
+let stateClass2 = 'border-green-500 border-b-2 px-1 pb-2 text-green-600'
 const headAdmin = (data) => {
   if (data === 'admin') {
     state.value = false
-    stateClass1 = 'border-green-500 border-b-2 px-1 pb-2'
+    stateClass1 = 'border-green-500 border-b-2 px-1 pb-2 text-green-600'
     stateClass2 = 'px-1 pb-2'
   }
   if (data === 'workspace') {
     state.value = true
-    stateClass2 = 'border-green-500 border-b-2 px-1 pb-2'
+    stateClass2 = 'border-green-500 border-b-2 px-1 pb-2 text-green-600'
     stateClass1 = 'px-1 pb-2'
   }
 }
