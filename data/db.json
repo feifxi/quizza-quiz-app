@@ -30,7 +30,7 @@
       "userName": "yorch",
       "password": "123",
       "role": "user",
-      "profilePic": ""
+      "profilePic": "https://media-hosting.imagekit.io//997becd1048f4c4e/w644.jpg?Expires=1837197195&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=qDSs-wVg9wxi44D3jmMevjQC888CPX4hSXLSEeUq8o7s8BLP8gy6tTvp8X84tIMiunMjZCn5YledfUcoheUa~KL5dfI3Pc9deSvl0brHoSG4Q0rJXEOh9ceP8NGWbL2CiTkjISgSssUeT9VAiAyOpJL42Up4evkrRiLScKtXWP7B-DzCk02GVq2o3m3KoNFrF037EgJeFXS3ewmmQWIfajRmbfO6ibHdNTgX6u4uag2e4Iv8ogqUM1LuREKOiyay775dcz7Evq0cRoJZRBe7A8Oa~78GyAg-6m8lPJtOzIPxyLFSQETm9v066GXU4HOyfCIGMAJEJLplGJ6jWto8~A__"
     },
     {
       "id": "b3ce",
@@ -61,7 +61,41 @@
         "736a",
         "065e"
       ],
-      "comments": [],
+      "comments": [
+        {
+        "user":{
+          "id": "065e",
+          "email": "yorch",
+          "userName": "yorch",
+          "password": "123",
+          "role": "user",
+          "profilePic": "https://media-hosting.imagekit.io//997becd1048f4c4e/w644.jpg?Expires=1837197195&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=qDSs-wVg9wxi44D3jmMevjQC888CPX4hSXLSEeUq8o7s8BLP8gy6tTvp8X84tIMiunMjZCn5YledfUcoheUa~KL5dfI3Pc9deSvl0brHoSG4Q0rJXEOh9ceP8NGWbL2CiTkjISgSssUeT9VAiAyOpJL42Up4evkrRiLScKtXWP7B-DzCk02GVq2o3m3KoNFrF037EgJeFXS3ewmmQWIfajRmbfO6ibHdNTgX6u4uag2e4Iv8ogqUM1LuREKOiyay775dcz7Evq0cRoJZRBe7A8Oa~78GyAg-6m8lPJtOzIPxyLFSQETm9v066GXU4HOyfCIGMAJEJLplGJ6jWto8~A__"
+        },
+        "text":"yorchsudhod muhaha"
+        },
+        {
+        "user":{
+          "id": "736a",
+          "email": "guy",
+          "userName": "guy",
+          "password": "123",
+          "role": "user",
+          "profilePic": ""
+        },
+        "text":"ผมขอแสดงความคิดเห็นในกลุ่มนี้หน่อยนะครับ ก็ดูๆมานานละนะ แต่ก้อไม่อยากจะคอมเม้นอะไรหรอก แต่อดไม่ไหวจริงๆ เลยมาขอพูดอะไรตรงนี้หน่อยครับ ว่าจริงๆ แล้วก็อยากจะพูดแบบนี้มาตั้งนานแล้ว แต่ก้อไม่อยากเม้นหรือพูดอะไรให้มันมากเรื่อง เด้วคนอื่นจะหาว่าผมพูดมาก ก็คือ ตอนแรกๆคือดูๆผ่านๆเฉยๆ ไม่คิดอะไรมาก แต่พอเห็นเพื่อนๆ แสดงความคิดเห็นแล้ว ก็อยากที่จะแสดงความคิดเห็นในกลุ่มนี้บ้าง ขอบอกเลยว่าอยากจะบอกมานานแล้ว คือแบบทนไม่ได้แล้ว จริงๆ อยากจะคอมเม้นตั้งนานละ อยากคอมเม้นแบบยาวๆๆเลย แต่ขอเม้นแบบสั้นๆๆก็พอแระ เพราะไม่รู้จะพูดมากไปให้มันได้อะไรขึ้นมา ก็ไม่อยากยุ่งมากนักหรอกกะเรื่องพวกนี้ พอดีเป็นคนไม่ค่อยอะไรมาก ไม่อยากคอมเม้นอะไรยาวๆๆ น่ารำคาญ แต่ขอซักครั้งเถอะครับ ทนไม่ไหวละจริงๆๆ ที่อยากจะบอก แต่มันอาจจะยาวนิดนึงนะเพื่อนๆ แต่ยังไงก็ขอออกความเห็นกับเรื่องนี้บ้างเถอะ ไม่สนใจหรอกว่าใครจะว่าจะด่า คือ อยากบอกอะไรนิดหน่อย แต่ว่าก็ขี้เกียจพิมพ์อะไรมากมาย เอาเป็นว่าจะพูดแค่ สั้นๆง่ายๆ กะทัดรัด"
+        },
+        {
+        "user":{
+          "id": "263c",
+          "email": "jeno",
+          "userName": "jeno",
+          "password": "123",
+          "role": "user",
+          "profilePic": "https://scontent.fbkk29-4.fna.fbcdn.net/v/t39.30808-6/437713704_1466827230902585_1207147039720705960_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=qMR1mS8d_SoQ7kNvgHb1ZTf&_nc_oc=AdkXwu0h7Bo1o3Wnt-9Sj0MknO6oX3elpRJGNTtfI4Dwy-V90xQnJWAyrweMB4YMRpXmW91TKUqXJeE7ESceFU_u&_nc_zt=23&_nc_ht=scontent.fbkk29-4.fna&_nc_gid=Gzpt7x20jYv9RYU3QzCPNg&oh=00_AYF5cfvumCuZgnRBW5JIRgLfkfwlALV4KiYZ_fbvVKyXFg&oe=67E31C0B"
+        },
+        "text":"jeno snakeoil"
+        }
+      ],
       "adminComments": [],
       "playerProgress": [
         {
