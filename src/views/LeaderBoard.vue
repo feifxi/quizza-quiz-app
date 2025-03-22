@@ -31,7 +31,6 @@ onBeforeMount(async () => {
   await fetchAllQuizsAndUsers();
 
   let prog = listQuizData.value.flatMap((quiz) => quiz.playerProgress || []);
-  console.log("prog : ", prog);
 
   const userStar = new Map();
   prog.forEach(({ userId, star }) => {

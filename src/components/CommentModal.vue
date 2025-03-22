@@ -1,17 +1,30 @@
 <script setup>
 import { onBeforeMount, ref, watch } from "vue";
 import { useRoute } from "vue-router";
+import { useAuthStore } from "@/stores/user";
+import { patchQuiz } from "@/api/quizsAPI";
+
 
 const newComment = ref("");
+const authStore = useAuthStore();
+
 const { quiz } = defineProps({
   quiz: Object,
   closeModal: Function,
 });
 
-const handleSendComment = () => {
+const handleSendComment = async () => {
+  quiz.comments.push({
+    user: authStore.authUser,
+    text: newComment.value,
+  });
+
+  await patchQuiz(quiz.id, { comments: quiz.comments });
+
 };
 
 console.log(quiz);
+
 </script>
 
 <template>
