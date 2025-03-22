@@ -41,7 +41,7 @@ const handleLike = async () => {
         <Icon name="close" class-name="fill-black"></Icon>
       </span>
       <!-- Quiz Info -->
-      <div class="flex-1 relative">
+      <div class="flex-1 relative flex flex-col">
         <span
           class="absolute right-3 shadow p-2 font-bold rounded-full transition-all hover:scale-105">
           {{ playerProgress.star + "/" + quiz.levels.length + "⭐" }}
@@ -53,12 +53,12 @@ const handleLike = async () => {
           By : {{ quiz.createBy.userName }}
         </p>
 
-        <p class="mt-2">
+        <p class="mt-2 flex-1">
           {{ quiz.description }}
         </p>
 
         <p
-          class="flex justify-center items-center size-10 rounded-full border-2 absolute left-3 bottom-3 hover:scale-105 active:scale-120 active:bg-green-500 transition-all"
+          class="flex justify-center items-center size-10 rounded-full border-2 ml-2 mt-10 hover:scale-105 active:scale-120 active:bg-green-500 transition-all"
           :class="isLiked ? 'border-green-500' : 'border-slate-500'"
           @click="handleLike">
           <Icon name="like" :class-name="isLiked ? 'fill-green-500' : 'fill-slate-500'" />
