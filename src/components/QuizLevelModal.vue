@@ -3,6 +3,8 @@ import { useAuthStore } from "@/stores/user";
 import { ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import Icon from "./Icon.vue";
+import { patchQuiz } from "@/api/quizsAPI";
+
 const { quiz } = defineProps({
   quiz: Object,
   closeModal: Function,
@@ -13,20 +15,33 @@ const playerProgress = quiz.playerProgress.find(
   (history) => history.userId === authStore.authUser.id
 ) || { userId: authStore.authUser.id, star: 0 };
 
-const handleLike = () => {
+const isLiked = ref(quiz.reactions.includes(authStore.authUser.id));
+
+const checkIsLike = () => {
+  if(isLiked.value){
+    quiz.reactions = quiz.reactions.filter(uid => uid !== authStore.authUser.id)
+  }else{
+    quiz.reactions.push(authStore.authUser.id)
+  }
 }
+
+const handleLike = async () => {
+  checkIsLike()
+  await patchQuiz(quiz.id,{reactions:quiz.reactions})
+
+};
 </script>
 
 <template>
   <div
     class="fixed top-0 left-0 bg-black/80 w-full h-screen flex items-center justify-center">
     <div
-      class="relative bg-white w-full max-w-2xl max-h-3/4 p-6 pr-15 rounded-xl min-h-1/2 flex">
+      class="relative bg-white w-full max-w-2xl max-h-3/4 p-6 pr-15 rounded-xl flex">
       <span class="absolute top-4 right-4 cursor-pointer" @click="closeModal">
         <Icon name="close" class-name="fill-black"></Icon>
       </span>
       <!-- Quiz Info -->
-      <div class="flex-1 relative pb-20">
+      <div class="flex-1 relative">
         <span
           class="absolute right-3 shadow p-2 font-bold rounded-full transition-all hover:scale-105">
           {{ playerProgress.star + "/" + quiz.levels.length + "⭐" }}
@@ -43,11 +58,11 @@ const handleLike = () => {
         </p>
 
         <p
-          class="flex justify-center items-center size-10 rounded-full border-2 border-green-500 absolute left-3 bottom-3 hover:scale-110 transition-all"
-          @click="handleLike"
-          >
-          <Icon name="like" class-name=" fill-green-500" />
-        </p>
+          class="flex justify-center items-center size-10 rounded-full border-2 absolute left-3 bottom-3 hover:scale-105 active:scale-120 active:bg-green-500 transition-all"
+          :class="isLiked ? 'border-green-500' : 'border-slate-500'"
+          @click="handleLike">
+          <Icon name="like" :class-name="isLiked ? 'fill-green-500' : 'fill-slate-500'" />
+        </p> 
       </div>
       <!-- Level -->
       <div
