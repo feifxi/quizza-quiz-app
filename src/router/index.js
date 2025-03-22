@@ -9,6 +9,7 @@ import Workspace from "@/views/Workspace.vue";
 import PlayQuiz from "@/views/PlayQuiz.vue";
 import { useAuthStore } from "@/stores/user";
 import Profiles from "@/views/Profiles.vue";
+import EditProfiles from "@/views/EditProfiles.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -65,6 +66,12 @@ const router = createRouter({
       path: "/profile",
       name: "profile",
       component: Profiles,
+      meta: { requiresAuth: true}
+    },
+    {
+      path: "/editprofile",
+      name: "editprofile",
+      component: EditProfiles,
       meta: { requiresAuth: true}
     }
   ],
