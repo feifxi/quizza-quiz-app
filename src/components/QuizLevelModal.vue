@@ -21,12 +21,12 @@ const handleLike = () => {
   <div
     class="fixed top-0 left-0 bg-black/80 w-full h-screen flex items-center justify-center">
     <div
-      class="relative bg-white w-full max-w-2xl max-h-3/4 p-6 pr-15 rounded-xl flex">
+      class="relative bg-white w-full max-w-2xl max-h-3/4 p-6 pr-15 rounded-xl min-h-1/2 flex">
       <span class="absolute top-4 right-4 cursor-pointer" @click="closeModal">
         <Icon name="close" class-name="fill-black"></Icon>
       </span>
       <!-- Quiz Info -->
-      <div class="flex-1 relative">
+      <div class="flex-1 relative pb-20">
         <span
           class="absolute right-3 shadow p-2 font-bold rounded-full transition-all hover:scale-105">
           {{ playerProgress.star + "/" + quiz.levels.length + "⭐" }}
