@@ -6,6 +6,7 @@ import QuizCard from '@/components/QuizCard.vue';
 import { RouterLink } from 'vue-router';
 import Button from '@/components/Button.vue';
 
+
 const authStore = useAuthStore();
 const userUsed = ref(authStore.authUser);
 const gameHasPlayed = ref(0);
