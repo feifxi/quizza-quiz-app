@@ -96,13 +96,13 @@ onBeforeMount(async () => {
 
   <section v-else class="p-3">
     <div class="relative">
-      <span class="absolute right-5 flex items-center gap-3 cursor-pointer" @click="handleBackHome">
-        <Icon name="back" class-name="fill-black size-8"></Icon>
-        <p class="text-xl font-bold">Back to home</p>
-      </span>
+      <Button label="Back to home" class="absolute right-5" @click="handleBackHome">
+      </Button>
 
-      <h2 class="text-2xl font-bold">Question : {{ (currentLevel + 1) + " / " + quizData.levels.length }}</h2>
-      <h2 class="font-bold">Current Score : {{ currentScore + '⭐' }}</h2>
+      <div class="w-3xs p-3 border rounded-2xl border-green-600 bg-green-500 text-white">
+        <h2 class="text-2xl font-bold">Question : {{ (currentLevel + 1) + " / " + quizData.levels.length }}</h2>
+        <h2 class="font-bold">Current Score : {{ currentScore + '⭐' }}</h2>
+      </div>
     </div>
 
     <div class="mt-2">

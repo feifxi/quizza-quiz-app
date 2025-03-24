@@ -84,21 +84,23 @@ watch(() => { levelData }, () => {
 }, { deep: true });
 </script>
 <template>
-    <div class="border border-black p-3">
+    <div class="p-3 border border-green-600 rounded-2xl bg-green-600">
         <div class="grid grid-cols-2 gap-3">
             <div class="grid grid-cols-1 gap-3">
-                <button v-for="choice of randomKeys" class="border border-black p-3 cursor-pointer text-2xl font-bold"
+                <button v-for="choice of randomKeys" class="p-3 border border-black rounded-2xl text-2xl font-bold"
                     :class="{
-                        'bg-blue-500 border-blue-600 text-white': selectedKey === choice.key,
-                        'bg-green-500 border-green-600 text-white': matchedKeys.includes(choice.key)
+                        'bg-blue-500 border-blue-600 text-white cursor-default': selectedKey === choice.key,
+                        'bg-gray-500 border-gray-600 text-white cursor-not-allowed': matchedKeys.includes(choice.key),
+                        'bg-white hover:bg-gray-200 cursor-pointer': selectedKey !== choice.key && !matchedKeys.includes(choice.key)
                     }" :disabled="matchedKeys.includes(choice.key)" @click="() => { handleSelectedKey(choice.key) }">
                     {{ choice.key }}
                 </button>
             </div>
             <div class="grid grid-cols-1 gap-3">
-                <button v-for="choice of randomPairs" class="border border-black p-3 cursor-pointer text-2xl font-bold"
+                <button v-for="choice of randomPairs" class="p-3 border border-black rounded-2xl text-2xl font-bold"
                     :class="{
-                        'bg-green-500 border-green-600 text-white': matchedPairs.includes(choice.pair)
+                        'bg-white hover:bg-gray-200 cursor-pointer': !matchedPairs.includes(choice.pair),
+                        'bg-gray-500 border-gray-600 text-white cursor-not-allowed': matchedPairs.includes(choice.pair)
                     }" :disabled="matchedPairs.includes(choice.pair)"
                     @click="() => { handleSelectedPair(choice.pair) }">
                     {{ choice.pair }}

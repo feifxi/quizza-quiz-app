@@ -22,12 +22,14 @@ const shuffleChoices = (levelData) => {
 };
 </script>
 <template>
-  <div class="border border-black p-3">
-    <h2 class="font-bold"> {{ levelData.question }}</h2>
-
+  <div class="p-3 border border-green-600 rounded-2xl bg-green-600">
+    <h2 class="p-3 border border-green-600 bg-gray-500 rounded-2xl font-bold text-white"> {{ levelData.question }}</h2>
+    <br>
     <div class=" grid grid-cols-2 gap-3">
-      <button v-for="choice of shuffleChoices(levelData)" class="border border-black p-3 cursor-pointer"
-        @click="() => { handleChooseChoice(choice.isAns) }">
+      <button v-for="choice of shuffleChoices(levelData)"
+        class="p-3 border border-black rounded-2xl text-2xl font-bold cursor-pointer" :class="{
+          'bg-white hover:bg-gray-200': choice.value
+        }" @click="() => { handleChooseChoice(choice.isAns) }">
         <img :src="choice.value" alt="" class="max-w-[100px] w-full" />
       </button>
     </div>
