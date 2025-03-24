@@ -99,7 +99,13 @@ const isQuizDataValid = () => {
   for (const level of quizData.value.levels) {
     // Check each level field
     for (const key of Object.keys(level)) {
-      if ((!level[key] && level[key] === "Matched") && key !== 'questionImage') {
+      if (!level[key] && key !== 'questionImage') {
+        if (level.template === "Matched") {
+          if (key === "question") {
+            level[key] = "Match all pairs by pairing a left-sided button to a right-sided button.";
+            continue;
+          }
+        }
         return false;
       }
       if (level[key] === "Matched") {

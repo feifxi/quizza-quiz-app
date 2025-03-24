@@ -23,8 +23,6 @@ const handleSendComment = async () => {
 
 };
 
-console.log(quiz);
-
 </script>
 
 <template>

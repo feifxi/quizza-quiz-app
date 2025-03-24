@@ -4,6 +4,20 @@ const { levelData } = defineProps({
 });
 </script>
 <template>
+    <div>
+        <div class="flex flex-col gap-2">
+            <label class="font-bold">Question (Optional)</label>
+            <input type="text" class="input" v-model="levelData.question"
+                placeholder="Default: Match all pairs by pairing a left-sided button to a right-sided button." />
+        </div>
+
+        <div class="flex flex-col gap-2">
+            <label class="font-bold">Question image URL (optional)</label>
+            <img v-if="levelData.questionImage" :src="levelData.questionImage"
+                class="w-[300px] h-[200px] bg-neutral-200 rounded-xl object-center" alt="preview question image " />
+            <input type="text" class="input" v-model="levelData.questionImage" />
+        </div>
+    </div>
     <div class="grid grid-cols-2">
         <div class="max-w-md mr-1">
             <h2 class="font-bold">Pair 1</h2>

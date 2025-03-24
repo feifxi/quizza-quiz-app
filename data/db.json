@@ -279,7 +279,7 @@
         "password": "123",
         "role": "user"
       },
-      "status": "pending",
+      "status": "publish",
       "reactions": [
         "065e"
       ],
@@ -288,7 +288,7 @@
       "playerProgress": [
         {
           "userId": "e2db",
-          "star": 0
+          "star": 4
         },
         {
           "userId": "263c",
@@ -298,7 +298,7 @@
       "levels": [
         {
           "template": "Matched",
-          "question": "",
+          "question": "Match all pairs by pairing a left-sided button to a right-sided button.",
           "questionImage": "",
           "choices": [
             {
@@ -325,7 +325,7 @@
         },
         {
           "template": "Matched",
-          "question": "",
+          "question": "Match all pairs by pairing a left-sided button to a right-sided button.",
           "questionImage": "",
           "choices": [
             {
@@ -532,149 +532,6 @@
             {
               "value": "yellloo",
               "isAns": false
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "fb44",
-      "title": "test#20",
-      "thumbnail": "",
-      "description": "...",
-      "createBy": {
-        "id": "263c",
-        "email": "jeno",
-        "userName": "jeno",
-        "password": "123",
-        "role": "user"
-      },
-      "status": "pending",
-      "reactions": [],
-      "comments": [],
-      "adminComments": [],
-      "playerProgress": [],
-      "levels": [
-        {
-          "template": "Multiple-choice-text",
-          "question": "sad?",
-          "questionImage": "",
-          "choices": [
-            {
-              "value": "sad",
-              "isAns": true
-            },
-            {
-              "value": "no",
-              "isAns": false
-            },
-            {
-              "value": "nope",
-              "isAns": false
-            },
-            {
-              "value": "not",
-              "isAns": false
-            }
-          ]
-        },
-        {
-          "template": "Multiple-choice-text",
-          "question": "true?",
-          "questionImage": "",
-          "choices": [
-            {
-              "value": "true",
-              "isAns": true
-            },
-            {
-              "value": "no",
-              "isAns": false
-            },
-            {
-              "value": "false",
-              "isAns": false
-            },
-            {
-              "value": "!true",
-              "isAns": false
-            }
-          ]
-        },
-        {
-          "template": "Matched",
-          "question": "",
-          "questionImage": "",
-          "choices": [
-            {
-              "value": "one",
-              "isAns": true,
-              "paired": "1"
-            },
-            {
-              "value": "two",
-              "isAns": false,
-              "paired": "2"
-            },
-            {
-              "value": "three",
-              "isAns": false,
-              "paired": "3"
-            },
-            {
-              "value": "four",
-              "isAns": false,
-              "paired": "4"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "be23",
-      "title": "Spanish Number Matching",
-      "thumbnail": "",
-      "description": "Match a number with its Spanish counterpart",
-      "createBy": {
-        "id": "263c",
-        "email": "jeno",
-        "userName": "jeno",
-        "password": "123",
-        "role": "user"
-      },
-      "status": "publish",
-      "reactions": [
-        "065e",
-        "e2db"
-      ],
-      "comments": [],
-      "adminComments": [],
-      "playerProgress": [],
-      "levels": [
-        {
-          "template": "Matched",
-          "question": "",
-          "questionImage": "",
-          "choices": [
-            {
-              "value": "uno",
-              "isAns": true,
-              "paired": "one"
-            },
-            {
-              "value": "dos",
-              "isAns": false,
-              "paired": "two"
-            },
-            {
-              "value": "tres",
-              "isAns": false,
-              "paired": "three"
-            },
-            {
-              "value": "cuatro",
-              "isAns": false,
-              "paired": "four"
             }
           ]
         }
