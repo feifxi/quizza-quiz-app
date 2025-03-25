@@ -28,9 +28,14 @@ const modal = reactive({
 
 
 // chage State By AdminRole
-let state = ref(true);
-let stateClass1 = 'px-1 pb-2'
-let stateClass2 = 'border-green-500 border-b-3 px-1 pb-2 text-green-600'
+let state = ref();
+if(UsedRole === 'admin') {
+  state.value = false
+}else if(UsedRole === 'user') {
+  state.value = true
+}
+let stateClass1 = 'border-green-500 border-b-3 px-1 pb-2 text-green-600'
+let stateClass2 = 'px-1 pb-2'
 const headAdmin = (data) => {
   if (data === 'admin') {
     state.value = false
@@ -102,8 +107,9 @@ const handleCloseModal = () => {
   <!-- head for Admin -->
   <section v-else-if="UsedRole === 'admin'">
     <div class="flex gap-3 text-3xl font-bold py-3 px-6 bg-white shadow">
-      <button :class="stateClass2" @click="headAdmin('workspace')">WorkSpace</button>
       <button :class="stateClass1" @click="headAdmin('admin')">AdminReview</button>
+      <button :class="stateClass2" @click="headAdmin('workspace')">WorkSpace</button>
+      
 
       <RouterLink to="/create" class="ml-auto">
         <Button label="Create"></Button>
