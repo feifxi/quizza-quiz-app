@@ -219,7 +219,11 @@ A platform quiz game that the world gonna cry😭😭
                 <ul></ul>
             </td>
             <td>
-                <ul></ul>
+                <ul>
+                    <li>Play Quiz</li>
+                    <li>Update UI all global component</li>
+                    <li>Chatbot</li>
+                </ul>
             </td>
         </tr>
     </tbody>
