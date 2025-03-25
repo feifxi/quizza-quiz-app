@@ -96,7 +96,8 @@ onBeforeMount(async () => {
 
   <section v-else class="p-3">
     <div class="relative">
-      <Button label="Back to home" class="absolute right-5" @click="handleBackHome">
+      <Button label="Back to home" class="absolute right-5 bg-red-500 border-red-600 active:bg-red-600"
+        @click="handleBackHome">
       </Button>
 
       <div class="w-3xs p-3 border rounded-2xl border-green-600 bg-green-500 text-white">

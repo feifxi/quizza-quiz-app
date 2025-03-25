@@ -85,6 +85,9 @@ watch(() => { levelData }, () => {
 </script>
 <template>
     <div class="p-3 border border-green-600 rounded-2xl bg-green-600">
+        <h2 class="p-3 border border-green-600 bg-white rounded-2xl font-bold">{{ levelData.question }}
+        </h2>
+        <br>
         <div class="grid grid-cols-2 gap-3">
             <div class="grid grid-cols-1 gap-3">
                 <button v-for="choice of randomKeys" class="p-3 border border-black rounded-2xl text-2xl font-bold"

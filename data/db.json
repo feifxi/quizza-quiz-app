@@ -165,7 +165,7 @@
       "playerProgress": [
         {
           "userId": "e2db",
-          "star": 3
+          "star": 4
         },
         {
           "userId": "065e",
@@ -281,7 +281,8 @@
       },
       "status": "publish",
       "reactions": [
-        "065e"
+        "065e",
+        "e2db"
       ],
       "comments": [],
       "adminComments": [],

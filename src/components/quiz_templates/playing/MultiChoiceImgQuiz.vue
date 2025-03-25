@@ -23,7 +23,7 @@ const shuffleChoices = (levelData) => {
 </script>
 <template>
   <div class="p-3 border border-green-600 rounded-2xl bg-green-600">
-    <h2 class="p-3 border border-green-600 bg-gray-500 rounded-2xl font-bold text-white"> {{ levelData.question }}</h2>
+    <h2 class="p-3 border border-green-600 bg-white rounded-2xl font-bold"> {{ levelData.question }}</h2>
     <br>
     <div class=" grid grid-cols-2 gap-3">
       <button v-for="choice of shuffleChoices(levelData)"
