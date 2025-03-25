@@ -174,9 +174,18 @@ A platform quiz game that the world gonna cry😭😭
             <td>66130500071</td>
             <td>Pakin Toomngern</td>
             <td>
-                <ul></ul>
+                <ul>
+                    <li>Star Reward</li>
+                </ul>
             </td>
-            <td></td>
+            <td>
+                <ul>
+                    <li>Workspace</li>
+                    <li>Admin review</li>
+                    <li>Profile</li>
+                    <li>Edit profile</li>
+                </ul>
+            </td>
         </tr>
         <tr>
             <td>66130500100</td>
