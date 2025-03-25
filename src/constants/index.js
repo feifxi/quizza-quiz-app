@@ -11,4 +11,11 @@ export const QUiZ_TEMPLATES_TYPE = [
     label: "เกมจับคู่",
     value: "Matched",
   },
+  {
+    label: "เกมเรียงคำ",
+    value: "ArrangeSentences",
+  },{
+    label: "เกมเรียงรูป",
+    value: "ArrangePic",
+  },
 ];
