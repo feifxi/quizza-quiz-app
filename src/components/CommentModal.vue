@@ -3,7 +3,7 @@ import { onBeforeMount, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import { useAuthStore } from "@/stores/user";
 import { patchQuiz } from "@/api/quizsAPI";
-
+import Icon from "./Icon.vue";
 
 const newComment = ref("");
 const authStore = useAuthStore();
@@ -23,6 +23,8 @@ const handleSendComment = async () => {
 
 };
 
+console.log(quiz);
+
 </script>
 
 <template>
@@ -32,11 +34,11 @@ const handleSendComment = async () => {
       class="relative bg-white w-full max-w-2xl max-h-3/4 p-6 pr-10 rounded-xl flex flex-col">
       <div>
         <span class="absolute top-4 right-4 cursor-pointer" @click="closeModal"
-          >X</span
+          ><Icon name="close" class-name="fill-black"></Icon></span
         >
         <div class="font-bold text-2xl mb-3">comment</div>
       </div>
-      <div class="flex flex-col gap-5 overflow-y-auto">
+      <div class="flex flex-col gap-5 overflow-y-auto relative">
         <div
           class="flex items-center gap-5 bg-slate-100 p-3 rounded-xl relative"
           v-for="(comment, index) of quiz.comments"
@@ -55,7 +57,7 @@ const handleSendComment = async () => {
             </p>
           </div>
         </div>
-        <div class="flex gap-3">
+        <div class="flex gap-3 sticky bottom-0 left-0 w-full">
           <input
             class="input"
             type="text"

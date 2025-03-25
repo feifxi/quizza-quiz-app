@@ -208,9 +208,17 @@ A platform quiz game that the world gonna cry😭😭
             <td>66130500114</td>
             <td>Noppawut Phomchana</td>
             <td>
-                <ul></ul>
+                <ul>
+                    <li>quiz template</li>
+                </ul>
             </td>
-            <td></td>
+            <td>
+                <ul>
+                    <li>Leaderboard</li>
+                    <li>Comment quiz</li>
+                    <li>Reaction</li>
+                </ul>
+            </td>
         </tr>
         <tr>
             <td>66130500125</td>
