@@ -5,20 +5,25 @@ import { updateUser } from '@/api/usersAPI';
 import { useRouter } from "vue-router";
 
 const router = useRouter();
-
-
 const authStore = useAuthStore();
-
 
 const newUserData = reactive({
   userName: '',
-  profilePic: ''
+  profilePic: '',
+  profileFrame: {
+  color1: '',
+  color2: '',
+  color3: '',
+  color4: '',
+  color5: '',
+  selectedMode: ''
+  }
+  
 });
-
 
 onMounted(() => {
   if (authStore.authUser) {
-    Object.assign(newUserData, authStore.authUser); 
+    Object.assign(newUserData, authStore.authUser);
   }
 });
 
@@ -33,6 +38,7 @@ const updateProfile = async () => {
     alert('Failed to update profile.');
   }
 };
+
 </script>
 
 <template>
@@ -49,19 +55,57 @@ const updateProfile = async () => {
         <input v-model="newUserData.userName" type="text" required class="w-full px-3 py-2 border rounded-lg" />
       </div>
 
-
       <div>
         <label class="block text-2sm font-medium">Profile Picture URL:</label>
         <input v-model="newUserData.profilePic" type="text" class="w-full px-3 py-2 border rounded-lg" />
       </div>
+
+
       
+
+      <div class="flex flex-row gap-10">
+        <div>
+          <div>
+        <label class="block text-2sm font-medium">Profileframe Color:</label>
+        <input v-model="newUserData.profileFrame.color1" type="color" />
+        <input v-model="newUserData.profileFrame.color2" type="color" />
+        <input v-model="newUserData.profileFrame.color3" type="color" />
+        <input v-model="newUserData.profileFrame.color4" type="color" />
+        <input v-model="newUserData.profileFrame.color5" type="color" />
+      </div>
+          <label>
+          <input type="radio" name="color" value="top" v-model="newUserData.profileFrame.selectedMode" />
+          Top
+        </label>
+
+        <label>
+          <input type="radio" name="color" value="bottom" v-model="newUserData.profileFrame.selectedMode" />
+          Bottom
+        </label>
+
+        <label>
+          <input type="radio" name="color" value="left" v-model="newUserData.profileFrame.selectedMode" />
+          Left
+        </label>
+
+        <label>
+          <input type="radio" name="color" value="right" v-model="newUserData.profileFrame.selectedMode" />
+          Right
+        </label>
+      </div>
+        <div>
+          <div class="border-2 rounded-full w-20 h-20"
+          :style="{ backgroundImage: 'linear-gradient(to ' + newUserData.profileFrame.selectedMode +', ' + newUserData.profileFrame.color1 + ','+  newUserData.profileFrame.color2 + ','+ newUserData.profileFrame.color3 + ','+newUserData.profileFrame.color4 + ','+ newUserData.profileFrame.color5+')' }"></div>
+        </div>
+      </div>
+
       <div class="w-full text-center pt-2">
-        <button type="submit"
-        class="p-3 bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition">
-        Update
-       </button>
-     </div>
-      
+        <button type="submit" class="p-3 bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition">
+          Update
+        </button>
+      </div>
     </form>
+  
   </div>
 </template>
+
