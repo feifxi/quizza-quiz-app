@@ -14,6 +14,8 @@ const allGameInPlatform = ref(0);
 const quizs = ref([])
 
 
+
+
 onBeforeMount(async () => {
   try {
     const res = await getAllQuizs();
@@ -42,16 +44,30 @@ const handleUserProfileImg = (imgLink) => {
   }
 }
 
+
+
+
 </script>
 
 <template>
   <section class="max-w-lg mx-auto bg-white p-6 mt-10 rounded-2xl shadow-lg border border-gray-200">
     <div class="text-center mb-6">
-      <img
-        class="rounded-full w-32 h-32 mx-auto border-4 border-green-400"
-        :src="handleUserProfileImg(userUsed.profilePic)"
-        alt="Profile Picture"
-      />
+      <div 
+      :class="'relative w-35 h-35 mx-auto flex items-center justify-center border-2 border-black rounded-full '"
+      :style="{ backgroundImage: 'linear-gradient(to ' + ( userUsed.profileFrame?.selectedMode || 'top' )  +','
+       + ( userUsed.profileFrame?.color1 || 'lime' ) + ','+  ( userUsed.profileFrame?.color2 || 'lime' )
+       + ','+ ( userUsed.profileFrame?.color3 || 'lime' ) + ','+ ( userUsed.profileFrame?.color4 || 'lime' ) + ',' + ( userUsed.profileFrame?.color5 || 'lime' ) +')' }">
+  <img
+    class="border-2 w-30 h-30 rounded-full  object-cover"
+    :src="handleUserProfileImg(userUsed.profilePic)"
+    alt="Profile Picture"
+  />
+
+</div>
+
+  
+
+      
       <h2 class="text-2xl font-semibold mt-3">{{ userUsed?.userName || "Guest" }}</h2>
       <p class="text-gray-600">{{ userUsed?.email || "No email provided" }}</p>
     </div>
