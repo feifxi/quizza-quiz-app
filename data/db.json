@@ -48,19 +48,20 @@
       "role": "user"
     },
     {
-      "id": "065e",
-      "email": "yorch",
       "userName": "yorch",
-      "password": "123",
-      "role": "user",
       "profilePic": "https://media-hosting.imagekit.io//997becd1048f4c4e/w644.jpg?Expires=1837197195&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=qDSs-wVg9wxi44D3jmMevjQC888CPX4hSXLSEeUq8o7s8BLP8gy6tTvp8X84tIMiunMjZCn5YledfUcoheUa~KL5dfI3Pc9deSvl0brHoSG4Q0rJXEOh9ceP8NGWbL2CiTkjISgSssUeT9VAiAyOpJL42Up4evkrRiLScKtXWP7B-DzCk02GVq2o3m3KoNFrF037EgJeFXS3ewmmQWIfajRmbfO6ibHdNTgX6u4uag2e4Iv8ogqUM1LuREKOiyay775dcz7Evq0cRoJZRBe7A8Oa~78GyAg-6m8lPJtOzIPxyLFSQETm9v066GXU4HOyfCIGMAJEJLplGJ6jWto8~A__",
       "profileFrame": {
-        "color1": "",
-        "color2": "",
-        "color3": "",
-        "color4": "",
-        "selectedMode": ""
-      }
+        "color1": "#1ee646",
+        "color2": "#001eff",
+        "color3": "#fff0f0",
+        "color4": "#ffdd00",
+        "selectedMode": "top",
+        "color5": "#ff0000"
+      },
+      "id": "065e",
+      "email": "yorch",
+      "password": "123",
+      "role": "user"
     },
     {
       "id": "b3ce",
