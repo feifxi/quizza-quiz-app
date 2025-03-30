@@ -88,8 +88,19 @@ const handleChangeTemplate = (templateType, levelIndex) => {
     template: templateType,
     question: "",
     questionImage: "",
-    choices: [{ value: "" }, { value: "" }, { value: "" }, { value: "" }],
+    choices: [
+      { value: "", order: "" },
+      { value: "", order: "" },
+      { value: "", order: "" },
+      { value: "", order: "" },
+      { value: "", order: "" },
+      { value: "", order: "" },
+      { value: "", order: "" },
+      { value: "", order: "" },
+    ],
   };
+  
+  console.log("Selected Template:", templateType);
 
   if (
     templateType === "Multiple-choice-text" ||
@@ -232,12 +243,12 @@ const isQuizDataValid = () => {
           <MatchedForm
             v-else-if="level.template === 'Matched'"
             :level-data="level" />
-          <!-- <arrangeSentencesForm
+          <arrangeSentencesForm
             v-else-if="level.template === 'ArrangeSentences'"
             :level-data="level" />
           <arrangePicForm
             v-else-if="level.template === 'ArrangePic'"
-            :level-data="level" /> -->
+            :level-data="level" />
         </div>
       </div>
 
