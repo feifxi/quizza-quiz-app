@@ -80,14 +80,19 @@ onBeforeMount(async () => {
           :key="user.id"
           class="bg-white shadow-md rounded-xl p-4 flex items-center gap-4 mb-3 transition hover:scale-105">
           <h1 class="text-xl">{{ index + 1 }}</h1>
-          <div>
+          <div class="border-1 rounded-full w-13.5 h-13.5 mx-auto flex items-center justify-center relative border-black"
+                            :style="{ backgroundImage: 'linear-gradient(to ' + ( user.profileFrame?.selectedMode || 'top' )  +','
+                            + ( user.profileFrame?.color1 || 'lime' ) + ','+  ( user.profileFrame?.color2 || 'lime' )
+                            + ','+ ( user.profileFrame?.color3 || 'lime' ) + ','+ ( user.profileFrame?.color4 || 'lime' ) 
+                            + ',' + (user.profileFrame?.color5 || 'lime' ) +')' }">
+                    >
             <img
               :src="
                 user.profilePic ||
                 'https://i1.sndcdn.com/artworks-9R6zUytOmPor6P2n-8tUdCw-t1080x1080.jpg'
               "
               alt=""
-              class="w-12 h-12 rounded-full bg-gray-300" />
+              class="w-11 h-11 rounded-full object-cover absolute border-1 border-black" />
           </div>
           <div class="flex-1">
             <h2 class="font-bold text-gray-800">{{ user.userName }}</h2>
