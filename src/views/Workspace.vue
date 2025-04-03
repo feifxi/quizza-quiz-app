@@ -135,7 +135,7 @@ const handleCloseModal = () => {
   </section>
 
    <!-- No Quiz -->
-  <div v-if="userQuizzes?.length === 0 || adminQuizzes?.length === 0" class="text-3xl font-bold text-neutral-400 text-center mt-10">
+  <div v-if="(userQuizzes?.length === 0 && state) || (adminQuizzes?.length === 0 && !state)"  class="text-3xl font-bold text-neutral-400 text-center mt-10">
     There is no quizs
   </div>
 
