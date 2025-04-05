@@ -1,13 +1,16 @@
 <script setup>
-import { getQuizById, updateQuiz } from '@/api/quizsAPI';
-import { onBeforeMount, ref } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { getQuizById, updateQuiz } from "@/api/quizsAPI";
+import { onBeforeMount, ref } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import { QUiZ_TEMPLATES_TYPE } from "@/constants";
 import MultiChoiceImgForm from "@/components/quiz_templates/form/MultiChoiceImgForm.vue";
 import MultiChoiceTextForm from "@/components/quiz_templates/form/MultiChoiceTextForm.vue";
-import MatchedForm from '@/components/quiz_templates/form/MatchedForm.vue';
-import Icon from '@/components/Icon.vue';
-import Button from '@/components/Button.vue';
+import MatchedForm from "@/components/quiz_templates/form/MatchedForm.vue";
+import Icon from "@/components/Icon.vue";
+import Button from "@/components/Button.vue";
+import arrangeSentencesForm from "@/components/quiz_templates/form/arrangeSentencesForm.vue";
+import arrangePicForm from "@/components/quiz_templates/form/arrangePicForm.vue";
+import wordCheckForm from "@/components/quiz_templates/form/wordCheckForm.vue";
 
 const router = useRouter();
 const route = useRoute();
@@ -21,7 +24,7 @@ const getQuiz = async () => {
   } catch (error) {
     console.log(`Something went wrong! T-T\n${error}`);
   }
-}
+};
 
 const handleRemoveLevel = (index) => {
   quizData.value.levels.splice(index, 1);
@@ -36,7 +39,7 @@ const addMoreQuiz = () => {
       { value: "", isAns: true },
       { value: "", isAns: false },
       { value: "", isAns: false },
-      { value: "", isAns: false }
+      { value: "", isAns: false },
     ],
   };
 
@@ -52,7 +55,7 @@ const handleChangeTemplate = (templateType, levelIndex) => {
       { value: "", isAns: true },
       { value: "", isAns: false },
       { value: "", isAns: false },
-      { value: "", isAns: false }
+      { value: "", isAns: false },
     ],
   };
 
@@ -64,25 +67,57 @@ const handleChangeTemplate = (templateType, levelIndex) => {
       { key: "", pair: "", selectedPair: "" },
       { key: "", pair: "", selectedPair: "" },
       { key: "", pair: "", selectedPair: "" },
-      { key: "", pair: "", selectedPair: "" }
+      { key: "", pair: "", selectedPair: "" },
     ],
   };
 
-  if (templateType === 'Multiple-choice-text' || templateType === "Multiple-choice-image") {
-    quizData.value.levels[levelIndex] = multiChoiceLevel
+  const arrangeLevel = {
+    template: templateType,
+    question: "",
+    questionImage: "",
+    choices: [
+      { value: "", order: 0 },
+      { value: "", order: 1 },
+      { value: "", order: 2 },
+      { value: "", order: 3 },
+      { value: "", order: 4 },
+      { value: "", order: 5 },
+      { value: "", order: 6 },
+      { value: "", order: 7 },
+    ],
+  };
 
+  const wordcheckLevel = {
+    template: templateType,
+    question: "",
+    questionImage: "",
+    choices: [{ value: "" }],
+  };
+
+  if (
+    templateType === "Multiple-choice-text" ||
+    templateType === "Multiple-choice-image"
+  ) {
+    quizData.value.levels[levelIndex] = multiChoiceLevel;
   } else if (templateType === "Matched") {
-    quizData.value.levels[levelIndex] = matchedLevel
+    quizData.value.levels[levelIndex] = matchedLevel;
+  } else if (
+    templateType === "ArrangeSentences" ||
+    templateType === "ArrangePic"
+  ) {
+    quizData.levels[levelIndex] = arrangeLevel;
+  } else if (templateType === "WordCheck") {
+    quizData.value.levels[levelIndex] = wordcheckLevel;
   }
-}
+};
 
 const handleUpdateGame = async () => {
   if (!isQuizDataValid()) return alert("Plase fill all the input");
-  quizData.value.status = 'pending'
+  quizData.value.status = "pending";
   const res = await updateQuiz(quizData.value.id, quizData.value);
   if (res.success) {
     alert(res.message);
-    router.push({ name: 'workspace' });
+    router.push({ name: "workspace" });
   } else {
     alert(res.message);
   }
@@ -91,7 +126,7 @@ const handleUpdateGame = async () => {
 const isQuizDataValid = () => {
   // Check quiz field
   for (const key of Object.keys(quizData.value)) {
-    if (!quizData.value[key] && key !== 'thumbnail') {
+    if (!quizData.value[key] && key !== "thumbnail") {
       return false;
     }
   }
@@ -99,10 +134,11 @@ const isQuizDataValid = () => {
   for (const level of quizData.value.levels) {
     // Check each level field
     for (const key of Object.keys(level)) {
-      if (!level[key] && key !== 'questionImage') {
+      if (!level[key] && key !== "questionImage") {
         if (level.template === "Matched") {
           if (key === "question") {
-            level[key] = "Match all pairs by pairing a left-sided button to a right-sided button.";
+            level[key] =
+              "Match all pairs by pairing a left-sided button to a right-sided button.";
             continue;
           }
         }
@@ -128,7 +164,8 @@ onBeforeMount(async () => {
 
 <template>
   <section class="p-4" v-if="quizData">
-    <div class="mx-auto flex flex-col gap-3 bg-white border border-neutral-300 p-4 rounded-xl shadow max-w-xl">
+    <div
+      class="mx-auto flex flex-col gap-3 bg-white border border-neutral-300 p-4 rounded-xl shadow max-w-xl">
       <h1 class="text-4xl font-bold flex gap-3">
         <p>Update Quiz</p>
         <Icon name="quiz" class-name="fill-black size-10" />
@@ -146,7 +183,10 @@ onBeforeMount(async () => {
 
       <div class="flex flex-col gap-2">
         <label class="text-xl font-bold">Quiz Thumbnail</label>
-        <img v-if="quizData.thumbnail" :src="quizData.thumbnail" alt="Quiz image"
+        <img
+          v-if="quizData.thumbnail"
+          :src="quizData.thumbnail"
+          alt="Quiz image"
           class="w-[300px] h-[200px] bg-neutral-200 rounded-xl object-center" />
         <input type="text" class="input" v-model="quizData.thumbnail" />
       </div>
@@ -154,25 +194,44 @@ onBeforeMount(async () => {
 
     <!-- Template -->
     <div class="mx-auto mt-5 flex flex-col max-w-xl gap-4">
-      <div v-for="(level, index) in quizData.levels"
+      <div
+        v-for="(level, index) in quizData.levels"
         class="relative bg-white border border-neutral-300 p-3 rounded-xl shadow">
-        <span v-if="quizData.levels.length > 1" @click="() => handleRemoveLevel(level)"
+        <span
+          v-if="quizData.levels.length > 1"
+          @click="() => handleRemoveLevel(level)"
           class="absolute right-0 top-0 cursor-pointer p-2 bg-red-500 rounded-tr-xl rounded-bl-xl">
           <Icon name="close" />
         </span>
 
         <h2
           class="text-2xl font-bold bg-green-500 border-3 border-green-600 py-1 px-2 rounded-full inline-block text-white">
-          Level : {{ index + 1 }}</h2>
-        <p class="text-2xl font-bold mt-2">{{QUiZ_TEMPLATES_TYPE.find((template) => template.value ===
-          level.template)?.label}}</p>
+          Level : {{ index + 1 }}
+        </h2>
+        <p class="text-2xl font-bold mt-2">
+          {{
+            QUiZ_TEMPLATES_TYPE.find(
+              (template) => template.value === level.template
+            )?.label
+          }}
+        </p>
 
         <!-- Template Options -->
-        <div class="flex flex-col gap-2 mt-3 pb-4 border-b-2 border-neutral-300">
+        <div
+          class="flex flex-col gap-2 mt-3 pb-4 border-b-2 border-neutral-300">
           <label class="font-bold">Choose Template :</label>
-          <select class="bg-gray-50 border border-gray-300 p-2 rounded font-bold"
-            @change="(e) => { handleChangeTemplate(e.target.value, index) }" v-model="level.template">
-            <option v-for="template in QUiZ_TEMPLATES_TYPE" :value="template.value" :key="template.value"
+          <select
+            class="bg-gray-50 border border-gray-300 p-2 rounded font-bold"
+            @change="
+              (e) => {
+                handleChangeTemplate(e.target.value, index);
+              }
+            "
+            v-model="level.template">
+            <option
+              v-for="template in QUiZ_TEMPLATES_TYPE"
+              :value="template.value"
+              :key="template.value"
               class="font-bold">
               {{ template.label }}
             </option>
@@ -181,14 +240,32 @@ onBeforeMount(async () => {
 
         <!-- Render Template -->
         <div class="mt-4 w-full">
-          <MultiChoiceTextForm v-if="level.template === 'Multiple-choice-text'" :level-data="level" />
-          <MultiChoiceImgForm v-else-if="level.template === 'Multiple-choice-image'" :level-data="level" />
-          <MatchedForm v-else-if="level.template === 'Matched'" :level-data="level" />
+          <MultiChoiceTextForm
+            v-if="level.template === 'Multiple-choice-text'"
+            :level-data="level" />
+          <MultiChoiceImgForm
+            v-else-if="level.template === 'Multiple-choice-image'"
+            :level-data="level" />
+          <MatchedForm
+            v-else-if="level.template === 'Matched'"
+            :level-data="level" />
+          <arrangeSentencesForm
+            v-else-if="level.template === 'ArrangeSentences'"
+            :level-data="level" />
+          <arrangePicForm
+            v-else-if="level.template === 'ArrangePic'"
+            :level-data="level" />
+          <wordCheckForm
+            v-else-if="level.template === 'WordCheck'"
+            :level-data="level" />
         </div>
       </div>
 
       <div class="flex gap-3 self-end">
-        <Button label="Add More Levels" @click="addMoreQuiz" class-name="bg-sky-500 border-b-sky-600 active:bg-sky-600">
+        <Button
+          label="Add More Levels"
+          @click="addMoreQuiz"
+          class-name="bg-sky-500 border-b-sky-600 active:bg-sky-600">
         </Button>
         <Button label="Update Quiz" @click="handleUpdateGame"></Button>
       </div>
