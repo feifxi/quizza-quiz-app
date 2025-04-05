@@ -56,6 +56,7 @@ const addMoreQuiz = () => {
       { value: "", isAns: false },
       { value: "", isAns: false },
     ],
+
   };
 
   quizData.levels.push(newLevel);
@@ -104,9 +105,11 @@ const handleChangeTemplate = (templateType, levelIndex) => {
     template: templateType,
     question: "",
     questionImage: "",
-    choices: [{ value: "" }],
+    choices: [
+      { value: ""  }
+    ]
   };
-
+  
   console.log("Selected Template:", templateType);
 
   if (
@@ -121,8 +124,10 @@ const handleChangeTemplate = (templateType, levelIndex) => {
     templateType === "ArrangePic"
   ) {
     quizData.levels[levelIndex] = arrangeLevel;
-  } else if (templateType === "WordCheck") {
-    quizData.levels[levelIndex] = wordcheckLevel;
+
+  } else if (templateType === 'WordCheck') 
+  {
+  quizData.levels[levelIndex] = wordcheckLevel;
   }
 };
 

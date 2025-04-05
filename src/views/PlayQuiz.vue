@@ -146,6 +146,10 @@ onBeforeMount(async () => {
         :increase-score="increaseScore"
         :go-next="handleMoveToNextLevel" />
     </div>
+    <div class="mt-2">
+      <wordCheckQuiz v-if="quizData.levels[currentLevel]?.template === 'WordCheck'"
+        :level-data="quizData.levels[currentLevel]" :increase-score="increaseScore" :go-next="handleMoveToNextLevel" />
+    </div>
   </section>
 </template>
 

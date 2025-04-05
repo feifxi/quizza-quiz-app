@@ -34,9 +34,11 @@ function handleSubmit() {
           {{ levelData.question.split('').join(' ') }}
         </div>
 
+  
         <div v-if="levelData.questionImage" class="flex justify-center">
           <img :src="levelData.questionImage" class="rounded-lg max-w-full w-100 h-100 object-fit border" />
         </div>
+  
 
         <form @submit.prevent="handleSubmit" class="flex flex-col gap-4">
           <input
