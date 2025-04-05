@@ -11,6 +11,7 @@ import { reactive } from "vue";
 import { useRouter } from "vue-router";
 import arrangeSentencesForm from "@/components/quiz_templates/form/arrangeSentencesForm.vue";
 import arrangePicForm from "@/components/quiz_templates/form/arrangePicForm.vue";
+import wordCheckForm from "@/components/quiz_templates/form/wordCheckForm.vue";
 
 const router = useRouter();
 const authStore = useAuthStore();
@@ -55,6 +56,7 @@ const addMoreQuiz = () => {
       { value: "", isAns: false },
       { value: "", isAns: false },
     ],
+
   };
 
   quizData.levels.push(newLevel);
@@ -99,6 +101,14 @@ const handleChangeTemplate = (templateType, levelIndex) => {
       { value: "", order: "" },
     ],
   };
+  const wordcheckLevel = {
+    template: templateType,
+    question: "",
+    questionImage: "",
+    choices: [
+      { value: ""  }
+    ]
+  };
   
   console.log("Selected Template:", templateType);
 
@@ -114,6 +124,9 @@ const handleChangeTemplate = (templateType, levelIndex) => {
     templateType === "ArrangePic"
   ) {
     quizData.levels[levelIndex] = arrangeLevel;
+  } else if (templateType === 'WordCheck') 
+  {
+    quizData.levels[levelIndex] = wordcheckLevel;
   }
 };
 
@@ -248,6 +261,9 @@ const isQuizDataValid = () => {
             :level-data="level" />
           <arrangePicForm
             v-else-if="level.template === 'ArrangePic'"
+            :level-data="level" />
+          <wordCheckForm
+            v-else-if="level.template === 'WordCheck'"
             :level-data="level" />
         </div>
       </div>
