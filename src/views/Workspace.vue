@@ -1,11 +1,14 @@
 <script setup>
 import { getAllQuizs, getQuizById, deleteQuiz } from '@/api/quizsAPI';
 import { useAuthStore } from '@/stores/user';
-import { onBeforeMount, ref, reactive } from 'vue';
-import { RouterLink } from 'vue-router';
+import { onBeforeMount, ref, reactive, onMounted } from 'vue';
+import { RouterLink, useRoute, useRouter } from 'vue-router';
 import QuizCard from '@/components/QuizCard.vue';
 import CommentModal from '@/components/CommentModal.vue';
 import Button from '@/components/Button.vue';
+
+const router = useRouter()
+const route = useRoute()
 
 // quizz of admin and user
 const authStore = useAuthStore()
@@ -36,20 +39,28 @@ const headAdmin = (data) => {
     state.value = false
     stateClass1 = 'border-green-500 border-b-3 px-1 pb-2 text-green-600'
     stateClass2 = 'px-1 pb-2'
+    router.push({ name: 'workspace', query: { tab: "admin-review" } })
   }
   if (data === 'workspace') {
     state.value = true
     stateClass2 = 'border-green-500 border-b-3 px-1 pb-2 text-green-600'
     stateClass1 = 'px-1 pb-2'
+    router.push({ name: 'workspace', query: { tab: "workspace" } })
   }
 }
 
 
 
-// GET
-
-
 onBeforeMount(async () => {
+  // navigate to selected tab
+  const { tab } = route.query
+  console.log(tab)
+  if (!tab || tab === 'workspace') {
+    headAdmin('workspace')
+  } else if (tab === 'admin-review') {
+    headAdmin('admin')
+  }
+
   isLoading.value = true;
   try {
     const res = await getAllQuizs();

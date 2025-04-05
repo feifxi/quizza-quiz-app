@@ -157,13 +157,27 @@ const isQuizDataValid = () => {
   return true;
 };
 
+const handleBackToWorkspace = () => {
+  if (quizData.value.status === 'pending') {
+    router.push({ name: 'workspace', query: { tab: "admin-review" } })
+  } else {
+    router.push({ name: 'workspace', query: { tab: "workspace" } })
+  }
+}
+
 onBeforeMount(async () => {
   await getQuiz();
 });
 </script>
 
 <template>
-  <section class="p-4" v-if="quizData">
+  <section class="p-4 relative" v-if="quizData">
+    <Button
+      :label="quizData.status === 'pending' ? 'Back to admin review' : 'Back to workspace'"
+      class="absolute right-5 bg-red-500 border-red-600 active:bg-red-600"
+      @click="handleBackToWorkspace">
+    </Button>
+
     <div
       class="mx-auto flex flex-col gap-3 bg-white border border-neutral-300 p-4 rounded-xl shadow max-w-xl">
       <h1 class="text-4xl font-bold flex gap-3">
