@@ -17,5 +17,8 @@ export const QUiZ_TEMPLATES_TYPE = [
   },{
     label: "เกมเรียงรูป",
     value: "ArrangePic",
-  },
+  },{
+    label: "เกมทายคำ",
+    value: "WordCheck"
+  }
 ];

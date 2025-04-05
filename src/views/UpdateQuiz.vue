@@ -8,6 +8,7 @@ import MultiChoiceTextForm from "@/components/quiz_templates/form/MultiChoiceTex
 import MatchedForm from '@/components/quiz_templates/form/MatchedForm.vue';
 import Icon from '@/components/Icon.vue';
 import Button from '@/components/Button.vue';
+import wordCheckForm from '@/components/quiz_templates/form/wordCheckForm.vue';
 
 const router = useRouter();
 const route = useRoute();
@@ -68,11 +69,22 @@ const handleChangeTemplate = (templateType, levelIndex) => {
     ],
   };
 
+  const wordcheckLevel = {
+    template: templateType,
+    question: "",
+    questionImage: "",
+    choices: [
+      { value: ""  }
+    ]
+  };
+
   if (templateType === 'Multiple-choice-text' || templateType === "Multiple-choice-image") {
     quizData.value.levels[levelIndex] = multiChoiceLevel
 
   } else if (templateType === "Matched") {
     quizData.value.levels[levelIndex] = matchedLevel
+  } else if (templateType === "WordCheck"){
+    quizData.value.levels[levelIndex] = wordcheckLevel
   }
 }
 
@@ -184,6 +196,7 @@ onBeforeMount(async () => {
           <MultiChoiceTextForm v-if="level.template === 'Multiple-choice-text'" :level-data="level" />
           <MultiChoiceImgForm v-else-if="level.template === 'Multiple-choice-image'" :level-data="level" />
           <MatchedForm v-else-if="level.template === 'Matched'" :level-data="level" />
+          <wordCheckForm v-else-if="level.template === 'WordCheck'" :level-data="level" />
         </div>
       </div>
 

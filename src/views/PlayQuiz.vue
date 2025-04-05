@@ -9,6 +9,7 @@ import Icon from '@/components/Icon.vue';
 import MultiChoiceImgQuiz from '@/components/quiz_templates/playing/MultiChoiceImgQuiz.vue';
 import MultiChoiceTextQuiz from '@/components/quiz_templates/playing/MultiChoiceTextQuiz.vue';
 import MatchedQuiz from '@/components/quiz_templates/playing/MatchedQuiz.vue';
+import wordCheckQuiz from '@/components/quiz_templates/playing/wordCheckQuiz.vue';
 import {
   useAuthStore
 } from '@/stores/user';
@@ -116,6 +117,10 @@ onBeforeMount(async () => {
     </div>
     <div class="mt-2">
       <MatchedQuiz v-if="quizData.levels[currentLevel]?.template === 'Matched'"
+        :level-data="quizData.levels[currentLevel]" :increase-score="increaseScore" :go-next="handleMoveToNextLevel" />
+    </div>
+    <div class="mt-2">
+      <wordCheckQuiz v-if="quizData.levels[currentLevel]?.template === 'WordCheck'"
         :level-data="quizData.levels[currentLevel]" :increase-score="increaseScore" :go-next="handleMoveToNextLevel" />
     </div>
   </section>
