@@ -23,7 +23,7 @@ const { levelData } = defineProps({
                 class="w-[300px] h-[200px] bg-neutral-200 rounded-xl object-center" alt="preview question image " />
             <input type="text" class="input" v-model="levelData.questionImage" />
         </div>    
-        
+
     </div>
 </template>
 <style scoped></style>

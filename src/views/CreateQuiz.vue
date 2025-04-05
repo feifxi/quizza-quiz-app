@@ -91,14 +91,14 @@ const handleChangeTemplate = (templateType, levelIndex) => {
     question: "",
     questionImage: "",
     choices: [
-      { value: "", order: "" },
-      { value: "", order: "" },
-      { value: "", order: "" },
-      { value: "", order: "" },
-      { value: "", order: "" },
-      { value: "", order: "" },
-      { value: "", order: "" },
-      { value: "", order: "" },
+      { value: "", order: 0 },
+      { value: "", order: 1 },
+      { value: "", order: 2 },
+      { value: "", order: 3 },
+      { value: "", order: 4 },
+      { value: "", order: 5 },
+      { value: "", order: 6 },
+      { value: "", order: 7 },
     ],
   };
   const wordcheckLevel = {
@@ -124,9 +124,10 @@ const handleChangeTemplate = (templateType, levelIndex) => {
     templateType === "ArrangePic"
   ) {
     quizData.levels[levelIndex] = arrangeLevel;
+
   } else if (templateType === 'WordCheck') 
   {
-    quizData.levels[levelIndex] = wordcheckLevel;
+  quizData.levels[levelIndex] = wordcheckLevel;
   }
 };
 

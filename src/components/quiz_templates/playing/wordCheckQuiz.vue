@@ -14,6 +14,7 @@ function handleSubmit() {
         goNext()
         userAnswered.value = ''
     }else if(userAnswered.value != levelData.choices[0].value){
+        alert('incorrect Answer 👽👽')
         alert('NOOB 👽')
         goNext()
         userAnswered.value = ''
@@ -32,11 +33,13 @@ function handleSubmit() {
         <div class="text-center text-lg font-semibold text-gray-800 border-2 border-green-400 rounded-md p-4 bg-green-50 ">
           {{ levelData.question.split('').join(' ') }}
         </div>
+
   
         <div v-if="levelData.questionImage" class="flex justify-center">
           <img :src="levelData.questionImage" class="rounded-lg max-w-full w-100 h-100 object-fit border" />
         </div>
   
+
         <form @submit.prevent="handleSubmit" class="flex flex-col gap-4">
           <input
           v-model="userAnswered"
@@ -53,6 +56,6 @@ function handleSubmit() {
       </div>
     </div>
   </template>
-  
+
 
 <style scoped></style>
