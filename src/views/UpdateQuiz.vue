@@ -2,7 +2,7 @@
 import { getQuizById, updateQuiz } from "@/api/quizsAPI";
 import { onBeforeMount, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { QUIZ_TEMPLATES_TYPE, QUIZ_TEMPLATES_STUCTURE } from "@/constants";
+import { QUIZ_TEMPLATES_TYPE } from "@/constants";
 import MultiChoiceImgForm from "@/components/quiz_templates/form/MultiChoiceImgForm.vue";
 import MultiChoiceTextForm from "@/components/quiz_templates/form/MultiChoiceTextForm.vue";
 import MatchedForm from "@/components/quiz_templates/form/MatchedForm.vue";
@@ -31,57 +31,14 @@ const handleRemoveLevel = (index) => {
 };
 
 const addMoreQuiz = () => {
-  const newLevel = () => {
-    QUIZ_TEMPLATES_STUCTURE[0].template = QUIZ_TEMPLATES_TYPE[0].value;
-    return QUIZ_TEMPLATES_STUCTURE[0];
-  }
-  quizData.value.levels.push(newLevel());
+  quizData.value.levels.push(JSON.parse(JSON.stringify(QUIZ_TEMPLATES_TYPE[0].structure)));
 };
 
 const handleChangeTemplate = (templateType, levelIndex) => {
-  const multiChoiceLevel = (templateType) => {
-    QUIZ_TEMPLATES_STUCTURE[0].template = templateType;
-    return QUIZ_TEMPLATES_STUCTURE[0];
-  }
-  const multiChoiceLevelimg = (templateType) => {
-    QUIZ_TEMPLATES_STUCTURE[1].template = templateType;
-    return QUIZ_TEMPLATES_STUCTURE[1];
-  }
-  const matchedLevel = (templateType) => {
-    QUIZ_TEMPLATES_STUCTURE[2].template = templateType;
-    return QUIZ_TEMPLATES_STUCTURE[2];
-  }
-  const arrangeLevel = (templateType) => {
-    QUIZ_TEMPLATES_STUCTURE[3].template = templateType;
-    return QUIZ_TEMPLATES_STUCTURE[3];
-  }
-  const arrangeLevelimg = (templateType) => {
-    QUIZ_TEMPLATES_STUCTURE[4].template = templateType;
-    return QUIZ_TEMPLATES_STUCTURE[4];
-  }
-  const wordcheckLevel = (templateType) => {
-    QUIZ_TEMPLATES_STUCTURE[5].template = templateType;
-    return QUIZ_TEMPLATES_STUCTURE[5];
-  }
-
-  if (templateType === "Multiple-choice-text") {
-    quizData.levels[levelIndex] = multiChoiceLevel(templateType);
-    choiceQuiz =  "Multiple-choice-text"
-  } else if (templateType === "Multiple-choice-image") {
-    quizData.levels[levelIndex] = multiChoiceLevelimg(templateType);
-    choiceQuiz =  "Multiple-choice-image"
-  } else if (templateType === "Matched") {
-    quizData.levels[levelIndex] = matchedLevel(templateType);
-    choiceQuiz =  "Match"
-  } else if (templateType === "ArrangeSentences") {
-    quizData.levels[levelIndex] = arrangeLevel(templateType);
-    choiceQuiz =  "ArrangeSentences"
-  } else if (templateType === "ArrangePic") {
-    quizData.levels[levelIndex] = arrangeLevelimg(templateType);
-    choiceQuiz =  "ArrangePic"
-  } else if (templateType === 'WordCheck') {
-    quizData.levels[levelIndex] = wordcheckLevel(templateType);
-    choiceQuiz =  "WordCheck"
+  for (const template of QUIZ_TEMPLATES_TYPE) {
+    if (template.value === templateType) {
+      quizData.value.levels[levelIndex] = JSON.parse(JSON.stringify(template.structure))
+    }
   }
 };
 
@@ -111,8 +68,7 @@ const isQuizDataValid = () => {
       if (!level[key] && key !== "questionImage") {
         if (level.template === "Matched") {
           if (key === "question") {
-            level[key] =
-              "Match all pairs by pairing a left-sided button to a right-sided button.";
+            level[key] = "Match all pairs by pairing a left-sided button to a right-sided button.";
             continue;
           }
         }
@@ -187,7 +143,7 @@ onBeforeMount(async () => {
         class="relative bg-white border border-neutral-300 p-3 rounded-xl shadow">
         <span
           v-if="quizData.levels.length > 1"
-          @click="() => handleRemoveLevel(level)"
+          @click="() => handleRemoveLevel(index)"
           class="absolute right-0 top-0 cursor-pointer p-2 bg-red-500 rounded-tr-xl rounded-bl-xl">
           <Icon name="close" />
         </span>
@@ -197,11 +153,7 @@ onBeforeMount(async () => {
           Level : {{ index + 1 }}
         </h2>
         <p class="text-2xl font-bold mt-2">
-          {{
-            QUIZ_TEMPLATES_TYPE.find(
-              (template) => template.value === level.template
-            )?.label
-          }}
+          {{ level.template }}
         </p>
 
         <!-- Template Options -->
@@ -214,8 +166,7 @@ onBeforeMount(async () => {
               (e) => {
                 handleChangeTemplate(e.target.value, index);
               }
-            "
-            v-model="level.template">
+            ">
             <option
               v-for="template in QUIZ_TEMPLATES_TYPE"
               :value="template.value"

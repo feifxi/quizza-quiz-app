@@ -89,7 +89,7 @@ onBeforeMount(async () => {
             <img
               :src="
                 user.profilePic ||
-                'https://i1.sndcdn.com/artworks-9R6zUytOmPor6P2n-8tUdCw-t1080x1080.jpg'
+                'https://img.myloview.com/posters/default-avatar-profile-icon-vector-social-media-user-photo-700-205577532.jpg'
               "
               alt=""
               class="w-11 h-11 rounded-full object-cover absolute border-1 border-black" />

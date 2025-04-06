@@ -38,7 +38,7 @@ onBeforeMount(async () => {
 
 const handleUserProfileImg = (imgLink) => {
   if (!imgLink) {
-    return "https://t3.ftcdn.net/jpg/07/24/59/76/360_F_724597608_pmo5BsVumFcFyHJKlASG2Y2KpkkfiYUU.jpg";
+    return 'https://img.myloview.com/posters/default-avatar-profile-icon-vector-social-media-user-photo-700-205577532.jpg';
   } else {
     return imgLink;
   }
@@ -64,10 +64,6 @@ const handleUserProfileImg = (imgLink) => {
   />
 
 </div>
-
-  
-
-      
       <h2 class="text-2xl font-semibold mt-3">{{ userUsed?.userName || "Guest" }}</h2>
       <p class="text-gray-600">{{ userUsed?.email || "No email provided" }}</p>
     </div>
