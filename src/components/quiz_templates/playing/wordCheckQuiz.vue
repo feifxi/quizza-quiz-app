@@ -45,7 +45,7 @@ function handleSubmit() {
           v-model="userAnswered"
             type="text"
             class="border-2 border-gray-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-400"
-            placeholder="Insert word..."
+            placeholder="Insert word... (non case-sensitive)"
           />
           <input
             type="submit"
