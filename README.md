@@ -27,6 +27,9 @@ A platform quiz game that the world gonna cry😭😭
     - Owner of the most liked quiz
 - Chat Bot (Optional)
 
+## Video
+[![INT203-Hareruya-Project2]()](https://drive.google.com/file/d/1vQuwZpJRsG_9-OvTI6jErXDKViovmg5k/view?fbclid=IwY2xjawJfv55leHRuA2FlbQIxMAABHlzM6jPEpLk-TqgqTWyNdre6Q0aJAouTFV_9NnQAEJovrZllE7KwGIekA_ao_aem_g_5EIFGowRg2SnTr2qjBOw&pli=1)
+
 ## Members & Responsibility
 <table>
     <thead>
