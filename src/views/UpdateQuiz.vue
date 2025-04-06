@@ -1,6 +1,6 @@
 <script setup>
 import { getQuizById, updateQuiz } from "@/api/quizsAPI";
-import { onBeforeMount, ref } from "vue";
+import { onBeforeMount, reactive } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { QUIZ_TEMPLATES_TYPE } from "@/constants";
 import MultiChoiceImgForm from "@/components/quiz_templates/form/MultiChoiceImgForm.vue";
@@ -15,37 +15,37 @@ import wordCheckForm from "@/components/quiz_templates/form/wordCheckForm.vue";
 const router = useRouter();
 const route = useRoute();
 const id = route.params.quizId;
-const quizData = ref(null);
+const quizData = reactive({});
 
 const getQuiz = async () => {
   try {
     const res = await getQuizById(id);
-    quizData.value = res.data;
+    Object.assign(quizData, res.data);
   } catch (error) {
     console.log(`Something went wrong! T-T\n${error}`);
   }
 };
 
 const handleRemoveLevel = (index) => {
-  quizData.value.levels.splice(index, 1);
+  quizData.levels.splice(index, 1);
 };
 
 const addMoreQuiz = () => {
-  quizData.value.levels.push(JSON.parse(JSON.stringify(QUIZ_TEMPLATES_TYPE[0].structure)));
+  quizData.levels.push(JSON.parse(JSON.stringify(QUIZ_TEMPLATES_TYPE[0].structure)));
 };
 
 const handleChangeTemplate = (templateType, levelIndex) => {
   for (const template of QUIZ_TEMPLATES_TYPE) {
     if (template.value === templateType) {
-      quizData.value.levels[levelIndex] = JSON.parse(JSON.stringify(template.structure))
+      quizData.levels[levelIndex] = JSON.parse(JSON.stringify(template.structure))
     }
   }
 };
 
 const handleUpdateGame = async () => {
   if (!isQuizDataValid()) return alert("Plase fill all the input");
-  quizData.value.status = "pending";
-  const res = await updateQuiz(quizData.value.id, quizData.value);
+  quizData.status = "pending";
+  const res = await updateQuiz(quizData.id, quizData);
   if (res.success) {
     alert(res.message);
     router.push({ name: "workspace" });
@@ -56,13 +56,13 @@ const handleUpdateGame = async () => {
 
 const isQuizDataValid = () => {
   // Check quiz field
-  for (const key of Object.keys(quizData.value)) {
-    if (!quizData.value[key] && key !== "thumbnail") {
+  for (const key of Object.keys(quizData)) {
+    if (!quizData[key] && key !== "thumbnail") {
       return false;
     }
   }
 
-  for (const level of quizData.value.levels) {
+  for (const level of quizData.levels) {
     // Check each level field
     for (const key of Object.keys(level)) {
       if (!level[key] && key !== "questionImage") {
@@ -88,7 +88,7 @@ const isQuizDataValid = () => {
 };
 
 const handleBackToWorkspace = () => {
-  if (quizData.value.status === 'pending') {
+  if (quizData.status === 'pending') {
     router.push({ name: 'workspace', query: { tab: "admin-review" } })
   } else {
     router.push({ name: 'workspace', query: { tab: "workspace" } })

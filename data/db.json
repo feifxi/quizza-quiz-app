@@ -31,7 +31,7 @@
         "role": "admin",
         "profilePic": ""
       },
-      "status": "publish",
+      "status": "pending",
       "reactions": [],
       "comments": [],
       "adminComments": [],
@@ -87,48 +87,58 @@
               "isAns": false
             }
           ]
-        }
-      ]
-    },
-    {
-      "id": "a6a5",
-      "title": "1",
-      "thumbnail": "",
-      "description": "1",
-      "createBy": {
-        "id": "9ffe",
-        "email": "admin@admin.com",
-        "userName": "admin",
-        "password": "123",
-        "role": "admin",
-        "profilePic": ""
-      },
-      "status": "pending",
-      "reactions": [],
-      "comments": [],
-      "adminComments": [],
-      "playerProgress": [],
-      "levels": [
+        },
         {
-          "template": "Multiple-choice-text",
-          "question": "",
+          "template": "Matched",
+          "question": "Match all pairs by pairing a left-sided button to a right-sided button.",
           "questionImage": "",
           "choices": [
             {
-              "value": "",
-              "isAns": true
+              "key": "One",
+              "pair": "Uno",
+              "selectedPair": ""
             },
             {
-              "value": "",
-              "isAns": false
+              "key": "Two",
+              "pair": "Dos",
+              "selectedPair": ""
             },
             {
-              "value": "",
-              "isAns": false
+              "key": "Three",
+              "pair": "Tres",
+              "selectedPair": ""
             },
             {
-              "value": "",
-              "isAns": false
+              "key": "Four",
+              "pair": "Cuatro",
+              "selectedPair": ""
+            }
+          ]
+        },
+        {
+          "template": "Matched",
+          "question": "Match the food with its corresponding food types.",
+          "questionImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg",
+          "choices": [
+            {
+              "key": "Carbohydrates",
+              "pair": "Rice",
+              "selectedPair": ""
+            },
+            {
+              "key": "Proteins",
+              "pair": "Beef",
+              "selectedPair": ""
+            },
+            {
+              "key": "Vegetables",
+              "pair": "Lemongrass",
+              "selectedPair": ""
+            },
+            {
+              "key": "Fats",
+              "pair": "Cake",
+              "selectedPair": ""
             }
           ]
         }

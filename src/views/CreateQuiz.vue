@@ -80,7 +80,13 @@ const isQuizDataValid = () => {
   for (const level of quizData.levels) {
     // Check each level field
     for (const key of Object.keys(level)) {
-      if (!level[key] && level[key] === "Matched" && key !== "questionImage") {
+      if (!level[key] && key !== "questionImage") {
+        if (level.template === "Matched") {
+          if (key === "question") {
+            level[key] = "Match all pairs by pairing a left-sided button to a right-sided button.";
+            continue;
+          }
+        }
         return false;
       }
       if (level[key] === "Matched") {
@@ -137,11 +143,7 @@ const isQuizDataValid = () => {
           Level : {{ index + 1 }}
         </h2>
         <p class="text-2xl font-bold mt-2">
-          {{
-             QUIZ_TEMPLATES_TYPE.find(
-               (template) => template.value === level.template
-             )?.label
-          }}
+          {{ level.template }}
         </p>
 
         <!-- Template options -->
