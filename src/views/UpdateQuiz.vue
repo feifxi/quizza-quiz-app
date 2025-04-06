@@ -2,7 +2,7 @@
 import { getQuizById, updateQuiz } from "@/api/quizsAPI";
 import { onBeforeMount, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { QUiZ_TEMPLATES_TYPE } from "@/constants";
+import { QUIZ_TEMPLATES_TYPE, QUIZ_TEMPLATES_STUCTURE } from "@/constants";
 import MultiChoiceImgForm from "@/components/quiz_templates/form/MultiChoiceImgForm.vue";
 import MultiChoiceTextForm from "@/components/quiz_templates/form/MultiChoiceTextForm.vue";
 import MatchedForm from "@/components/quiz_templates/form/MatchedForm.vue";
@@ -31,83 +31,47 @@ const handleRemoveLevel = (index) => {
 };
 
 const addMoreQuiz = () => {
-  const newLevel = {
-    template: QUiZ_TEMPLATES_TYPE[0].value,
-    question: "",
-    questionImage: "",
-    choices: [
-      { value: "", isAns: true },
-      { value: "", isAns: false },
-      { value: "", isAns: false },
-      { value: "", isAns: false },
-    ],
-  };
-
-  quizData.value.levels.push(newLevel);
+  const newLevel = () => {
+    QUIZ_TEMPLATES_STUCTURE[0].template = QUIZ_TEMPLATES_TYPE[0].value;
+    return QUIZ_TEMPLATES_STUCTURE[0];
+  }
+  quizData.value.levels.push(newLevel());
 };
 
 const handleChangeTemplate = (templateType, levelIndex) => {
-  const multiChoiceLevel = {
-    template: templateType,
-    question: "",
-    questionImage: "",
-    choices: [
-      { value: "", isAns: true },
-      { value: "", isAns: false },
-      { value: "", isAns: false },
-      { value: "", isAns: false },
-    ],
-  };
-
-  const matchedLevel = {
-    template: templateType,
-    question: "",
-    questionImage: "",
-    choices: [
-      { key: "", pair: "", selectedPair: "" },
-      { key: "", pair: "", selectedPair: "" },
-      { key: "", pair: "", selectedPair: "" },
-      { key: "", pair: "", selectedPair: "" },
-    ],
-  };
-
-  const arrangeLevel = {
-    template: templateType,
-    question: "",
-    questionImage: "",
-    choices: [
-      { value: "", order: 0 },
-      { value: "", order: 1 },
-      { value: "", order: 2 },
-      { value: "", order: 3 },
-      { value: "", order: 4 },
-      { value: "", order: 5 },
-      { value: "", order: 6 },
-      { value: "", order: 7 },
-    ],
-  };
-
-  const wordcheckLevel = {
-    template: templateType,
-    question: "",
-    questionImage: "",
-    choices: [{ value: "" }],
-  };
+  const multiChoiceLevel = (templateType) => {
+    QUIZ_TEMPLATES_STUCTURE[0].template = templateType;
+    return QUIZ_TEMPLATES_STUCTURE[0];
+  }
+  const matchedLevel = (templateType) => {
+    QUIZ_TEMPLATES_STUCTURE[1].template = templateType;
+    return QUIZ_TEMPLATES_STUCTURE[1];
+  }
+  const arrangeLevel = (templateType) => {
+    QUIZ_TEMPLATES_STUCTURE[2].template = templateType;
+    return QUIZ_TEMPLATES_STUCTURE[2];
+  }
+  const wordcheckLevel = (templateType) => {
+    QUIZ_TEMPLATES_STUCTURE[3].template = templateType;
+    return QUIZ_TEMPLATES_STUCTURE[3];
+  }
 
   if (
     templateType === "Multiple-choice-text" ||
     templateType === "Multiple-choice-image"
   ) {
-    quizData.value.levels[levelIndex] = multiChoiceLevel;
+    console.log(multiChoiceLevel(templateType));
+    quizData.value.levels[levelIndex] = multiChoiceLevel(templateType);
   } else if (templateType === "Matched") {
-    quizData.value.levels[levelIndex] = matchedLevel;
+    quizData.value.levels[levelIndex] = matchedLevel(templateType);
   } else if (
     templateType === "ArrangeSentences" ||
     templateType === "ArrangePic"
   ) {
-    quizData.levels[levelIndex] = arrangeLevel;
-  } else if (templateType === "WordCheck") {
-    quizData.value.levels[levelIndex] = wordcheckLevel;
+    quizData.value.levels[levelIndex] = arrangeLevel(templateType);
+
+  } else if (templateType === 'WordCheck') {
+    quizData.value.levels[levelIndex] = wordcheckLevel(templateType);
   }
 };
 
@@ -224,7 +188,7 @@ onBeforeMount(async () => {
         </h2>
         <p class="text-2xl font-bold mt-2">
           {{
-            QUiZ_TEMPLATES_TYPE.find(
+            QUIZ_TEMPLATES_TYPE.find(
               (template) => template.value === level.template
             )?.label
           }}
@@ -243,7 +207,7 @@ onBeforeMount(async () => {
             "
             v-model="level.template">
             <option
-              v-for="template in QUiZ_TEMPLATES_TYPE"
+              v-for="template in QUIZ_TEMPLATES_TYPE"
               :value="template.value"
               :key="template.value"
               class="font-bold">

@@ -54,7 +54,6 @@ const headAdmin = (data) => {
 onBeforeMount(async () => {
   // navigate to selected tab
   const { tab } = route.query
-  console.log(tab)
   if (!tab || tab === 'workspace') {
     headAdmin('workspace')
   } else if (tab === 'admin-review') {
