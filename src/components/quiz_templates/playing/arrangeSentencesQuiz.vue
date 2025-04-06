@@ -13,7 +13,7 @@ const userAnswered = ref("");
 const choices = ref([]);
 const usedIndexes = ref(new Set());
 
-// ฟังก์ชันกรองค่าให้เฉพาะตัวเลือกที่ไม่เป็นค่าว่าง
+
 onMounted(() => {
   choices.value = random(levelData.choices.filter(choice => choice.value !== ""));
 });
@@ -28,7 +28,7 @@ const handleChooseChoice = (choice, index) => {
 
 function handleSubmit() {
   const correct = [...levelData.choices]
-    .filter(choice => choice.value !== "") // กรองแค่ตัวเลือกที่ไม่ว่าง
+    .filter(choice => choice.value !== "")
     .sort((a, b) => a.order - b.order)
     .map((x) => x.value)
     .join("");
