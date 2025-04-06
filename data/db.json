@@ -607,7 +607,7 @@
       "playerProgress": [
         {
           "userId": "e2db",
-          "star": 2
+          "star": 1
         }
       ],
       "levels": [
@@ -735,6 +735,10 @@
         {
           "userId": "065e",
           "star": 1
+        },
+        {
+          "userId": "e2db",
+          "star": 0
         }
       ],
       "levels": [

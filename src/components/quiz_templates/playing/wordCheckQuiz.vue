@@ -8,12 +8,12 @@ const { levelData, goNext, increaseScore } = defineProps({
 
 let userAnswered = ref('')
 function handleSubmit() {
-    if(userAnswered.value === levelData.choices[0].value){
+    if(userAnswered.value.toUpperCase() === levelData.choices[0].value.toUpperCase()){
         alert('Correct Answer 😎😎')
         increaseScore()
         goNext()
         userAnswered.value = ''
-    }else if(userAnswered.value != levelData.choices[0].value){
+    }else if(userAnswered.value.toUpperCase() != levelData.choices[0].value.toUpperCase()){
         alert('incorrect Answer 👽👽')
         alert('NOOB 👽')
         goNext()
@@ -45,7 +45,7 @@ function handleSubmit() {
           v-model="userAnswered"
             type="text"
             class="border-2 border-gray-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-400"
-            placeholder="Insert word..."
+            placeholder="Insert word... (non case-sensitive)"
           />
           <input
             type="submit"
