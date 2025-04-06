@@ -137,7 +137,11 @@ const isQuizDataValid = () => {
           Level : {{ index + 1 }}
         </h2>
         <p class="text-2xl font-bold mt-2">
-          {{ level.label }}
+          {{
+             QUIZ_TEMPLATES_TYPE.find(
+               (template) => template.value === level.template
+             )?.label
+          }}
         </p>
 
         <!-- Template options -->
