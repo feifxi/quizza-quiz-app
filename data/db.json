@@ -31,7 +31,7 @@
         "role": "admin",
         "profilePic": ""
       },
-      "status": "pending",
+      "status": "publish",
       "reactions": [],
       "comments": [],
       "adminComments": [],
@@ -139,6 +139,84 @@
               "key": "Fats",
               "pair": "Cake",
               "selectedPair": ""
+            }
+          ]
+        },
+        {
+          "template": "Word-Shuffle",
+          "question": "เรียงเลขจากมากไปน้อย",
+          "questionImage": "https://engbreaking.co.th/wp-content/uploads/2020/12/%E0%B9%80%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%99%E0%B8%95%E0%B8%B1%E0%B8%A7%E0%B9%80%E0%B8%A5%E0%B8%82%E0%B8%A0%E0%B8%B2%E0%B8%A9%E0%B8%B2%E0%B8%AD%E0%B8%B1%E0%B8%87%E0%B8%81%E0%B8%A4%E0%B8%A9%E0%B8%81%E0%B8%B1%E0%B8%9A-X3english-Learn-English-numbers-together-with-X3English.jpg",
+          "choices": [
+            {
+              "value": "12",
+              "order": 0
+            },
+            {
+              "value": "34",
+              "order": 1
+            },
+            {
+              "value": "56",
+              "order": 2
+            },
+            {
+              "value": "78",
+              "order": 3
+            },
+            {
+              "value": "90",
+              "order": 4
+            },
+            {
+              "value": "91",
+              "order": 5
+            },
+            {
+              "value": "99",
+              "order": 6
+            },
+            {
+              "value": "99.1",
+              "order": 7
+            }
+          ]
+        },
+        {
+          "template": "Image-Shuffle",
+          "question": "เรียงลำดับความแหลมของคาง",
+          "questionImage": "https://static.beebom.com/wp-content/uploads/2025/01/jinwoo-solo-leveling.jpg",
+          "choices": [
+            {
+              "value": "https://i1.sndcdn.com/artworks-C5gl8UDRFK7ydaFh-MkhgaA-t1080x1080.jpg",
+              "order": 0
+            },
+            {
+              "value": "https://s.yimg.com/ny/api/res/1.2/ecbWS8_yEm1MoWncNhmGJw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyNDI7aD02OTk-/https://media.zenfs.com/en/comingsoon_net_477/d8f30b8f6032c59636b56030955bfc16",
+              "order": 1
+            },
+            {
+              "value": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_GCSnMHvbQ1nn3BZLduoZr2U4G3eid3ZNA42prwokcitfZtS7TADEXISoWWGndO1v8jg&usqp=CAU",
+              "order": 2
+            },
+            {
+              "value": "https://i.redd.it/q7c9yiqu7wqe1.jpeg",
+              "order": 3
+            },
+            {
+              "value": "https://preview.redd.it/why-did-they-make-his-chin-look-rounded-in-many-frames-last-v0-l369vpjozrqe1.jpeg?width=2096&format=pjpg&auto=webp&s=782c2da93573bf27b6ca9717f6240059b81825ad",
+              "order": 4
+            },
+            {
+              "value": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYEOzlbk8lmp69mw7D3c5GMm_n0fBgy4iKSA&s",
+              "order": 5
+            },
+            {
+              "value": "",
+              "order": 6
+            },
+            {
+              "value": "",
+              "order": 7
             }
           ]
         }

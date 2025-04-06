@@ -49,9 +49,9 @@ export const QUIZ_TEMPLATES_TYPE = [
 
   {
     label: "เกมเรียงคำ",
-    value: "ArrangeSentences",
+    value: "Word-Shuffle",
     structure: {
-      template: "ArrangeSentences",
+      template: "Word-Shuffle",
       question: "",
       questionImage: "",
       choices: [
@@ -69,9 +69,9 @@ export const QUIZ_TEMPLATES_TYPE = [
 
   {
     label: "เกมเรียงรูป",
-    value: "ArrangePic",
+    value: "Image-Shuffle",
     structure: {
-      template: "ArrangePic",
+      template: "Image-Shuffle",
       question: "",
       questionImage: "",
       choices: [

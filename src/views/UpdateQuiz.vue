@@ -192,10 +192,10 @@ onBeforeMount(async () => {
             v-else-if="level.template === 'Matched'"
             :level-data="level" />
           <arrangeSentencesForm
-            v-else-if="level.template === 'ArrangeSentences'"
+            v-else-if="level.template === 'Word-Shuffle'"
             :level-data="level" />
           <arrangePicForm
-            v-else-if="level.template === 'ArrangePic'"
+            v-else-if="level.template === 'Image-Shuffle'"
             :level-data="level" />
           <wordCheckForm
             v-else-if="level.template === 'WordCheck'"
