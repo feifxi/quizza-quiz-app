@@ -112,11 +112,11 @@ onBeforeMount(async () => {
         :level-data="quizData.levels[currentLevel]" :increase-score="increaseScore" :go-next="handleMoveToNextLevel" />
     </div>
     <div class="mt-2">
-      <arrangeSentencesQuiz v-if="quizData.levels[currentLevel]?.template === 'ArrangeSentences'"
+      <arrangeSentencesQuiz v-if="quizData.levels[currentLevel]?.template === 'Word-Shuffle'"
         :level-data="quizData.levels[currentLevel]" :increase-score="increaseScore" :go-next="handleMoveToNextLevel" />
     </div>
     <div class="mt-2">
-      <arrangePicQuiz v-if="quizData.levels[currentLevel]?.template === 'ArrangePic'"
+      <arrangePicQuiz v-if="quizData.levels[currentLevel]?.template === 'Image-Shuffle'"
         :level-data="quizData.levels[currentLevel]" :increase-score="increaseScore" :go-next="handleMoveToNextLevel" />
     </div>
     <div class="mt-2">

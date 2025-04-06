@@ -171,8 +171,8 @@ const isQuizDataValid = () => {
           <MultiChoiceTextForm v-if="level.template === 'Multiple-choice-text'" :level-data="level" />
           <MultiChoiceImgForm v-else-if="level.template === 'Multiple-choice-image'" :level-data="level" />
           <MatchedForm v-else-if="level.template === 'Matched'" :level-data="level" />
-          <arrangeSentencesForm v-else-if="level.template === 'ArrangeSentences'" :level-data="level" />
-          <arrangePicForm v-else-if="level.template === 'ArrangePic'" :level-data="level" />
+          <arrangeSentencesForm v-else-if="level.template === 'Word-Shuffle'" :level-data="level" />
+          <arrangePicForm v-else-if="level.template === 'Image-Shuffle'" :level-data="level" />
           <wordCheckForm v-else-if="level.template === 'WordCheck'" :level-data="level" />
         </div>
       </div>
