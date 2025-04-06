@@ -10,7 +10,7 @@ import arrangePicQuiz from "@/components/quiz_templates/playing/arrangePicQuiz.v
 import wordCheckQuiz from "@/components/quiz_templates/playing/wordCheckQuiz.vue";
 
 import { useAuthStore } from "@/stores/user";
-import { computed, onBeforeMount, onBeforeUnmount, reactive, ref } from "vue";
+import { computed, onBeforeMount, onBeforeUnmount, reactive, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 const route = useRoute();
 const router = useRouter();
@@ -85,14 +85,11 @@ onBeforeMount(async () => {
 
   <section v-else class="p-3">
     <div class="relative">
-      <Button
-        label="Back to home"
-        class="absolute right-5 bg-red-500 border-red-600 active:bg-red-600"
+      <Button label="Back to home" class="absolute right-5 bg-red-500 border-red-600 active:bg-red-600"
         @click="handleBackHome">
       </Button>
 
-      <div
-        class="w-3xs p-3 border rounded-2xl border-green-600 bg-green-500 text-white">
+      <div class="w-3xs p-3 border rounded-2xl border-green-600 bg-green-500 text-white">
         <h2 class="text-2xl font-bold">
           Question : {{ currentLevel + 1 + " / " + quizData.levels.length }}
         </h2>
@@ -101,50 +98,30 @@ onBeforeMount(async () => {
     </div>
 
     <div class="mt-2">
-      <MultiChoiceTextQuiz
-        v-if="
-          quizData.levels[currentLevel]?.template === 'Multiple-choice-text'
-        "
-        :level-data="quizData.levels[currentLevel]"
-        :increase-score="increaseScore"
-        :go-next="handleMoveToNextLevel" />
+      <MultiChoiceTextQuiz v-if="
+        quizData.levels[currentLevel]?.template === 'Multiple-choice-text'
+      " :level-data="quizData.levels[currentLevel]" :increase-score="increaseScore" :go-next="handleMoveToNextLevel" />
     </div>
     <div class="mt-2">
-      <MultiChoiceImgQuiz
-        v-if="
-          quizData.levels[currentLevel]?.template === 'Multiple-choice-image'
-        "
-        :level-data="quizData.levels[currentLevel]"
-        :increase-score="increaseScore"
-        :go-next="handleMoveToNextLevel" />
+      <MultiChoiceImgQuiz v-if="
+        quizData.levels[currentLevel]?.template === 'Multiple-choice-image'
+      " :level-data="quizData.levels[currentLevel]" :increase-score="increaseScore" :go-next="handleMoveToNextLevel" />
     </div>
     <div class="mt-2">
-      <MatchedQuiz
-        v-if="quizData.levels[currentLevel]?.template === 'Matched'"
-        :level-data="quizData.levels[currentLevel]"
-        :increase-score="increaseScore"
-        :go-next="handleMoveToNextLevel" />
+      <MatchedQuiz v-if="quizData.levels[currentLevel]?.template === 'Matched'"
+        :level-data="quizData.levels[currentLevel]" :increase-score="increaseScore" :go-next="handleMoveToNextLevel" />
     </div>
     <div class="mt-2">
-      <arrangeSentencesQuiz
-        v-if="quizData.levels[currentLevel]?.template === 'ArrangeSentences'"
-        :level-data="quizData.levels[currentLevel]"
-        :increase-score="increaseScore"
-        :go-next="handleMoveToNextLevel" />
+      <arrangeSentencesQuiz v-if="quizData.levels[currentLevel]?.template === 'ArrangeSentences'"
+        :level-data="quizData.levels[currentLevel]" :increase-score="increaseScore" :go-next="handleMoveToNextLevel" />
     </div>
     <div class="mt-2">
-      <arrangePicQuiz
-        v-if="quizData.levels[currentLevel]?.template === 'ArrangePic'"
-        :level-data="quizData.levels[currentLevel]"
-        :increase-score="increaseScore"
-        :go-next="handleMoveToNextLevel" />
+      <arrangePicQuiz v-if="quizData.levels[currentLevel]?.template === 'ArrangePic'"
+        :level-data="quizData.levels[currentLevel]" :increase-score="increaseScore" :go-next="handleMoveToNextLevel" />
     </div>
     <div class="mt-2">
-      <wordCheckQuiz
-        v-if="quizData.levels[currentLevel]?.template === 'WordCheck'"
-        :level-data="quizData.levels[currentLevel]"
-        :increase-score="increaseScore"
-        :go-next="handleMoveToNextLevel" />
+      <wordCheckQuiz v-if="quizData.levels[currentLevel]?.template === 'WordCheck'"
+        :level-data="quizData.levels[currentLevel]" :increase-score="increaseScore" :go-next="handleMoveToNextLevel" />
     </div>
     <div class="mt-2">
       <wordCheckQuiz v-if="quizData.levels[currentLevel]?.template === 'WordCheck'"

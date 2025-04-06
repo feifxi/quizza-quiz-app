@@ -17,19 +17,20 @@
       "role": "admin"
     },
     {
+      "userName": "jeno",
+      "profilePic": "https://dejpknyizje2n.cloudfront.net/media/carstickers/versions/pixel-art-rainbow-heart-sticker-ud0f0-x450.png",
+      "profileFrame": {
+        "color1": "#ff0000",
+        "color2": "#ff8000",
+        "color3": "#ffff00",
+        "color4": "#00ff00",
+        "selectedMode": "bottom",
+        "color5": "#00ffff"
+      },
       "id": "263c",
       "email": "jeno",
-      "userName": "jeno",
       "password": "123",
-      "role": "user",
-      "profilePic": "https://scontent.fbkk29-4.fna.fbcdn.net/v/t39.30808-6/437713704_1466827230902585_1207147039720705960_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=qMR1mS8d_SoQ7kNvgHb1ZTf&_nc_oc=AdkXwu0h7Bo1o3Wnt-9Sj0MknO6oX3elpRJGNTtfI4Dwy-V90xQnJWAyrweMB4YMRpXmW91TKUqXJeE7ESceFU_u&_nc_zt=23&_nc_ht=scontent.fbkk29-4.fna&_nc_gid=Gzpt7x20jYv9RYU3QzCPNg&oh=00_AYF5cfvumCuZgnRBW5JIRgLfkfwlALV4KiYZ_fbvVKyXFg&oe=67E31C0B",
-      "profileFrame": {
-        "color1": "",
-        "color2": "",
-        "color3": "",
-        "color4": "",
-        "selectedMode": ""
-      }
+      "role": "user"
     },
     {
       "userName": "guy",
@@ -631,7 +632,6 @@
           ]
         }
       ]
-
     },
     {
       "id": "feac",
@@ -778,7 +778,6 @@
           ]
         }
       ]
-
     }
   ]
 }

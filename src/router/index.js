@@ -9,7 +9,7 @@ import Workspace from "@/views/Workspace.vue";
 import PlayQuiz from "@/views/PlayQuiz.vue";
 import { useAuthStore } from "@/stores/user";
 import Profiles from "@/views/Profiles.vue";
-import EditProfiles from "@/views/EditProfiles.vue"
+import EditProfiles from "@/views/EditProfiles.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -60,32 +60,37 @@ const router = createRouter({
       path: "/leaderboard",
       name: "leaderboard",
       component: LeaderBoard,
-      meta: { requiresAuth: false },
+      meta: { requiresAuth: true },
     },
     {
       path: "/profile",
       name: "profile",
       component: Profiles,
-      meta: { requiresAuth: true}
+      meta: { requiresAuth: true },
     },
     {
       path: "/editprofile",
       name: "editprofile",
       component: EditProfiles,
-      meta: { requiresAuth: true}
-    }
+      meta: { requiresAuth: true },
+    },
   ],
 });
 
-// router.beforeEach((to, from, next) => {
-//   const authStore = useAuthStore();
-
-//   if (to.meta.requiresAuth && !authStore.isAuthenticated) {
-//     next("/signin");
-//   }
-//   else {
-//     next();
-//   }
-// });
+router.beforeEach(async (to, from, next) => {
+  const authStore = useAuthStore();
+  // await authStore.checkAuth();
+  const hasUserId = localStorage.getItem("userId") ? true : false;
+  if (
+    // !authStore.isAuthenticated &&
+    !hasUserId &&
+    to.meta.requiresAuth &&
+    to.name !== "signin"
+  ) {
+    return next({ name: "signin" });
+  } else {
+    return next();
+  }
+});
 
 export default router;
