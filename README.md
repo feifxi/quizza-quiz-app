@@ -300,6 +300,7 @@ A platform quiz game that the world gonna cry😭😭
             </td>
         </tr>
     </tbody>
+</table>
 
 ## Week6
 <table>
