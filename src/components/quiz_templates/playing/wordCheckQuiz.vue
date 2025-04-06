@@ -8,12 +8,12 @@ const { levelData, goNext, increaseScore } = defineProps({
 
 let userAnswered = ref('')
 function handleSubmit() {
-    if(userAnswered.value === levelData.choices[0].value){
+    if(userAnswered.value.toUpperCase() === levelData.choices[0].value.toUpperCase()){
         alert('Correct Answer 😎😎')
         increaseScore()
         goNext()
         userAnswered.value = ''
-    }else if(userAnswered.value != levelData.choices[0].value){
+    }else if(userAnswered.value.toUpperCase() != levelData.choices[0].value.toUpperCase()){
         alert('incorrect Answer 👽👽')
         alert('NOOB 👽')
         goNext()
