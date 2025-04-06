@@ -166,12 +166,15 @@ onBeforeMount(async () => {
               (e) => {
                 handleChangeTemplate(e.target.value, index);
               }
-            ">
+            "
+            >
             <option
               v-for="template in QUIZ_TEMPLATES_TYPE"
               :value="template.value"
               :key="template.value"
-              class="font-bold">
+              :selected="template.value === level.template"
+              class="font-bold"
+            >
               {{ template.label }}
             </option>
           </select>
