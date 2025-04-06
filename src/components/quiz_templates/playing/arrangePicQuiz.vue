@@ -13,7 +13,6 @@ const userAnswered = ref("");
 const choices = ref([]);
 const usedIndexes = ref(new Set());
 
-// กรอง choices ที่เป็นค่าว่าง
 onMounted(() => {
   choices.value = random(levelData.choices.filter(choice => choice.value !== ""));
 });
@@ -27,7 +26,6 @@ const handleChooseChoice = (choice, index) => {
 };
 
 function handleSubmit() {
-  // กรองเฉพาะตัวเลือกที่ไม่เป็นค่าว่างและจัดเรียงตามลำดับ
   const correct = [...levelData.choices]
     .filter(choice => choice.value !== "")
     .sort((a, b) => a.order - b.order)
@@ -62,7 +60,6 @@ function resetState() {
     <div
       class="flex flex-col p-10 border border-green-600 rounded-2xl bg-green-500 w-[85%]"
     >
-      <!-- รูปคำถาม -->
       <div v-if="levelData.questionImage" class="w-full flex justify-center mb-4">
         <img
           :src="levelData.questionImage"
@@ -77,7 +74,6 @@ function resetState() {
 
       <br />
 
-      <!-- ปุ่มรูปภาพ -->
       <div class="grid grid-cols-2 gap-3 mt-4">
         <button
           v-for="(choice, index) in choices"
@@ -93,7 +89,6 @@ function resetState() {
         </button>
       </div>
 
-      <!-- ช่องแสดงผลลัพธ์ + ปุ่ม -->
       <form @submit.prevent="handleSubmit" class="flex flex-col gap-4 mt-6">
         <div class="flex gap-2 flex-wrap">
           <div
