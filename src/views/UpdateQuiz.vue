@@ -43,35 +43,45 @@ const handleChangeTemplate = (templateType, levelIndex) => {
     QUIZ_TEMPLATES_STUCTURE[0].template = templateType;
     return QUIZ_TEMPLATES_STUCTURE[0];
   }
-  const matchedLevel = (templateType) => {
+  const multiChoiceLevelimg = (templateType) => {
     QUIZ_TEMPLATES_STUCTURE[1].template = templateType;
     return QUIZ_TEMPLATES_STUCTURE[1];
   }
-  const arrangeLevel = (templateType) => {
+  const matchedLevel = (templateType) => {
     QUIZ_TEMPLATES_STUCTURE[2].template = templateType;
     return QUIZ_TEMPLATES_STUCTURE[2];
   }
-  const wordcheckLevel = (templateType) => {
+  const arrangeLevel = (templateType) => {
     QUIZ_TEMPLATES_STUCTURE[3].template = templateType;
     return QUIZ_TEMPLATES_STUCTURE[3];
   }
+  const arrangeLevelimg = (templateType) => {
+    QUIZ_TEMPLATES_STUCTURE[4].template = templateType;
+    return QUIZ_TEMPLATES_STUCTURE[4];
+  }
+  const wordcheckLevel = (templateType) => {
+    QUIZ_TEMPLATES_STUCTURE[5].template = templateType;
+    return QUIZ_TEMPLATES_STUCTURE[5];
+  }
 
-  if (
-    templateType === "Multiple-choice-text" ||
-    templateType === "Multiple-choice-image"
-  ) {
-    console.log(multiChoiceLevel(templateType));
-    quizData.value.levels[levelIndex] = multiChoiceLevel(templateType);
+  if (templateType === "Multiple-choice-text") {
+    quizData.levels[levelIndex] = multiChoiceLevel(templateType);
+    choiceQuiz =  "Multiple-choice-text"
+  } else if (templateType === "Multiple-choice-image") {
+    quizData.levels[levelIndex] = multiChoiceLevelimg(templateType);
+    choiceQuiz =  "Multiple-choice-image"
   } else if (templateType === "Matched") {
-    quizData.value.levels[levelIndex] = matchedLevel(templateType);
-  } else if (
-    templateType === "ArrangeSentences" ||
-    templateType === "ArrangePic"
-  ) {
-    quizData.value.levels[levelIndex] = arrangeLevel(templateType);
-
+    quizData.levels[levelIndex] = matchedLevel(templateType);
+    choiceQuiz =  "Match"
+  } else if (templateType === "ArrangeSentences") {
+    quizData.levels[levelIndex] = arrangeLevel(templateType);
+    choiceQuiz =  "ArrangeSentences"
+  } else if (templateType === "ArrangePic") {
+    quizData.levels[levelIndex] = arrangeLevelimg(templateType);
+    choiceQuiz =  "ArrangePic"
   } else if (templateType === 'WordCheck') {
-    quizData.value.levels[levelIndex] = wordcheckLevel(templateType);
+    quizData.levels[levelIndex] = wordcheckLevel(templateType);
+    choiceQuiz =  "WordCheck"
   }
 };
 

@@ -7,7 +7,7 @@ import MultiChoiceTextForm from "@/components/quiz_templates/form/MultiChoiceTex
 import MatchedForm from "@/components/quiz_templates/form/MatchedForm.vue";
 import { QUIZ_TEMPLATES_TYPE, QUIZ_TEMPLATES_STUCTURE } from "@/constants";
 import { useAuthStore } from "@/stores/user";
-import { reactive } from "vue";
+import { reactive , ref} from "vue";
 import { useRouter } from "vue-router";
 import arrangeSentencesForm from "@/components/quiz_templates/form/arrangeSentencesForm.vue";
 import arrangePicForm from "@/components/quiz_templates/form/arrangePicForm.vue";
@@ -52,41 +52,53 @@ const addMoreQuiz = () => {
   }
   quizData.levels.push(newLevel());
 };
+let choiceQuiz = ref('')
 
 const handleChangeTemplate = (templateType, levelIndex) => {
   const multiChoiceLevel = (templateType) => {
     QUIZ_TEMPLATES_STUCTURE[0].template = templateType;
     return QUIZ_TEMPLATES_STUCTURE[0];
   }
-  const matchedLevel = (templateType) => {
+  const multiChoiceLevelimg = (templateType) => {
     QUIZ_TEMPLATES_STUCTURE[1].template = templateType;
     return QUIZ_TEMPLATES_STUCTURE[1];
   }
-  const arrangeLevel = (templateType) => {
+  const matchedLevel = (templateType) => {
     QUIZ_TEMPLATES_STUCTURE[2].template = templateType;
     return QUIZ_TEMPLATES_STUCTURE[2];
   }
-  const wordcheckLevel = (templateType) => {
+  const arrangeLevel = (templateType) => {
     QUIZ_TEMPLATES_STUCTURE[3].template = templateType;
     return QUIZ_TEMPLATES_STUCTURE[3];
   }
+  const arrangeLevelimg = (templateType) => {
+    QUIZ_TEMPLATES_STUCTURE[4].template = templateType;
+    return QUIZ_TEMPLATES_STUCTURE[4];
+  }
+  const wordcheckLevel = (templateType) => {
+    QUIZ_TEMPLATES_STUCTURE[5].template = templateType;
+    return QUIZ_TEMPLATES_STUCTURE[5];
+  }
+  
 
-  if (
-    templateType === "Multiple-choice-text" ||
-    templateType === "Multiple-choice-image"
-  ) {
-    console.log(multiChoiceLevel(templateType));
+  if (templateType === "Multiple-choice-text") {
     quizData.levels[levelIndex] = multiChoiceLevel(templateType);
+    choiceQuiz =  "Multiple-choice-text"
+  } else if (templateType === "Multiple-choice-image") {
+    quizData.levels[levelIndex] = multiChoiceLevelimg(templateType);
+    choiceQuiz =  "Multiple-choice-image"
   } else if (templateType === "Matched") {
     quizData.levels[levelIndex] = matchedLevel(templateType);
-  } else if (
-    templateType === "ArrangeSentences" ||
-    templateType === "ArrangePic"
-  ) {
+    choiceQuiz =  "Match"
+  } else if (templateType === "ArrangeSentences") {
     quizData.levels[levelIndex] = arrangeLevel(templateType);
-
+    choiceQuiz =  "ArrangeSentences"
+  } else if (templateType === "ArrangePic") {
+    quizData.levels[levelIndex] = arrangeLevelimg(templateType);
+    choiceQuiz =  "ArrangePic"
   } else if (templateType === 'WordCheck') {
     quizData.levels[levelIndex] = wordcheckLevel(templateType);
+    choiceQuiz =  "WordCheck"
   }
 };
 
