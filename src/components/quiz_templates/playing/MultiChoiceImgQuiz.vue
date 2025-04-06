@@ -30,7 +30,7 @@ const shuffleChoices = (levelData) => {
         class="p-3 border border-black rounded-2xl text-2xl font-bold cursor-pointer" :class="{
           'bg-white hover:bg-gray-200': choice.value
         }" @click="() => { handleChooseChoice(choice.isAns) }">
-        <img :src="choice.value" alt="" class="max-w-[100px] w-full" />
+        <img :src="choice.value" alt="" class="max-w-[300px] w-full" />
       </button>
     </div>
   </div>
