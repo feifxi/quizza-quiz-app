@@ -30,7 +30,7 @@ function handleSubmit() {
     <div class="w-full  flex justify-center items-center  p-6">
       <div class="w-full max-w-[50%]  rounded-xl p-6 space-y-5">
 
-        <div class="text-center text-lg font-semibold text-gray-800 border-2 border-green-400 rounded-md p-4 bg-green-50 ">
+        <div class="text-center text-3xl font-semibold text-gray-800 border-2 border-green-400 rounded-md p-4 bg-green-50 ">
           {{ levelData.question.split('').join(' ') }}
         </div>
 
