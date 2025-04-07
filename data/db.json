@@ -15,6 +15,22 @@
       "password": "123",
       "role": "user",
       "profilePic": ""
+    },
+    {
+      "userName": "guuy",
+      "profilePic": "",
+      "profileFrame": {
+        "color1": "#c20000",
+        "color2": "#0818f7",
+        "color3": "#c41717",
+        "color4": "#d8cbcb",
+        "color5": "#3e1d1d",
+        "selectedMode": "left"
+      },
+      "id": "f517",
+      "email": "guy@gmail.com",
+      "password": "123",
+      "role": "user"
     }
   ],
   "quizs": [
@@ -32,13 +48,19 @@
         "profilePic": ""
       },
       "status": "publish",
-      "reactions": [],
+      "reactions": [
+        "f517"
+      ],
       "comments": [],
       "adminComments": [],
       "playerProgress": [
         {
           "userId": "9ffe",
           "star": 2
+        },
+        {
+          "userId": "f517",
+          "star": 1
         }
       ],
       "levels": [
@@ -217,6 +239,16 @@
             {
               "value": "",
               "order": 7
+            }
+          ]
+        },
+        {
+          "template": "WordCheck",
+          "question": "_igg__",
+          "questionImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS3mNVQWktmzXfPBNGFxM6xaWYjMBC878TJAomqlh1b9pvwVZ3Jywlsks3vMmgRFVnHjQ&usqp=CAU",
+          "choices": [
+            {
+              "value": "bigger"
             }
           ]
         }
