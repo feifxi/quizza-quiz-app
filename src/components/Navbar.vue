@@ -14,7 +14,7 @@ const logout = () => {
     <header
         class="font-extrabold flex justify-between items-center text-white px-10 py-3 bg-green-500 border-b-3 border-green-600">
         <RouterLink to="/">
-            <h2 class="text-2xl font-bold cursor-pointer">Roblox but better</h2>
+            <h2 class="text-3xl font-bold cursor-pointer hover:scale-110">QUIZZA</h2>
         </RouterLink>
         <nav v-if="authStore.isAuthenticated" class="flex items-center gap-5">
             <RouterLink to="/workspace" class="hover:underline cursor-pointer">Workspace</RouterLink>
