@@ -12,11 +12,11 @@ Users can freely create and customize their own quizzes, with submissions review
 - [Figma](https://www.figma.com/design/9JFMquzBxruwnq4fFYA4Hl/Untitled?node-id=0-1&p=f&t=k7M9jm1dbxZ3dkjA-0)
 
 ## List Features 
-- Authentication → Role base
-    - Sign up, Sign in, log out
+- Authentication → Authenticate system by role base. (eg. Admin, User)
+    - Sign up, Sign in, Log out
 - Quiz
-    - Home
-    - Quiz workspace
+    - Home → A page full of playable quizzes, with comments and likes.
+    - Quiz workspace → Review quizzes' status, and can update
     - Create quiz
     - Update quiz
     - Admin review quiz 
@@ -103,10 +103,10 @@ Users can freely create and customize their own quizzes, with submissions review
 
 
 ## Weekly Update 
-## Week2
+### Week2
 - Planing & Design Project
 
-## Week3
+### Week3
 <table>
     <thead>
         <tr>
@@ -179,7 +179,7 @@ Users can freely create and customize their own quizzes, with submissions review
     </tbody>
 </table>
 
-## Week4
+### Week4
 <table>
     <thead>
         <tr>
@@ -259,7 +259,7 @@ Users can freely create and customize their own quizzes, with submissions review
     </tbody>
 </table>
 
-## Week5
+### Week5
 <table>
     <thead>
         <tr>
@@ -329,7 +329,7 @@ Users can freely create and customize their own quizzes, with submissions review
     </tbody>
 </table>
 
-## Week6
+### Week6
 <table>
     <thead>
         <tr>
@@ -398,3 +398,8 @@ Users can freely create and customize their own quizzes, with submissions review
         </tr>
     </tbody>
 </table>
+
+## Reference
+- Test2Hub <b>(BUT BETTER)</b> 😈😈
+- Duolingo
+- Roblox
