@@ -1,8 +1,4 @@
 <script setup>
-import { getQuizById, updateQuiz } from "@/api/quizsAPI";
-import { onBeforeMount, reactive } from "vue";
-import { useRoute, useRouter } from "vue-router";
-import { QUIZ_TEMPLATES_TYPE } from "@/constants";
 import MultiChoiceImgForm from "@/components/quiz_templates/form/MultiChoiceImgForm.vue";
 import MultiChoiceTextForm from "@/components/quiz_templates/form/MultiChoiceTextForm.vue";
 import MatchedForm from "@/components/quiz_templates/form/MatchedForm.vue";
@@ -11,6 +7,10 @@ import Button from "@/components/Button.vue";
 import arrangeSentencesForm from "@/components/quiz_templates/form/arrangeSentencesForm.vue";
 import arrangePicForm from "@/components/quiz_templates/form/arrangePicForm.vue";
 import wordCheckForm from "@/components/quiz_templates/form/wordCheckForm.vue";
+import { getQuizById, updateQuiz } from "@/api/quizsAPI";
+import { onMounted, reactive } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { QUIZ_TEMPLATES_TYPE } from "@/constants";
 
 const router = useRouter();
 const route = useRoute();
@@ -95,21 +95,18 @@ const handleBackToWorkspace = () => {
   }
 }
 
-onBeforeMount(async () => {
+onMounted(async () => {
   await getQuiz();
 });
 </script>
 
 <template>
   <section class="p-4 relative" v-if="quizData">
-    <Button
-      :label="quizData.status === 'pending' ? 'Back to admin review' : 'Back to workspace'"
-      class="absolute right-5 bg-red-500 border-red-600 active:bg-red-600"
-      @click="handleBackToWorkspace">
+    <Button :label="quizData.status === 'pending' ? 'Back to admin review' : 'Back to workspace'"
+      class="absolute right-5 bg-red-500 border-red-600 active:bg-red-600" @click="handleBackToWorkspace">
     </Button>
 
-    <div
-      class="mx-auto flex flex-col gap-3 bg-white border border-neutral-300 p-4 rounded-xl shadow max-w-xl">
+    <div class="mx-auto flex flex-col gap-3 bg-white border border-neutral-300 p-4 rounded-xl shadow max-w-xl">
       <h1 class="text-4xl font-bold flex gap-3">
         <p>Update Quiz</p>
         <Icon name="quiz" class-name="fill-black size-10" />
@@ -127,10 +124,7 @@ onBeforeMount(async () => {
 
       <div class="flex flex-col gap-2">
         <label class="text-xl font-bold">Quiz Thumbnail</label>
-        <img
-          v-if="quizData.thumbnail"
-          :src="quizData.thumbnail"
-          alt="Quiz image"
+        <img v-if="quizData.thumbnail" :src="quizData.thumbnail" alt="Quiz image"
           class="w-[300px] h-[200px] bg-neutral-200 rounded-xl object-center" />
         <input type="text" class="input" v-model="quizData.thumbnail" />
       </div>
@@ -138,12 +132,9 @@ onBeforeMount(async () => {
 
     <!-- Template -->
     <div class="mx-auto mt-5 flex flex-col max-w-xl gap-4">
-      <div
-        v-for="(level, index) in quizData.levels"
+      <div v-for="(level, index) in quizData.levels"
         class="relative bg-white border border-neutral-300 p-3 rounded-xl shadow">
-        <span
-          v-if="quizData.levels.length > 1"
-          @click="() => handleRemoveLevel(index)"
+        <span v-if="quizData.levels.length > 1" @click="() => handleRemoveLevel(index)"
           class="absolute right-0 top-0 cursor-pointer p-2 bg-red-500 rounded-tr-xl rounded-bl-xl">
           <Icon name="close" />
         </span>
@@ -157,24 +148,15 @@ onBeforeMount(async () => {
         </p>
 
         <!-- Template Options -->
-        <div
-          class="flex flex-col gap-2 mt-3 pb-4 border-b-2 border-neutral-300">
+        <div class="flex flex-col gap-2 mt-3 pb-4 border-b-2 border-neutral-300">
           <label class="font-bold">Choose Template :</label>
-          <select
-            class="bg-gray-50 border border-gray-300 p-2 rounded font-bold"
-            @change="
-              (e) => {
-                handleChangeTemplate(e.target.value, index);
-              }
-            "
-            >
-            <option
-              v-for="template in QUIZ_TEMPLATES_TYPE"
-              :value="template.value"
-              :key="template.value"
-              :selected="template.value === level.template"
-              class="font-bold"
-            >
+          <select class="bg-gray-50 border border-gray-300 p-2 rounded font-bold" @change="
+            (e) => {
+              handleChangeTemplate(e.target.value, index);
+            }
+          ">
+            <option v-for="template in QUIZ_TEMPLATES_TYPE" :value="template.value" :key="template.value"
+              :selected="template.value === level.template" class="font-bold">
               {{ template.label }}
             </option>
           </select>
@@ -182,32 +164,17 @@ onBeforeMount(async () => {
 
         <!-- Render Template -->
         <div class="mt-4 w-full">
-          <MultiChoiceTextForm
-            v-if="level.template === 'Multiple-choice-text'"
-            :level-data="level" />
-          <MultiChoiceImgForm
-            v-else-if="level.template === 'Multiple-choice-image'"
-            :level-data="level" />
-          <MatchedForm
-            v-else-if="level.template === 'Matched'"
-            :level-data="level" />
-          <arrangeSentencesForm
-            v-else-if="level.template === 'Word-Shuffle'"
-            :level-data="level" />
-          <arrangePicForm
-            v-else-if="level.template === 'Image-Shuffle'"
-            :level-data="level" />
-          <wordCheckForm
-            v-else-if="level.template === 'WordCheck'"
-            :level-data="level" />
+          <MultiChoiceTextForm v-if="level.template === 'Multiple-choice-text'" :level-data="level" />
+          <MultiChoiceImgForm v-else-if="level.template === 'Multiple-choice-image'" :level-data="level" />
+          <MatchedForm v-else-if="level.template === 'Matched'" :level-data="level" />
+          <arrangeSentencesForm v-else-if="level.template === 'Word-Shuffle'" :level-data="level" />
+          <arrangePicForm v-else-if="level.template === 'Image-Shuffle'" :level-data="level" />
+          <wordCheckForm v-else-if="level.template === 'WordCheck'" :level-data="level" />
         </div>
       </div>
 
       <div class="flex gap-3 self-end">
-        <Button
-          label="Add More Levels"
-          @click="addMoreQuiz"
-          class-name="bg-sky-500 border-b-sky-600 active:bg-sky-600">
+        <Button label="Add More Levels" @click="addMoreQuiz" class-name="bg-sky-500 border-b-sky-600 active:bg-sky-600">
         </Button>
         <Button label="Update Quiz" @click="handleUpdateGame"></Button>
       </div>

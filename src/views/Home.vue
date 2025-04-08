@@ -1,14 +1,11 @@
 <script setup>
-import { getAllQuizs, getQuizById } from '@/api/quizsAPI';
-import { getAllUsers, getUserById } from '@/api/usersAPI';
-import Button from '@/components/Button.vue';
-import Chatbot from '@/components/Chatbot.vue';
 import Icon from '@/components/Icon.vue';
 import CommentModal from '@/components/CommentModal.vue';
 import QuizCard from '@/components/QuizCard.vue';
 import QuizLevelModal from '@/components/QuizLevelModal.vue';
+import { getAllQuizs, getQuizById } from '@/api/quizsAPI';
 import { useAuthStore } from '@/stores/user';
-import { onBeforeMount, reactive, ref } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
 const authStore = useAuthStore()
@@ -63,7 +60,7 @@ const handleCloseModal = () => {
 }
 
 
-onBeforeMount(() => {
+onMounted(() => {
   fetchAllQuizs()
   // Show Quiz Level Modal
   const { quizId } = route.query

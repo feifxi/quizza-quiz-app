@@ -1,22 +1,17 @@
 <script setup>
-import { getAllUsers } from "@/api/usersAPI";
 import Button from "@/components/Button.vue";
+import { getAllUsers } from "@/api/usersAPI";
 import { useAuthStore } from "@/stores/user";
 import { reactive } from "vue";
 import { useRouter } from "vue-router";
 
 const authStore = useAuthStore();
-
 const router = useRouter();
 
 const userData = reactive({
   email: "",
   password: "",
 });
-
-const validateData = () => {
-
-};
 
 const signIn = async (e) => {
   e.preventDefault();
@@ -47,7 +42,7 @@ const signIn = async (e) => {
           <label class="text-gray-900 font-bold">Email</label>
           <input type="text" class="input" v-model="userData.email" />
         </div>
-        
+
         <div class="flex flex-col">
           <label class="text-gray-900 font-bold">Password</label>
           <input type="text" class="input" v-model="userData.password" />

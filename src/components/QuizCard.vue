@@ -1,7 +1,8 @@
 <script setup>
-import { deleteQuiz, getQuizById, patchQuiz } from '@/api/quizsAPI';
 import Button from './Button.vue';
 import Icon from './Icon.vue';
+import { deleteQuiz, patchQuiz } from '@/api/quizsAPI';
+
 const { quiz, approveQuiz, isAdmin } = defineProps({
     quiz: Object,
     showLevelModal: Function,
@@ -23,24 +24,25 @@ const handleApproveQuiz = async () => {
         // quizData.value = res.data;
         // const result = await patchQuiz(quizData.value.id)
         alert('Quiz approved!')
-
     }
 }
 </script>
 
 <template>
-    <div :class="'relative flex flex-col rounded-xl shadow-2xl transition-all ' + (isEditMode ? '' : 'hover:scale-105')">
+    <div
+        :class="'relative flex flex-col rounded-xl shadow-2xl transition-all ' + (isEditMode ? '' : 'hover:scale-105')">
         <div v-if="isEditMode" class="absolute right-3 top-3 flex flex-col items-end gap-2">
             <div class="flex gap-2">
                 <RouterLink :to="{ name: 'update', params: { quizId: quiz.id } }">
                     <Button :label="isAdmin ? 'Preview' : 'Edit'" class-name="bg-blue-500 active:bg-blue-600"></Button>
                 </RouterLink>
-                <Button :label="'Delete'" class-name="bg-red-500 active:bg-red-600 border-b-3 border-red-600" :click="handleDeleteQuiz"></Button>
+                <Button :label="'Delete'" class-name="bg-red-500 active:bg-red-600 border-b-3 border-red-600"
+                    :click="handleDeleteQuiz"></Button>
             </div>
-            <Button v-if="isAdmin && quiz.status == 'pending'" 
-                :label="'Approve'" class-name="bg-yellow-400 active:bg-yellow-500 w-1/2 border-b-3 border-yellow-500" 
+            <Button v-if="isAdmin && quiz.status == 'pending'" :label="'Approve'"
+                class-name="bg-yellow-400 active:bg-yellow-500 w-1/2 border-b-3 border-yellow-500"
                 :click="handleApproveQuiz">
-            </Button>        
+            </Button>
         </div>
         <div @click="showLevelModal" :class="'flex-1 bg-white ' + (isEditMode ? '' : 'cursor-pointer')">
             <img :src="quiz.thumbnail || 'https://www.shutterstock.com/image-vector/quiz-logo-time-label-question-260nw-2299277831.jpg'"

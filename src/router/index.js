@@ -79,11 +79,11 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
   const authStore = useAuthStore();
-  // await authStore.checkAuth();
-  const hasUserId = localStorage.getItem("userId") ? true : false;
+  await authStore.checkAuth();
+  // const hasUserId = localStorage.getItem("userId") ? true : false;
   if (
-    // !authStore.isAuthenticated &&
-    !hasUserId &&
+    !authStore.isAuthenticated &&
+    // !hasUserId &&
     to.meta.requiresAuth &&
     to.name !== "signin"
   ) {

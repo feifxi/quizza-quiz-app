@@ -1,11 +1,11 @@
 <script setup>
-import { getAllQuizs, getQuizById, deleteQuiz } from '@/api/quizsAPI';
-import { useAuthStore } from '@/stores/user';
-import { onBeforeMount, ref, reactive, onMounted } from 'vue';
-import { RouterLink, useRoute, useRouter } from 'vue-router';
 import QuizCard from '@/components/QuizCard.vue';
 import CommentModal from '@/components/CommentModal.vue';
 import Button from '@/components/Button.vue';
+import { getAllQuizs, getQuizById } from '@/api/quizsAPI';
+import { useAuthStore } from '@/stores/user';
+import { ref, reactive, onMounted } from 'vue';
+import { RouterLink, useRoute, useRouter } from 'vue-router';
 
 const router = useRouter()
 const route = useRoute()
@@ -18,7 +18,7 @@ const isLoading = ref(false)
 
 const userObj = authStore.authUser
 
-let UsedRole = userObj.role
+let usedRole = userObj.role
 let usedUser = ref(userObj.id)
 
 const modal = reactive({
@@ -26,9 +26,6 @@ const modal = reactive({
   type: '',
   quizData: null
 })
-
-
-
 
 // chage State By AdminRole
 let state = ref(true);
@@ -48,37 +45,6 @@ const headAdmin = (data) => {
     router.push({ name: 'workspace', query: { tab: "workspace" } })
   }
 }
-
-
-
-onBeforeMount(async () => {
-  // navigate to selected tab
-  const { tab } = route.query
-  if (!tab || tab === 'workspace') {
-    headAdmin('workspace')
-  } else if (tab === 'admin-review') {
-    headAdmin('admin')
-  }
-
-  isLoading.value = true;
-  try {
-    const res = await getAllQuizs();
-    const adminData = res.data;
-    const userData = res.data;
-    adminQuizzes.value = adminData.filter(quiz => quiz.status === 'pending');
-
-    userQuizzes.value = userData.filter(quiz => {
-      if (UsedRole === 'admin') {
-        return quiz.status === 'publish';
-      } else {
-        return quiz.createBy.id === usedUser.value;
-      }
-    })
-  } catch (error) {
-    console.error(error);
-  }
-  isLoading.value = false;
-});
 
 const handleShowModal = async (quizId, modalType = '') => {
   if (!authStore.isAuthenticated) return router.push('/signin')
@@ -103,14 +69,42 @@ const handleCloseModal = () => {
   router.replace({ path: route.path, query: {} });
 }
 
+onMounted(async () => {
+  // navigate to selected tab
+  const { tab } = route.query
+  if (!tab || tab === 'workspace') {
+    headAdmin('workspace')
+  } else if (tab === 'admin-review') {
+    headAdmin('admin')
+  }
+
+  isLoading.value = true;
+  try {
+    const res = await getAllQuizs();
+    const adminData = res.data;
+    const userData = res.data;
+    adminQuizzes.value = adminData.filter(quiz => quiz.status === 'pending');
+
+    userQuizzes.value = userData.filter(quiz => {
+      if (usedRole === 'admin') {
+        return quiz.status === 'publish';
+      } else {
+        return quiz.createBy.id === usedUser.value;
+      }
+    })
+  } catch (error) {
+    console.error(error);
+  }
+  isLoading.value = false;
+});
 </script>
 
-<template>  
+<template>
   <div v-if="isLoading">
     Loading...
   </div>
   <!-- head for Admin -->
-  <section v-else-if="UsedRole === 'admin'">
+  <section v-else-if="usedRole === 'admin'">
     <div class="flex gap-3 text-3xl font-bold py-3 px-6 bg-white shadow">
       <button :class="stateClass2" @click="headAdmin('workspace')">WorkSpace</button>
       <button :class="stateClass1" @click="headAdmin('admin')">AdminReview</button>
@@ -122,7 +116,7 @@ const handleCloseModal = () => {
   </section>
 
   <!-- Addmin Review -->
-  <section v-if="!state && UsedRole === 'admin'">
+  <section v-if="!state && usedRole === 'admin'">
 
     <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3 p-3">
       <QuizCard v-for="quiz of adminQuizzes" :quiz="quiz"
@@ -132,7 +126,7 @@ const handleCloseModal = () => {
 
   <!-- user workspace -->
   <section v-else-if="state">
-    <h1 v-if="UsedRole ==='user'" class="flex items-center gap-3 text-3xl font-bold py-3 px-6 bg-white shadow">
+    <h1 v-if="usedRole === 'user'" class="flex items-center gap-3 text-3xl font-bold py-3 px-6 bg-white shadow">
       <p>Workspace</p>
       <RouterLink to="/create" class="ml-auto">
         <Button label="Create"></Button>
@@ -144,8 +138,9 @@ const handleCloseModal = () => {
     </div>
   </section>
 
-   <!-- No Quiz -->
-  <div v-if="(userQuizzes?.length === 0 && state) || (adminQuizzes?.length === 0 && !state)"  class="text-3xl font-bold text-neutral-400 text-center mt-10">
+  <!-- No Quiz -->
+  <div v-if="(userQuizzes?.length === 0 && state) || (adminQuizzes?.length === 0 && !state)"
+    class="text-3xl font-bold text-neutral-400 text-center mt-10">
     There is no quizs
   </div>
 

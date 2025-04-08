@@ -8,11 +8,11 @@ const { levelData, goNext, increaseScore } = defineProps({
 
 const handleChooseChoice = (isCorrect) => {
   if (isCorrect) {
-    alert('Correct Ans! :DD')
+    alert('Correct Answer 😎😎')
     increaseScore()
     goNext()
   } else {
-    alert('Incorrect Ans! :CC')
+    alert('Incorrect Answer 👽👽, NOOB 👽')
     goNext()
   }
 }

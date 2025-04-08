@@ -12,7 +12,7 @@ export const QUIZ_TEMPLATES_TYPE = [
         { value: "", isAns: false },
         { value: "", isAns: false },
       ],
-    } 
+    },
   },
 
   {
@@ -28,13 +28,13 @@ export const QUIZ_TEMPLATES_TYPE = [
         { value: "", isAns: false },
         { value: "", isAns: false },
       ],
-    }
+    },
   },
 
   {
     label: "เกมจับคู่",
     value: "Matched",
-    structure:   {
+    structure: {
       template: "Matched",
       question: "",
       questionImage: "",
@@ -44,7 +44,7 @@ export const QUIZ_TEMPLATES_TYPE = [
         { key: "", pair: "", selectedPair: "" },
         { key: "", pair: "", selectedPair: "" },
       ],
-    }
+    },
   },
 
   {
@@ -64,7 +64,7 @@ export const QUIZ_TEMPLATES_TYPE = [
         { value: "", order: 6 },
         { value: "", order: 7 },
       ],
-    } 
+    },
   },
 
   {
@@ -84,9 +84,9 @@ export const QUIZ_TEMPLATES_TYPE = [
         { value: "", order: 6 },
         { value: "", order: 7 },
       ],
-    }
+    },
   },
-  
+
   {
     label: "เกมทายคำ",
     value: "WordCheck",
@@ -95,6 +95,6 @@ export const QUIZ_TEMPLATES_TYPE = [
       question: "",
       questionImage: "",
       choices: [{ value: "" }],
-    }
-  }
+    },
+  },
 ];

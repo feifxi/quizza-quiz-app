@@ -1,18 +1,13 @@
 <script setup>
-import { createUser, getAllUsers } from '@/api/usersAPI';
 import Button from '@/components/Button.vue';
-import { reactive, ref, watch } from 'vue';
+import { createUser, getAllUsers } from '@/api/usersAPI';
+import { reactive } from 'vue';
 
 const userData = reactive({
   email: '',
   userName: '',
   password: '',
 })
-
-
-const validateDate = () => {
-
-}
 
 const signUp = async (e) => {
   e.preventDefault()
@@ -49,7 +44,7 @@ const signUp = async (e) => {
           <label class="text-gray-900 font-bold">Email</label>
           <input type="text" class="input" v-model="userData.email" />
         </div>
-        
+
         <div class="flex flex-col">
           <label class="text-gray-900 font-bold">Password</label>
           <input type="text" class="input" v-model="userData.password" />
