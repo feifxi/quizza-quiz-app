@@ -1,9 +1,8 @@
 <script setup>
-import { onBeforeMount, ref, watch } from "vue";
-import { useRoute } from "vue-router";
+import Icon from "./Icon.vue";
+import { ref } from "vue";
 import { useAuthStore } from "@/stores/user";
 import { patchQuiz } from "@/api/quizsAPI";
-import Icon from "./Icon.vue";
 
 const newComment = ref("");
 const authStore = useAuthStore();
@@ -20,11 +19,7 @@ const handleSendComment = async () => {
   });
 
   await patchQuiz(quiz.id, { comments: quiz.comments });
-
 };
-
-console.log(quiz);
-
 </script>
 
 <template>

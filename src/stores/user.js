@@ -1,5 +1,5 @@
 import { ref } from "vue";
-import { defineStore,acceptHMRUpdate } from "pinia";
+import { defineStore, acceptHMRUpdate } from "pinia";
 import { getUserById } from "@/api/usersAPI";
 
 export const useAuthStore = defineStore("auth", () => {
@@ -31,6 +31,6 @@ export const useAuthStore = defineStore("auth", () => {
   return { authUser, isAuthenticated, checkAuth, setAuthUser };
 });
 
-if(import.meta.hot){
-  import.meta.hot.accept(acceptHMRUpdate(useAuthStore,import.meta.hot))
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useAuthStore, import.meta.hot));
 }

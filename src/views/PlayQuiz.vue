@@ -1,17 +1,16 @@
 <script setup>
-import { getAllQuizs, getQuizById, patchQuiz } from "@/api/quizsAPI";
 import Button from "@/components/Button.vue";
-import Icon from "@/components/Icon.vue";
 import MultiChoiceImgQuiz from "@/components/quiz_templates/playing/MultiChoiceImgQuiz.vue";
 import MultiChoiceTextQuiz from "@/components/quiz_templates/playing/MultiChoiceTextQuiz.vue";
 import MatchedQuiz from "@/components/quiz_templates/playing/MatchedQuiz.vue";
 import arrangeSentencesQuiz from "@/components/quiz_templates/playing/arrangeSentencesQuiz.vue";
 import arrangePicQuiz from "@/components/quiz_templates/playing/arrangePicQuiz.vue";
 import wordCheckQuiz from "@/components/quiz_templates/playing/wordCheckQuiz.vue";
-
+import { getQuizById, patchQuiz } from "@/api/quizsAPI";
 import { useAuthStore } from "@/stores/user";
-import { computed, onBeforeMount, onBeforeUnmount, reactive, ref, watch } from "vue";
+import { onMounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
+
 const route = useRoute();
 const router = useRouter();
 const authStore = useAuthStore();
@@ -21,7 +20,6 @@ const quizData = ref(null);
 const isLoading = ref(false);
 const currentLevel = ref(0);
 const currentScore = ref(0);
-const isDone = ref(false);
 
 const fetchQuiz = async () => {
   try {
@@ -49,12 +47,9 @@ const handleMoveToNextLevel = async () => {
         star: currentScore.value,
       };
       if (progressIdx >= 0) {
-        // console.log('replace')
         latestProgess[progressIdx] = newProgress;
       } else {
-        // console.log('add new')
         latestProgess.push(newProgress);
-        // console.log(latestProgess)
       }
       const result = await patchQuiz(quizData.value.id, {
         playerProgress: latestProgess,
@@ -75,9 +70,10 @@ const increaseScore = () => {
   currentScore.value = currentScore.value + 1;
 };
 
-onBeforeMount(async () => {
-  await fetchQuiz();
-});
+fetchQuiz();
+// onMounted(async () => {
+//   await fetchQuiz();
+// });
 </script>
 
 <template>

@@ -2,7 +2,6 @@
 const { levelData } = defineProps({
   levelData: Object,
 });
-
 </script>
 <template>
   <div class="max-w-xl">
@@ -14,7 +13,8 @@ const { levelData } = defineProps({
 
       <div class="flex flex-col gap-2">
         <label class="font-bold">Question image url (optional)</label>
-        <img v-if="levelData.questionImage" :src="levelData.questionImage" class="w-[300px] h-[200px] bg-neutral-200 rounded-xl object-center" alt="preview question image " />
+        <img v-if="levelData.questionImage" :src="levelData.questionImage"
+          class="w-[300px] h-[200px] bg-neutral-200 rounded-xl object-center" alt="preview question image " />
         <input type="text" class="input" v-model="levelData.questionImage" />
       </div>
     </div>

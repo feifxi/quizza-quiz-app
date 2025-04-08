@@ -1,6 +1,6 @@
 <script setup>
 import { random } from '@/libs';
-import { onMounted, reactive, ref, watch } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 const { levelData, goNext, increaseScore } = defineProps({
     levelData: Object,
     goNext: Function,
@@ -49,7 +49,7 @@ const handleCorrectPair = (pair, selected) => {
         let count = 0;
         for (const key of corrects.value) {
             if (!key) {
-                alert("Incorrect Pair(s)!");
+                alert("Incorrect Answer 👽👽, NOOB 👽");
                 goNext();
                 break;
             } else {
@@ -57,7 +57,7 @@ const handleCorrectPair = (pair, selected) => {
             }
         }
         if (count === 4) {
-            alert("All Correct Pairs!");
+            alert("Correct Answer 😎😎");
             increaseScore();
             goNext();
         }

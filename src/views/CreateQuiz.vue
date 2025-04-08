@@ -1,17 +1,17 @@
 <script setup>
-import { createQuiz } from "@/api/quizsAPI";
 import Button from "@/components/Button.vue";
 import Icon from "@/components/Icon.vue";
 import MultiChoiceImgForm from "@/components/quiz_templates/form/MultiChoiceImgForm.vue";
 import MultiChoiceTextForm from "@/components/quiz_templates/form/MultiChoiceTextForm.vue";
 import MatchedForm from "@/components/quiz_templates/form/MatchedForm.vue";
-import { QUIZ_TEMPLATES_TYPE } from "@/constants";
-import { useAuthStore } from "@/stores/user";
-import { reactive , ref} from "vue";
-import { useRouter } from "vue-router";
 import arrangeSentencesForm from "@/components/quiz_templates/form/arrangeSentencesForm.vue";
 import arrangePicForm from "@/components/quiz_templates/form/arrangePicForm.vue";
 import wordCheckForm from "@/components/quiz_templates/form/wordCheckForm.vue";
+import { createQuiz } from "@/api/quizsAPI";
+import { QUIZ_TEMPLATES_TYPE } from "@/constants";
+import { useAuthStore } from "@/stores/user";
+import { reactive } from "vue";
+import { useRouter } from "vue-router";
 
 const router = useRouter();
 const authStore = useAuthStore();
@@ -35,10 +35,10 @@ const quizData = reactive({
         { value: "", isAns: true },
         { value: "", isAns: false },
         { value: "", isAns: false },
-        { value: "", isAns: false },
-      ],
-    },
-  ],
+        { value: "", isAns: false }
+      ]
+    }
+  ]
 });
 
 const handleRemoveLevel = (index) => {
@@ -149,18 +149,13 @@ const isQuizDataValid = () => {
         <!-- Template options -->
         <div class="flex flex-col gap-2 mt-3 pb-4 border-b-2 border-neutral-300">
           <label class="font-bold">Choose Template :</label>
-          <select class="bg-gray-50 border border-gray-300 p-2 rounded font-bold" 
-          @change="
+          <select class="bg-gray-50 border border-gray-300 p-2 rounded font-bold" @change="
             (e) => {
               handleChangeTemplate(e.target.value, index);
             }
-            ">
-            <option v-for="template in QUIZ_TEMPLATES_TYPE" 
-              :value="template.value" 
-              :key="template.value"
-              :selected="template.value === level.template"
-              class="font-bold"
-            >
+          ">
+            <option v-for="template in QUIZ_TEMPLATES_TYPE" :value="template.value" :key="template.value"
+              :selected="template.value === level.template" class="font-bold">
               {{ template.label }}
             </option>
           </select>
