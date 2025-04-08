@@ -45,7 +45,7 @@ const signIn = async (e) => {
 
         <div class="flex flex-col">
           <label class="text-gray-900 font-bold">Password</label>
-          <input type="text" class="input" v-model="userData.password" />
+          <input type="password" class="input" v-model="userData.password" />
         </div>
 
         <Button label="Sign In" :click="signIn"></Button>

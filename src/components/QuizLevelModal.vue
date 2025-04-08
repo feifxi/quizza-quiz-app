@@ -61,8 +61,8 @@ const handleLike = async () => {
       <div class="flex-1 flex flex-col p-3 items-center gap-2 border-l-3 border-neutral-300 max-w-55 overflow-y-scroll">
         <div v-for="(level, index) of quiz.levels" :class="index % 2 == 0 ? 'self-end' : 'self-start'">
           <RouterLink :to="index > 0
-              ? { name: 'home', query: { quizId: quiz.id } }
-              : { name: 'quiz', params: { quizId: quiz.id } }
+            ? { name: 'home', query: { quizId: quiz.id } }
+            : { name: 'quiz', params: { quizId: quiz.id } }
             " :class="'border-3 text-3xl font-bold size-25 flex items-center justify-center rounded-full hover:scale-110 transition-all ' +
               (index > 0
                 ? 'text-neutral-600 bg-neutral-200 cursor-not-allowed border-neutral-300'

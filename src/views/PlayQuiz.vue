@@ -8,7 +8,7 @@ import arrangePicQuiz from "@/components/quiz_templates/playing/arrangePicQuiz.v
 import wordCheckQuiz from "@/components/quiz_templates/playing/wordCheckQuiz.vue";
 import { getQuizById, patchQuiz } from "@/api/quizsAPI";
 import { useAuthStore } from "@/stores/user";
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 
 const route = useRoute();
@@ -71,9 +71,6 @@ const increaseScore = () => {
 };
 
 fetchQuiz();
-// onMounted(async () => {
-//   await fetchQuiz();
-// });
 </script>
 
 <template>

@@ -28,10 +28,10 @@ const changeState = () => {
 const fetchAllQuizs = async () => {
   isLoading.value = true
   const res = await getAllQuizs([{ key: 'status', value: 'publish' }])
-  if(stateQuiz.value) {
-    quizs.value = res.data.sort((a,b) => a.createBy.userName.localeCompare(b.createBy.userName))
-  }else if(!stateQuiz.value){
-    quizs.value = res.data.sort((a,b) => b.reactions.length - a.reactions.length)
+  if (stateQuiz.value) {
+    quizs.value = res.data.sort((a, b) => a.createBy.userName.localeCompare(b.createBy.userName))
+  } else if (!stateQuiz.value) {
+    quizs.value = res.data.sort((a, b) => b.reactions.length - a.reactions.length)
   }
   isLoading.value = false
 }
@@ -59,7 +59,6 @@ const handleCloseModal = () => {
   router.replace({ path: route.path, query: {} });
 }
 
-
 onMounted(() => {
   fetchAllQuizs()
   // Show Quiz Level Modal
@@ -81,7 +80,7 @@ onMounted(() => {
 
   <section v-else>
     <div class="absolute bottom-5 right-5">
-      <Icon name="sort" class-name=" fill-green-500" @click="() => { changeState(); fetchAllQuizs(); }"/>
+      <Icon name="sort" class-name=" fill-green-500" @click="() => { changeState(); fetchAllQuizs(); }" />
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3 p-3">
       <QuizCard v-for="quiz of quizs" :quiz="quiz" :show-level-modal="() => { handleShowModal(quiz.id, 'LEVEL') }"

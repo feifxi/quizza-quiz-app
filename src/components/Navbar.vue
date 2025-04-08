@@ -40,8 +40,8 @@ const logout = () => {
             <button @click="logout" class="hover:underline cursor-pointer">Logout</button>
         </nav>
         <nav v-else class="flex gap-5">
-            <RouterLink to="/signin" class="hover:underline cursor-pointer">SignIn</RouterLink>
-            <RouterLink to="/signup" class="hover:underline cursor-pointer">SignUp</RouterLink>
+            <RouterLink to="/signin" class="hover:underline cursor-pointer">Sign In</RouterLink>
+            <RouterLink to="/signup" class="hover:underline cursor-pointer">Sign Up</RouterLink>
         </nav>
     </header>
 </template>

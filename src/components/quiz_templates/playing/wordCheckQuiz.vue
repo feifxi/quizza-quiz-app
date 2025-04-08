@@ -19,26 +19,18 @@ function handleSubmit() {
     userAnswered.value = ''
   }
 }
-
-
-
-
-
 </script>
 <template>
   <div class="w-full  flex justify-center items-center  p-6">
     <div class="w-full max-w-[50%]  rounded-xl p-6 space-y-5">
-
       <div
         class="text-center text-3xl font-semibold text-gray-800 border-2 border-green-400 rounded-md p-4 bg-green-50 ">
         {{ levelData.question.split('').join(' ') }}
       </div>
 
-
       <div v-if="levelData.questionImage" class="flex justify-center">
         <img :src="levelData.questionImage" class="rounded-lg max-w-full w-100 h-100 object-fit border" />
       </div>
-
 
       <form @submit.prevent="handleSubmit" class="flex flex-col gap-4">
         <input v-model="userAnswered" type="text"

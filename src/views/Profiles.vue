@@ -12,9 +12,16 @@ const gameHasPlayed = ref(0);
 const allGameInPlatform = ref(0);
 const quizs = ref([])
 
+const handleUserProfileImg = (imgLink) => {
+  if (!imgLink) {
+    return 'https://img.myloview.com/posters/default-avatar-profile-icon-vector-social-media-user-photo-700-205577532.jpg';
+  } else {
+    return imgLink;
+  }
+}
+
 onMounted(async () => {
   try {
-    
     const res = await getAllQuizs();
     const allGameData = res.data;
     quizs.value = allGameData.filter(gameowned => gameowned.createBy.id === userUsed.value.id)
@@ -28,28 +35,19 @@ onMounted(async () => {
         return total;
       }, 0);
     }
-    let prog = quizs.value.flatMap((quiz) => quiz.playerProgress || []);
 
+    let prog = quizs.value.flatMap((quiz) => quiz.playerProgress || []);
     const userStar = new Map();
+
     prog.forEach(({ userId, star }) => {
       const getStar = userStar.get(userId) || 0;
       userStar.set(userId, getStar + star);
     });
     userUsed.value.star = userStar.get(authStore.authUser.id)
-
-
   } catch (error) {
     console.error("Error fetching quiz data:", error);
   }
 });
-
-const handleUserProfileImg = (imgLink) => {
-  if (!imgLink) {
-    return 'https://img.myloview.com/posters/default-avatar-profile-icon-vector-social-media-user-photo-700-205577532.jpg';
-  } else {
-    return imgLink;
-  }
-}
 </script>
 
 <template>
@@ -92,7 +90,7 @@ const handleUserProfileImg = (imgLink) => {
 
     <div class="mt-6 text-center">
       <RouterLink to="/editProfile">
-        <Button label="Editprofile"></Button>
+        <Button label="Edit Profile"></Button>
       </RouterLink>
 
     </div>

@@ -69,7 +69,7 @@ const handleApproveQuiz = async () => {
         <button
             class="bg-white border-t-neutral-200 border-t hover:bg-neutral-300 w-full p-3 rounded-b-xl cursor-pointer transition-all font-bold text-neutral-600"
             @click="showCommentModal">
-            comment
+            Comment
         </button>
     </div>
 </template>

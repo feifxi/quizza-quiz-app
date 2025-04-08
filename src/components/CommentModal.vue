@@ -61,7 +61,7 @@ const handleSendComment = async () => {
           <button
             class="px-4 py-2 font-bold rounded-xl text-white bg-green-500 active:bg-green-600 transition-all"
             @click="handleSendComment">
-            send
+            Send
           </button>
         </div>
       </div>
