@@ -5,7 +5,9 @@
 
 
 ## About
-A platform quiz game that the world gonna cry😭😭
+We are a platform where anyone can create and play quizzes with a variety of gameplay templates.
+Our system supports interactive features such as comments and likes, allowing users to engage with each other. We also feature a leaderboard showcasing popular games and individual scores.
+Users can freely create and customize their own quizzes, with submissions reviewed and approved by an admin to ensure quality and consistency. 😎😎
 
 ## Collaborator tools 
 - [Notion](https://blush-stitch-732.notion.site/Project-2-Platform-Quiz-game-186c0df7584d80979b90db8ff2409d85?pvs=4)
