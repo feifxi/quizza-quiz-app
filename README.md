@@ -1,6 +1,7 @@
-# Platform Sandbox Quiz Game (Roblox + Duolingo but better)
+# QUIZZA(A Platform Sandbox Quiz Game)
 
-![image](https://github.com/user-attachments/assets/f247bd0c-bfb7-4900-8ad5-e8d916e9e012)
+![image](https://github.com/user-attachments/assets/0ebeff86-3c4e-45fe-ac2a-2a9c3532bd7f)
+
 
 
 ## About
