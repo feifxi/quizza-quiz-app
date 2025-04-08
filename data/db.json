@@ -1,12 +1,20 @@
 {
   "users": [
     {
+      "userName": "admin",
+      "profilePic": "https://i1.sndcdn.com/artworks-9R6zUytOmPor6P2n-8tUdCw-t500x500.jpg",
+      "profileFrame": {
+        "color1": "",
+        "color2": "",
+        "color3": "",
+        "color4": "",
+        "color5": "",
+        "selectedMode": ""
+      },
       "id": "9ffe",
       "email": "admin@admin.com",
-      "userName": "admin",
       "password": "123",
-      "role": "admin",
-      "profilePic": ""
+      "role": "admin"
     },
     {
       "id": "3ad1",
@@ -31,14 +39,30 @@
       "email": "guy@gmail.com",
       "password": "123",
       "role": "user"
+    },
+    {
+      "userName": "fei",
+      "profilePic": "https://ih1.redbubble.net/image.2517271689.2840/flat,750x,075,f-pad,750x1000,f8f8f8.jpg",
+      "profileFrame": {
+        "color1": "",
+        "color2": "",
+        "color3": "",
+        "color4": "",
+        "color5": "",
+        "selectedMode": ""
+      },
+      "id": "5ae6",
+      "email": "fei@fei.com",
+      "password": "123",
+      "role": "user"
     }
   ],
   "quizs": [
     {
       "id": "fa80",
-      "title": "muhaha",
-      "thumbnail": "",
-      "description": "dwadwadfwafa3fafawfawfwaf",
+      "title": "Come with me free wifi",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCaakBZPdp2-Hcx8rdZEC_mEgnY2fk28nYwQ&s",
+      "description": "This quiz is goofy ahh go away if you dont wanna brainrot, but you can continue and become sigma wolf btw",
       "createBy": {
         "id": "9ffe",
         "email": "admin@admin.com",
@@ -49,14 +73,35 @@
       },
       "status": "publish",
       "reactions": [
-        "f517"
+        "f517",
+        "9ffe"
       ],
-      "comments": [],
+      "comments": [
+        {
+          "user": {
+            "userName": "admin",
+            "profilePic": "https://i1.sndcdn.com/artworks-9R6zUytOmPor6P2n-8tUdCw-t500x500.jpg",
+            "profileFrame": {
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "color4": "",
+              "color5": "",
+              "selectedMode": ""
+            },
+            "id": "9ffe",
+            "email": "admin@admin.com",
+            "password": "123",
+            "role": "admin"
+          },
+          "text": "This is masterpiece🤑🤑🤑"
+        }
+      ],
       "adminComments": [],
       "playerProgress": [
         {
           "userId": "9ffe",
-          "star": 2
+          "star": 3
         },
         {
           "userId": "f517",
@@ -249,6 +294,131 @@
           "choices": [
             {
               "value": "bigger"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "56a4",
+      "title": "Guess the Character",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVT_gwzsq756k0eQnwwgauxEa7so3BmEYeBg&s",
+      "description": "Guess the correct character from the images 🤩🤩",
+      "createBy": {
+        "userName": "admin",
+        "profilePic": "https://i1.sndcdn.com/artworks-9R6zUytOmPor6P2n-8tUdCw-t500x500.jpg",
+        "profileFrame": {
+          "color1": "",
+          "color2": "",
+          "color3": "",
+          "color4": "",
+          "color5": "",
+          "selectedMode": ""
+        },
+        "id": "9ffe",
+        "email": "admin@admin.com",
+        "password": "123",
+        "role": "admin"
+      },
+      "status": "publish",
+      "reactions": [
+        "5ae6"
+      ],
+      "comments": [
+        {
+          "user": {
+            "userName": "admin",
+            "profilePic": "https://i1.sndcdn.com/artworks-9R6zUytOmPor6P2n-8tUdCw-t500x500.jpg",
+            "profileFrame": {
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "color4": "",
+              "color5": "",
+              "selectedMode": ""
+            },
+            "id": "9ffe",
+            "email": "admin@admin.com",
+            "password": "123",
+            "role": "admin"
+          },
+          "text": "You are my sunshine"
+        }
+      ],
+      "adminComments": [],
+      "playerProgress": [
+        {
+          "userId": "5ae6",
+          "star": 2
+        }
+      ],
+      "levels": [
+        {
+          "template": "Multiple-choice-image",
+          "question": "เอส หมัดอัคคีภัย",
+          "questionImage": "",
+          "choices": [
+            {
+              "value": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzASIsaa8_N1Ksb3EwThyOBm_1icUAUku7NA&s",
+              "isAns": true
+            },
+            {
+              "value": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMaQeGzoz5zYdJ8UKezFdagr_C4h1cvYbetw&s",
+              "isAns": false
+            },
+            {
+              "value": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREQKXgDcSHWPk6Y2uXmIB2G2xrJz7QA241efWawo7OPGErRAUu11-HfO56Qefi-3134wM&usqp=CAU",
+              "isAns": false
+            },
+            {
+              "value": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdqz6fdsvs-APRKP29dxh-N3gEROAT3-Yw5A&s",
+              "isAns": false
+            }
+          ]
+        },
+        {
+          "template": "Multiple-choice-image",
+          "question": "เบจิต้า",
+          "questionImage": "",
+          "choices": [
+            {
+              "value": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBRk_OsV3lMi8OgfuM_vECLa1PPc4XSCctUpTcDOQlbPz9VsBryhhQoIZTNbGEXpxr4iE&usqp=CAU",
+              "isAns": true
+            },
+            {
+              "value": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF1r0mBbGc1MrkIxJbZ2z0VYEmZZNijlC4bhMrNkgbX70I9G_QUAuihtRLxdKgwONK5Uw&usqp=CAU",
+              "isAns": false
+            },
+            {
+              "value": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5GUSDM52W53fKMyKNKwzd0gBgWDEmUqszspgrVnDLiA21JHBAT9OZYfn14bm2IIOdiJA&usqp=CAU",
+              "isAns": false
+            },
+            {
+              "value": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcS_pnOSs1uqFgfR2MsZ60ZkJCLk43TFRqZcWNNjaDZAay99QNKn6WAztqm95jE8SrKhY&usqp=CAU",
+              "isAns": false
+            }
+          ]
+        },
+        {
+          "template": "Multiple-choice-image",
+          "question": "Mbappe",
+          "questionImage": "",
+          "choices": [
+            {
+              "value": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiNInq7Gfnz1FAn8nYsKIk8qtZGjWo7zDJFQA0u3jA4mCd4znPvGurc1WPDCF3gDc4QlA&usqp=CAU",
+              "isAns": true
+            },
+            {
+              "value": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtN03t8m52A6iOk0xrLFFpIK1StMHGokrS-e0GQNxaOWAl-BOSrCeZ4T7PFnx2_iX4sug&usqp=CAU",
+              "isAns": false
+            },
+            {
+              "value": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpAfwt9mzgArXmJcJfkPfHrF2q0SyXm_iKj8VQ8GU4FgVxFkDKYwNwAkGzDdA42SGtQ-4&usqp=CAU",
+              "isAns": false
+            },
+            {
+              "value": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSTfMAYYRzMjEXF-t8ZVDM47hCt2AOi-qIl8JkLggDGbcV7VjbN1Yvu5NKaGxYd38PzGI&usqp=CAU",
+              "isAns": false
             }
           ]
         }

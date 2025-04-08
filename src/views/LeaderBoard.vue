@@ -111,7 +111,7 @@ onBeforeMount(async () => {
             <img
               :src="
                 quiz.thumbnail ||
-                'https://i1.sndcdn.com/artworks-9R6zUytOmPor6P2n-8tUdCw-t1080x1080.jpg'
+                'https://www.shutterstock.com/image-vector/quiz-logo-time-label-question-260nw-2299277831.jpg'
               "
               alt="thumbnail"
               class="w-12 h-12 rounded-xl bg-gray-300" />

@@ -41,13 +41,13 @@ const handleLike = async () => {
         <Icon name="close" class-name="fill-black"></Icon>
       </span>
       <!-- Quiz Info -->
-      <div class="flex-1 relative">
+      <div class="flex-1">
         <span
-          class="absolute right-3 shadow p-2 font-bold rounded-full transition-all hover:scale-105">
+          class="shadow p-2 font-bold text-xl rounded-full transition-all hover:scale-105">
           {{ playerProgress.star + "/" + quiz.levels.length + "⭐" }}
         </span>
 
-        <h2 class="text-3xl font-bold">{{ quiz.title }}</h2>
+        <h2 class="mt-2 text-3xl font-bold">{{ quiz.title }}</h2>
 
         <p class="font-bold border-b-3 border-neutral-200 py-2">
           By : {{ quiz.createBy.userName }}

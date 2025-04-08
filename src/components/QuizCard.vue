@@ -43,7 +43,7 @@ const handleApproveQuiz = async () => {
             </Button>        
         </div>
         <div @click="showLevelModal" :class="'flex-1 bg-white ' + (isEditMode ? '' : 'cursor-pointer')">
-            <img :src="quiz.thumbnail || 'https://preview.redd.it/zozlzva328291.jpg?auto=webp&s=cc842e6ec98b8791639cbb5ec8890712bfb5f21c'"
+            <img :src="quiz.thumbnail || 'https://www.shutterstock.com/image-vector/quiz-logo-time-label-question-260nw-2299277831.jpg'"
                 alt="quiz thumbnail" class="object-cover rounded-t-xl w-full h-[200px]" />
             <div class="p-3 flex flex-col">
                 <p class="text-xl font-bold text-wrap flex-1">
