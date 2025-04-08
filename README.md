@@ -1,6 +1,7 @@
 # Platform Sandbox Quiz Game (Roblox + Duolingo but better)
 
-<img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXfuBNWe6wRnax34wZ_ERYQCSFGDUsKagCo3tHaGZA4MEHf-KFEZpECazm7SeX_lpfXjZr_0RJBO2YYZ4Ai7YmULEZbuwHL0rnZLvVR7EHVx6EnXZAdzw8LhFuWjDFqDlezMMI_vWkR860joiiBZJUfFZug?key=09mMvSMm03wwM63SV_Ykbw" alt="Game Unemployed" width="500" />
+![image](https://github.com/user-attachments/assets/f247bd0c-bfb7-4900-8ad5-e8d916e9e012)
+
 
 ## About
 A platform quiz game that the world gonna cry😭😭
@@ -28,7 +29,10 @@ A platform quiz game that the world gonna cry😭😭
 - Chat Bot (Optional)
 
 ## Video
-[![INT203-Hareruya-Project2]()](https://drive.google.com/file/d/1vQuwZpJRsG_9-OvTI6jErXDKViovmg5k/view?fbclid=IwY2xjawJfv55leHRuA2FlbQIxMAABHlzM6jPEpLk-TqgqTWyNdre6Q0aJAouTFV_9NnQAEJovrZllE7KwGIekA_ao_aem_g_5EIFGowRg2SnTr2qjBOw&pli=1)
+[Tutorial Video](https://drive.google.com/file/d/1vQuwZpJRsG_9-OvTI6jErXDKViovmg5k/view?fbclid=IwY2xjawJfv55leHRuA2FlbQIxMAABHlzM6jPEpLk-TqgqTWyNdre6Q0aJAouTFV_9NnQAEJovrZllE7KwGIekA_ao_aem_g_5EIFGowRg2SnTr2qjBOw&pli=1)
+
+## Components Diagram
+[Components Diagram](https://www.canva.com/design/DAGkD2rQisA/I8QKSopXMMWg0qUoR6sp5w/edit?utm_content=DAGkD2rQisA&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 ## Members & Responsibility
 <table>
