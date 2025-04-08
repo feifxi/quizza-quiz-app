@@ -3,6 +3,7 @@ import { getAllQuizs, getQuizById } from '@/api/quizsAPI';
 import { getAllUsers, getUserById } from '@/api/usersAPI';
 import Button from '@/components/Button.vue';
 import Chatbot from '@/components/Chatbot.vue';
+import Icon from '@/components/Icon.vue';
 import CommentModal from '@/components/CommentModal.vue';
 import QuizCard from '@/components/QuizCard.vue';
 import QuizLevelModal from '@/components/QuizLevelModal.vue';
@@ -14,6 +15,7 @@ const authStore = useAuthStore()
 const route = useRoute()
 const router = useRouter()
 
+let stateQuiz = ref(true)
 const quizs = ref([])
 const isLoading = ref(false)
 const modal = reactive({
@@ -21,11 +23,19 @@ const modal = reactive({
   type: '',
   quizData: null
 })
+const changeState = () => {
+  stateQuiz.value = !stateQuiz.value
+  console.log(stateQuiz)
+}
 
 const fetchAllQuizs = async () => {
   isLoading.value = true
   const res = await getAllQuizs([{ key: 'status', value: 'publish' }])
-  quizs.value = res.data
+  if(stateQuiz.value) {
+    quizs.value = res.data.sort((a,b) => a.createBy.userName.localeCompare(b.createBy.userName))
+  }else if(!stateQuiz.value){
+    quizs.value = res.data.sort((a,b) => b.reactions.length - a.reactions.length)
+  }
   isLoading.value = false
 }
 
@@ -73,6 +83,9 @@ onBeforeMount(() => {
   </div>
 
   <section v-else>
+    <div class="absolute bottom-5 right-5">
+      <Icon name="sort" class-name=" fill-green-500" @click="() => { changeState(); fetchAllQuizs(); }"/>
+    </div>
     <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3 p-3">
       <QuizCard v-for="quiz of quizs" :quiz="quiz" :show-level-modal="() => { handleShowModal(quiz.id, 'LEVEL') }"
         :show-comment-modal="() => { handleShowModal(quiz.id, 'COMMENT') }" :is-edit-mode="false" />

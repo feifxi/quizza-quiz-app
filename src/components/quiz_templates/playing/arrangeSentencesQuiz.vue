@@ -69,7 +69,7 @@ function resetState() {
           class="max-h-60 rounded-xl shadow-md object-contain"
         />
       </div>
-      <h2 class="p-3 border border-green-600 bg-white rounded-2xl font-bold">
+      <h2 class="p-3 border border-green-600 bg-white rounded-2xl font-bold text-3xl">
         {{ levelData.question }}
       </h2>
       <br />
