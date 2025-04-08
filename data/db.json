@@ -63,6 +63,22 @@
       "password": "123",
       "role": "user",
       "profilePic": ""
+    },
+    {
+      "userName": "test",
+      "profilePic": "",
+      "profileFrame": {
+        "color1": "#ff6666",
+        "color2": "#ff0000",
+        "color3": "#a80000",
+        "color4": "#990000",
+        "color5": "#750000",
+        "selectedMode": "bottom"
+      },
+      "id": "b788",
+      "email": "test@gmail.com",
+      "password": "123",
+      "role": "user"
     }
   ],
   "quizs": [
@@ -82,7 +98,8 @@
       "status": "publish",
       "reactions": [
         "f517",
-        "9ffe"
+        "9ffe",
+        "b788"
       ],
       "comments": [
         {
@@ -442,23 +459,42 @@
       ]
     },
     {
-      "id": "5098",
+      "id": "53d6",
       "title": "1",
       "thumbnail": "",
       "description": "1",
       "createBy": {
-        "id": "3ad1",
-        "email": "user@user.com",
-        "userName": "user",
+        "id": "b788",
+        "email": "test@gmail.com",
+        "userName": "test",
         "password": "123",
         "role": "user",
         "profilePic": ""
       },
-      "status": "pending",
-      "reactions": [],
-      "comments": [],
+      "status": "publish",
+      "reactions": [
+        "b788"
+      ],
+      "comments": [
+        {
+          "user": {
+            "id": "b788",
+            "email": "test@gmail.com",
+            "userName": "test",
+            "password": "123",
+            "role": "user",
+            "profilePic": ""
+          },
+          "text": "ddddd"
+        }
+      ],
       "adminComments": [],
-      "playerProgress": [],
+      "playerProgress": [
+        {
+          "userId": "b788",
+          "star": 1
+        }
+      ],
       "levels": [
         {
           "template": "Multiple-choice-text",
@@ -466,7 +502,7 @@
           "questionImage": "",
           "choices": [
             {
-              "value": "1",
+              "value": "11",
               "isAns": true
             },
             {
@@ -479,50 +515,6 @@
             },
             {
               "value": "1",
-              "isAns": false
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "bd0f",
-      "title": "2",
-      "thumbnail": "",
-      "description": "2",
-      "createBy": {
-        "id": "3ad1",
-        "email": "user@user.com",
-        "userName": "user",
-        "password": "123",
-        "role": "user",
-        "profilePic": ""
-      },
-      "status": "pending",
-      "reactions": [],
-      "comments": [],
-      "adminComments": [],
-      "playerProgress": [],
-      "levels": [
-        {
-          "template": "Multiple-choice-text",
-          "question": "2",
-          "questionImage": "",
-          "choices": [
-            {
-              "value": "2",
-              "isAns": true
-            },
-            {
-              "value": "2",
-              "isAns": false
-            },
-            {
-              "value": "2",
-              "isAns": false
-            },
-            {
-              "value": "2",
               "isAns": false
             }
           ]

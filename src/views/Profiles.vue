@@ -14,6 +14,7 @@ const quizs = ref([])
 
 onMounted(async () => {
   try {
+    
     const res = await getAllQuizs();
     const allGameData = res.data;
     quizs.value = allGameData.filter(gameowned => gameowned.createBy.id === userUsed.value.id)
@@ -27,6 +28,16 @@ onMounted(async () => {
         return total;
       }, 0);
     }
+    let prog = quizs.value.flatMap((quiz) => quiz.playerProgress || []);
+
+    const userStar = new Map();
+    prog.forEach(({ userId, star }) => {
+      const getStar = userStar.get(userId) || 0;
+      userStar.set(userId, getStar + star);
+    });
+    userUsed.value.star = userStar.get(authStore.authUser.id)
+
+
   } catch (error) {
     console.error("Error fetching quiz data:", error);
   }
