@@ -11,11 +11,13 @@ import { getQuizById, updateQuiz } from "@/api/quizsAPI";
 import { onMounted, reactive } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { QUIZ_TEMPLATES_TYPE } from "@/constants";
+import { useAuthStore } from "@/stores/user";
 
 const router = useRouter();
 const route = useRoute();
 const id = route.params.quizId;
 const quizData = reactive({});
+const authStore = useAuthStore()
 
 const getQuiz = async () => {
   try {
@@ -88,7 +90,7 @@ const isQuizDataValid = () => {
 };
 
 const handleBackToWorkspace = () => {
-  if (quizData.status === 'pending') {
+  if (quizData.status === 'pending' && authStore.authUser.role === 'admin') {
     router.push({ name: 'workspace', query: { tab: "admin-review" } })
   } else {
     router.push({ name: 'workspace', query: { tab: "workspace" } })
@@ -102,7 +104,9 @@ onMounted(async () => {
 
 <template>
   <section class="p-4 relative" v-if="quizData">
-    <Button :label="quizData.status === 'pending' ? 'Back to admin review' : 'Back to workspace'"
+    <Button :label="( quizData.status === 'pending' && authStore.authUser.role === 'admin' )
+      ? 'Back to admin review' 
+      : 'Back to workspace'"
       class="absolute right-5 bg-red-500 border-red-600 active:bg-red-600" @click="handleBackToWorkspace">
     </Button>
 
