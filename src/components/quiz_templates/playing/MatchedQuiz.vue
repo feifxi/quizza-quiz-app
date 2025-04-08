@@ -11,7 +11,6 @@ const selectedKey = ref(null);
 const corrects = ref([]);
 const matchedKeys = ref([]), matchedPairs = ref([]);
 const randomKeys = ref([]), randomPairs = ref([]);
-let level = 0;
 
 // Get the selected key (left button)
 const handleSelectedKey = (key) => {
@@ -65,7 +64,6 @@ const handleCorrectPair = (pair, selected) => {
 }
 
 const resetLevel = () => {
-    level++;
     selectedKey.value = null;
     corrects.value = [];
     matchedKeys.value = [], matchedPairs.value = [];
