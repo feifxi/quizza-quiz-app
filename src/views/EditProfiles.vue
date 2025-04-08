@@ -18,13 +18,6 @@ const newUserData = reactive({
     color5: '',
     selectedMode: ''
   }
-
-});
-
-onMounted(() => {
-  if (authStore.authUser) {
-    Object.assign(newUserData, authStore.authUser);
-  }
 });
 
 const updateProfile = async () => {
@@ -39,6 +32,11 @@ const updateProfile = async () => {
   }
 };
 
+onMounted(() => {
+  if (authStore.authUser) {
+    Object.assign(newUserData, authStore.authUser);
+  }
+});
 </script>
 
 <template>

@@ -98,8 +98,8 @@
       "status": "publish",
       "reactions": [
         "f517",
-        "9ffe",
-        "b788"
+        "b788",
+        "9ffe"
       ],
       "comments": [
         {
@@ -126,7 +126,7 @@
       "playerProgress": [
         {
           "userId": "9ffe",
-          "star": 1
+          "star": 6
         },
         {
           "userId": "f517",
@@ -384,6 +384,10 @@
         {
           "userId": "3b09",
           "star": 3
+        },
+        {
+          "userId": "9ffe",
+          "star": 3
         }
       ],
       "levels": [
@@ -452,69 +456,6 @@
             },
             {
               "value": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSTfMAYYRzMjEXF-t8ZVDM47hCt2AOi-qIl8JkLggDGbcV7VjbN1Yvu5NKaGxYd38PzGI&usqp=CAU",
-              "isAns": false
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "53d6",
-      "title": "1",
-      "thumbnail": "",
-      "description": "1",
-      "createBy": {
-        "id": "b788",
-        "email": "test@gmail.com",
-        "userName": "test",
-        "password": "123",
-        "role": "user",
-        "profilePic": ""
-      },
-      "status": "publish",
-      "reactions": [
-        "b788"
-      ],
-      "comments": [
-        {
-          "user": {
-            "id": "b788",
-            "email": "test@gmail.com",
-            "userName": "test",
-            "password": "123",
-            "role": "user",
-            "profilePic": ""
-          },
-          "text": "ddddd"
-        }
-      ],
-      "adminComments": [],
-      "playerProgress": [
-        {
-          "userId": "b788",
-          "star": 1
-        }
-      ],
-      "levels": [
-        {
-          "template": "Multiple-choice-text",
-          "question": "1",
-          "questionImage": "",
-          "choices": [
-            {
-              "value": "11",
-              "isAns": true
-            },
-            {
-              "value": "1",
-              "isAns": false
-            },
-            {
-              "value": "1",
-              "isAns": false
-            },
-            {
-              "value": "1",
               "isAns": false
             }
           ]

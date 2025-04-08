@@ -15,7 +15,7 @@ const usedIndexes = ref(new Set());
 
 const handleChooseChoice = (choice, index) => {
   if (usedIndexes.value.has(index)) return;
-  
+
   usedIndexes.value.add(index);
   result.value.push(choice);
   userAnswered.value = result.value.map((c) => c.value).join(" ");
@@ -23,13 +23,13 @@ const handleChooseChoice = (choice, index) => {
 
 function handleSubmit() {
   const correct = [...levelData.choices]
-  .filter(choice => choice.value !== "")
-  .sort((a, b) => a.order - b.order)
-  .map((x) => x.value)
-  .join("");
-  
+    .filter(choice => choice.value !== "")
+    .sort((a, b) => a.order - b.order)
+    .map((x) => x.value)
+    .join("");
+
   const user = result.value.map((x) => x.value).join("");
-  
+
   if (user === correct) {
     alert("Correct Answer 😎😎");
     increaseScore();
@@ -72,7 +72,7 @@ onMounted(() => {
             'bg-gray-500 border-gray-600 text-white cursor-not-allowed': usedIndexes.has(index),
             'bg-white hover:bg-gray-200': choice.value && !usedIndexes.has(index),
           }" :disabled="usedIndexes.has(index)" @click="() => handleChooseChoice(choice, index)">
-            <img :src="choice.value" alt="" class="w-full h-28 object-contain" />
+          <img :src="choice.value" alt="" class="w-full h-28 object-contain" />
         </button>
       </div>
 

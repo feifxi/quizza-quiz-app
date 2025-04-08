@@ -9,7 +9,6 @@ export const useAuthStore = defineStore("auth", () => {
   const checkAuth = async () => {
     const userId = localStorage.getItem("userId");
     if (!userId) return;
-    // console.log('checkAuth : ' , userId)
 
     const res = await getUserById(userId);
     if (res.success) {

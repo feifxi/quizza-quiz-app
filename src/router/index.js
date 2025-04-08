@@ -1,4 +1,3 @@
-import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/views/Home.vue";
 import SignUp from "@/views/SignUp.vue";
 import SignIn from "@/views/SignIn.vue";
@@ -7,9 +6,10 @@ import CreateGame from "@/views/CreateQuiz.vue";
 import EditGame from "@/views/UpdateQuiz.vue";
 import Workspace from "@/views/Workspace.vue";
 import PlayQuiz from "@/views/PlayQuiz.vue";
-import { useAuthStore } from "@/stores/user";
 import Profiles from "@/views/Profiles.vue";
 import EditProfiles from "@/views/EditProfiles.vue";
+import { createRouter, createWebHistory } from "vue-router";
+import { useAuthStore } from "@/stores/user";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -80,10 +80,8 @@ const router = createRouter({
 router.beforeEach(async (to, from, next) => {
   const authStore = useAuthStore();
   await authStore.checkAuth();
-  // const hasUserId = localStorage.getItem("userId") ? true : false;
   if (
     !authStore.isAuthenticated &&
-    // !hasUserId &&
     to.meta.requiresAuth &&
     to.name !== "signin"
   ) {
