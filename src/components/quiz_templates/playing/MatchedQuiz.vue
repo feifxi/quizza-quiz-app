@@ -83,8 +83,12 @@ watch(() => { levelData }, () => {
 </script>
 <template>
     <div class="p-3 border border-green-600 rounded-2xl bg-green-600">
-        <h2 class="p-3 border border-green-600 bg-white rounded-2xl font-bold text-3xl">{{ levelData.question }}
+        <h2 class="p-3 border border-green-600 bg-white rounded-2xl font-bold text-3xl">
+            {{ levelData.question }}
         </h2>
+        <div v-if="levelData.questionImage" class="w-xl mx-auto mt-5">
+            <img :src="levelData.questionImage" alt="" />
+        </div>
         <br>
         <div class="grid grid-cols-2 gap-3">
             <div class="grid grid-cols-1 gap-3">
