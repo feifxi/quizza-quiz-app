@@ -2,8 +2,6 @@
 
 ![image](https://github.com/user-attachments/assets/0ebeff86-3c4e-45fe-ac2a-2a9c3532bd7f)
 
-
-
 ## About
 We are a platform where anyone can create and play quizzes with a variety of gameplay templates.
 Our system supports interactive features such as comments and likes, allowing users to engage with each other. We also feature a leaderboard showcasing popular games and individual scores.
@@ -128,7 +126,11 @@ Users can freely create and customize their own quizzes, with submissions review
                     <li>Admin review quiz</li>
                 </ul>
             </td>
-            <td></td>
+            <td>
+                <ul>
+                    <p>-</p>
+                </ul>
+            </td>
         </tr>
         <tr>
             <td>66130500100</td>
@@ -138,7 +140,11 @@ Users can freely create and customize their own quizzes, with submissions review
                     <li>Update Template</li>
                 </ul>
             </td>
-            <td></td>
+            <td>
+                <ul>
+                    <p>-</p>
+                </ul>
+            </td>
         </tr>
         <tr>
             <td>66130500114</td>
@@ -148,7 +154,11 @@ Users can freely create and customize their own quizzes, with submissions review
                     <li>Leaderboard</li>
                 </ul>
             </td>
-            <td></td>
+            <td>
+                <ul>
+                    <p>-</p>
+                </ul>
+            </td>
         </tr>
         <tr>
             <td>66130500125</td>
@@ -234,7 +244,9 @@ Users can freely create and customize their own quizzes, with submissions review
             <td>66130500125</td>
             <td>Suchai Cholchaipaisal</td>
             <td>
-                <ul></ul>
+                <ul>
+                    <p>-</p>
+                </ul>
             </td>
             <td>
                 <ul>
@@ -268,6 +280,7 @@ Users can freely create and customize their own quizzes, with submissions review
             </td>
             <td>
                 <ul>
+                    <p>-</p>
                 </ul>
             </td>
         </tr>
@@ -295,6 +308,7 @@ Users can freely create and customize their own quizzes, with submissions review
             </td>
             <td>
                 <ul>
+                    <p>-</p>
                 </ul>
             </td>
         </tr>
@@ -302,10 +316,13 @@ Users can freely create and customize their own quizzes, with submissions review
             <td>66130500125</td>
             <td>Suchai Cholchaipaisal</td>
             <td>
-                <ul></ul>
+                <ul>
+                    <p>-</p>
+                </ul>
             </td>
             <td>
                 <ul>
+                    <p>-</p>
                 </ul>
             </td>
         </tr>
@@ -328,6 +345,7 @@ Users can freely create and customize their own quizzes, with submissions review
             <td>Pakin Toomngern</td>
             <td>
                 <ul>
+                    <p>-</p>
                 </ul>
             </td>
             <td>
@@ -355,6 +373,7 @@ Users can freely create and customize their own quizzes, with submissions review
             <td>Noppawut Phomchana</td>
             <td>
                 <ul>
+                    <p>-</p>
                 </ul>
             </td>
             <td>
@@ -367,10 +386,13 @@ Users can freely create and customize their own quizzes, with submissions review
             <td>66130500125</td>
             <td>Suchai Cholchaipaisal</td>
             <td>
-                <ul></ul>
+                <ul>
+                    <p>-</p>
+                </ul>
             </td>
             <td>
                 <ul>
+                    <p>-</p>
                 </ul>
             </td>
         </tr>
