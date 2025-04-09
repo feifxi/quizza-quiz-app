@@ -10,6 +10,7 @@ import Profiles from "@/views/Profiles.vue";
 import EditProfiles from "@/views/EditProfiles.vue";
 import { createRouter, createWebHistory } from "vue-router";
 import { useAuthStore } from "@/stores/user";
+import PageNotFound from "@/views/PageNotFound.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -74,6 +75,12 @@ const router = createRouter({
       component: EditProfiles,
       meta: { requiresAuth: true },
     },
+    {
+      path: "/:pageNotFound",
+      name: "pageNotFound",
+      component: PageNotFound,
+      meta: { requiresAuth: false },
+    }
   ],
 });
 
