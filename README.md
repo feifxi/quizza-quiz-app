@@ -7,10 +7,6 @@ We are a platform where anyone can create and play quizzes with a variety of gam
 Our system supports interactive features such as comments and likes, allowing users to engage with each other. We also feature a leaderboard showcasing popular games and individual scores.
 Users can freely create and customize their own quizzes, with submissions reviewed and approved by an admin to ensure quality and consistency. 😎😎
 
-## Collaborator tools 
-- [Notion](https://blush-stitch-732.notion.site/Project-2-Platform-Quiz-game-186c0df7584d80979b90db8ff2409d85?pvs=4)
-- [Figma](https://www.figma.com/design/9JFMquzBxruwnq4fFYA4Hl/Untitled?node-id=0-1&p=f&t=k7M9jm1dbxZ3dkjA-0)
-
 ## List Features 
 - Authentication → Authenticate system by role base. (eg. Admin, User)
     - Sign up, Sign in, Log out
