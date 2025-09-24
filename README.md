@@ -1,7 +1,5 @@
 # QUIZZA (A Platform Sandbox Quiz Game)
 
-![image](https://github.com/user-attachments/assets/0ebeff86-3c4e-45fe-ac2a-2a9c3532bd7f)
-
 ## About
 We are a platform where anyone can create and play quizzes with a variety of gameplay templates.
 Our system supports interactive features such as comments and likes, allowing users to engage with each other. We also feature a leaderboard showcasing popular games and individual scores.
